@@ -1,5 +1,5 @@
 from PyQt5.QtCore import Qt, QAbstractTableModel
-from PyQt5.QtGui import QStandardItemModel, QStandardItem
+from PyQt5.QtGui import QStandardItemModel, QStandardItem, QColor
 
 
 class PandasModel(QAbstractTableModel):

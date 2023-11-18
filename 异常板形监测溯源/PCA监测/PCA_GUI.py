@@ -64,7 +64,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             local_path = os.path.abspath(os.path.dirname(__file__))
             parent_path = os.path.dirname(local_path)
             self.train_path = \
-            QFileDialog.getOpenFileName(self, "ADD", parent_path, "CSV Files(*.csv);;XLSX Files(*.xlsx)")[0]
+                QFileDialog.getOpenFileName(self, "ADD", parent_path, "CSV Files(*.csv);;XLSX Files(*.xlsx)")[0]
             self.textBrowser_2.setText(self.train_path)
         except:
             QMessageBox.information(self, '提示信息', '选择数据集发生错误')
@@ -126,7 +126,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.comboBox.setCurrentText("请选择")
 
             kk = Figure_Canvas.MyFigure()
-            kk.visualization4(self. t_total, self.q_total, self.t_limit, self.spe_limit, name='PCA监测图')
+            kk.visualization4(self.t_total, self.q_total, self.t_limit, self.spe_limit, name='PCA监测图')
             toolbar = NavigationToolbar2QT(kk.canvas, self)
             self.gridLayout.addWidget(kk.canvas)
             self.gridLayout.addWidget(toolbar)

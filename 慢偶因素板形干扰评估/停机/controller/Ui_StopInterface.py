@@ -27,6 +27,12 @@ class Ui_StopInterface(object):
         self.TableView_2 = TableView(self.CardWidget_2)
         self.TableView_2.setObjectName("TableView_2")
         self.verticalLayout_2.addWidget(self.TableView_2)
+        self.SubtitleLabel_5 = SubtitleLabel(self.CardWidget_2)
+        self.SubtitleLabel_5.setObjectName("SubtitleLabel_5")
+        self.verticalLayout_2.addWidget(self.SubtitleLabel_5)
+        self.TableView_3 = TableView(self.CardWidget_2)
+        self.TableView_3.setObjectName("TableView_3")
+        self.verticalLayout_2.addWidget(self.TableView_3)
         self.mergeOnlineTablePushButton = PushButton(self.CardWidget_2)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/icons/icons/format.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -148,7 +154,8 @@ class Ui_StopInterface(object):
     def retranslateUi(self, StopInterface):
         _translate = QtCore.QCoreApplication.translate
         StopInterface.setWindowTitle(_translate("StopInterface", "停机数据分析"))
-        self.SubtitleLabel_4.setText(_translate("StopInterface", "停机前后钢卷信息"))
+        self.SubtitleLabel_4.setText(_translate("StopInterface", "停机前钢卷信息"))
+        self.SubtitleLabel_5.setText(_translate("StopInterface", "停机后钢卷信息"))
         self.mergeOnlineTablePushButton.setText(_translate("StopInterface", "合并酸轧判定"))
         self.SubtitleLabel.setText(_translate("StopInterface", "数据预览窗口"))
         self.importRawDataPushButton.setText(_translate("StopInterface", "导入并格式化"))

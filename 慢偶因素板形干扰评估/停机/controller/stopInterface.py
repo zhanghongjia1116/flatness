@@ -5,12 +5,13 @@ from datetime import datetime
 import pandas as pd
 from PyQt5.QtGui import QColor
 from PyQt5.QtWidgets import QWidget, QGraphicsDropShadowEffect, QFileDialog
-from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtCore import pyqtSlot, pyqtSignal
 from qfluentwidgets import FluentIcon, setFont, InfoBarIcon
 import os
 from prompt import showMessageBox
 from display import NumberedTableModel, PandasModel
 from ..view.Ui_StopInterface import Ui_StopInterface
+# from Ui_StopInterface import Ui_StopInterface
 from .draw_pic import MplCanvas
 from matplotlib.backends.backend_qt import NavigationToolbar2QT
 
@@ -29,13 +30,16 @@ def format_time(time_str):
 
 
 class StopInterface(Ui_StopInterface, QWidget):
+    mergeOnlineSignal = pyqtSignal()
+
     def __init__(self, parent=None):
         super().__init__(parent=parent)
         self.process_data = None
         self.setupUi(self)
-        self.ComboBox.addItems(['选择年份', '2020', '2021', '2022', '2023'])
+        self.ComboBox.addItems(['选择年份', '2021', '2022', '2023'])
         self.ComboBox.currentIndexChanged.connect(self.on_ComboBox_currentIndexChanged)
         self.TableView.clicked.connect(self.cell_clicked)
+        self.mergeOnlineSignal.connect(self.on_mergeOnlineTablePushButton_clicked)
         self.onlineData = None
         self.displayData = None
 
@@ -175,11 +179,62 @@ class StopInterface(Ui_StopInterface, QWidget):
         self.ProgressBar.setValue(100)
 
     def cell_clicked(self, index):
+        # 清除画布上的所有内容
+        while self.verticalLayout_7.count():
+            item = self.verticalLayout_7.takeAt(0)
+            widget = item.widget()
+            if widget:
+                widget.deleteLater()
         # 获取选中单元格的值
         value = index.data()
-        # 判断是否为时间格式
-        # value =
-        # value = item.text()
+        # 判断value是否为时间格式'2020-01-01 00:30:00'
+        if not re.match(r'\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}', value):
+            showMessageBox("提示", "未选中有效数据", self)
+        else:
+            # 将时间转换为datetime格式
+            value = pd.to_datetime(value)
+
+            if self.onlineData is None:
+                self.mergeOnlineSignal.emit()
+                # time.sleep(0.5)
+                online_data: pd.DataFrame = self.onlineData
+                # 选择data中结束生产时刻在value前的10条数据
+
+            else:
+                online_data: pd.DataFrame = self.onlineData
+            data = online_data[online_data['结束生产时刻'] < value].tail(5)
+            pd_model = PandasModel(data)
+            # 设置显示颜色为红色
+            self.TableView_2.setModel(pd_model)
+            self.TableView_2.resizeColumnsToContents()
+            self.TableView_2.resizeRowsToContents()
+
+            # 选择data中结束生产时刻在value后的10条数据
+            data2 = online_data[online_data['结束生产时刻'] > value].head(5)
+            # 设置显示颜色为蓝色
+            pd_model2 = PandasModel(data2)
+            self.TableView_3.setModel(pd_model2)
+            self.TableView_3.resizeColumnsToContents()
+            self.TableView_3.resizeRowsToContents()
+
+            if data.empty:
+                IU_1 = [0] * 5
+                name_1 = range(5)
+            else:
+                IU_1 = data['IU均值'].tolist()
+                name_1 = data['入口材料号'].tolist()
+
+            if data2.empty:
+                IU_2 = [0] * 5
+                name_2 = range(5)
+            else:
+                IU_2 = data2['IU均值'].tolist()
+                name_2 = data2['入口材料号'].tolist()
+            bar_canvas = MplCanvas()
+            bar_canvas.barIU(IU_1, name_1, IU_2, name_2)
+            bar_canvas.toolbar = NavigationToolbar2QT(bar_canvas)
+            self.verticalLayout_7.addWidget(bar_canvas)
+            self.verticalLayout_7.addWidget(bar_canvas.toolbar)
         print(f"选中的值: {value}")
 
     def save_data_to_csv(self, file_name):
@@ -224,15 +279,15 @@ class StopInterface(Ui_StopInterface, QWidget):
             self.TableView.resizeColumnsToContents()
             self.TableView.resizeRowsToContents()
 
-        if self.process_data.empty:
-            showMessageBox(self, "提示", "未导入数据")
-        else:
+        try:
             min_year = self.process_data.iloc[0, 1].year
             max_year = self.process_data.iloc[-1, 1].year
             self.ComboBox.clear()
             self.ComboBox.addItem('选择年份')
             year_list = [i for i in range(min_year, max_year + 1)]
             self.ComboBox.addItems(map(str, year_list))
+        except:
+            showMessageBox("提示", "未导入数据", self)
 
     @pyqtSlot()
     def on_ComboBox_currentIndexChanged(self):
@@ -293,7 +348,6 @@ class StopInterface(Ui_StopInterface, QWidget):
             pie_canvas.toolbar = NavigationToolbar2QT(pie_canvas)
             self.verticalLayout_6.addWidget(pie_canvas)
             self.verticalLayout_6.addWidget(pie_canvas.toolbar)
-
 
 
 if __name__ == '__main__':
