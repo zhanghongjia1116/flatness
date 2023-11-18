@@ -134,7 +134,11 @@ class Ui_StopInterface(object):
         self.frame_4.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_4.setObjectName("frame_4")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.frame_4)
+        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.verticalLayout_7 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_7.setObjectName("verticalLayout_7")
+        self.verticalLayout_3.addLayout(self.verticalLayout_7)
         self.verticalLayout.addWidget(self.frame_4)
         self.verticalLayout_4.addWidget(self.frame_2)
         self.importProcessDataPushButton = PushButton(self.CardWidget_3)
@@ -165,5 +169,7 @@ class Ui_StopInterface(object):
         self.ComboBox.setText(_translate("StopInterface", "年份"))
         self.SubtitleLabel_3.setText(_translate("StopInterface", "停机前后IU均值"))
         self.importProcessDataPushButton.setText(_translate("StopInterface", "导入处理数据"))
+
+
 from qfluentwidgets import CardWidget, ComboBox, PushButton, SubtitleLabel, TableView
 import resource_rc

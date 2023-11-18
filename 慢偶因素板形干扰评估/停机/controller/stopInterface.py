@@ -219,14 +219,14 @@ class StopInterface(Ui_StopInterface, QWidget):
 
             if data.empty:
                 IU_1 = [0] * 5
-                name_1 = range(5)
+                name_1 = list(range(5))
             else:
                 IU_1 = data['IU均值'].tolist()
                 name_1 = data['入口材料号'].tolist()
 
             if data2.empty:
                 IU_2 = [0] * 5
-                name_2 = range(5)
+                name_2 = list(range(5))
             else:
                 IU_2 = data2['IU均值'].tolist()
                 name_2 = data2['入口材料号'].tolist()

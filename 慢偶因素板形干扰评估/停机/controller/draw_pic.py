@@ -48,11 +48,15 @@ class MplCanvas(FigureCanvas):
 
         # Set ticks and labels
         self.ax.set_xticks(x_positions)
-        self.ax.set_xticklabels(name_1 + name_2, rotation='vertical', va='bottom')
+        try:
+            self.ax.set_xticklabels(name_1 + name_2, rotation='vertical', va='bottom')
+        except TypeError as e:
+            print(e)
+            pass
 
         # Plot bars
-        self.ax.bar(x_positions[:len(name_1)], IU_1, width=0.4, color='red', label='IU1')
-        self.ax.bar(x_positions[len(name_1):], IU_2, width=0.4, color='blue', label='IU2')
+        self.ax.bar(x_positions[:len(name_1)], IU_1, width=0.4, color='red', label='停机前')
+        self.ax.bar(x_positions[len(name_1):], IU_2, width=0.4, color='blue', label='停机后')
         # 添加标签和图例
         self.ax.set_xlabel('入口材料号')
         self.ax.set_ylabel('IU均值')

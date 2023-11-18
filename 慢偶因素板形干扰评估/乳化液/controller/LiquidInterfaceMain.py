@@ -121,7 +121,7 @@ class LiquidInterfaceMain(QWidget, Ui_Form):
             online_data_path = f'{tmp}/初值表/初值表.pkl'
             online_data = pd.read_pickle(online_data_path)
             self.displayData = 乳化液数据.merge_liquid_rollTable(liquid, online_data)
-            self.updateTableViewMerge(self.displayData)
+            self.updateTableViewMerge(self.displayData.iloc[:100, :])
             self.ComboBox.currentIndexChanged.connect(self.updateTableView)
         except Exception as e:
             print(e)
