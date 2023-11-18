@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FlatnessControlAbility</class>
+ <widget class="QWidget" name="FlatnessControlAbility">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1029</width>
+    <height>754</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>板形控制能力评价</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../qtResource/resource.qrc">
+    <normaloff>:/icons/icons/板形分析.png</normaloff>:/icons/icons/板形分析.png</iconset>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,20">
+   <item>
+    <widget class="NavigationBar" name="NavigationBar"/>
+   </item>
+   <item>
+    <widget class="QStackedWidget" name="stackedWidget">
+     <property name="currentIndex">
+      <number>3</number>
+     </property>
+     <widget class="QWidget" name="preSetPage"/>
+     <widget class="QWidget" name="dynamicControlPage"/>
+     <widget class="QWidget" name="CVCPage">
+      <layout class="QHBoxLayout" name="horizontalLayout_3"/>
+     </widget>
+     <widget class="QWidget" name="BURPage">
+      <layout class="QHBoxLayout" name="horizontalLayout_2"/>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>NavigationBar</class>
+   <extends>QWidget</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../qtResource/resource.qrc"/>
+ </resources>
+ <connections/>
+</ui>

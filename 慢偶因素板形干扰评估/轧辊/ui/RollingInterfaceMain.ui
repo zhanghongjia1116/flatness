@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>RollingInterfaceMain</class>
+ <widget class="QWidget" name="RollingInterfaceMain">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1133</width>
+    <height>823</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="2,1">
+   <item>
+    <widget class="CardWidget" name="CardWidget">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0">
+         <widget class="SubtitleLabel" name="SubtitleLabel">
+          <property name="text">
+           <string>数据预览窗口</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Maximum</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>300</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="2">
+         <widget class="ComboBox" name="ComboBox"/>
+        </item>
+        <item row="1" column="0" colspan="3">
+         <widget class="TableView" name="TableView"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <property name="spacing">
+         <number>100</number>
+        </property>
+        <item>
+         <widget class="PushButton" name="importPushButton">
+          <property name="text">
+           <string>导入并格式化</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="PushButton" name="exportPushButton">
+          <property name="text">
+           <string>导出</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="PushButton" name="mergePushButton">
+          <property name="text">
+           <string>合并</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="CardWidget" name="CardWidget_2">
+     <layout class="QGridLayout" name="gridLayout_3">
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="verticalSpacing">
+       <number>50</number>
+      </property>
+      <item row="0" column="0">
+       <widget class="SubtitleLabel" name="SubtitleLabel_3">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>额外操作</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>252</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="1" column="0" colspan="2">
+       <layout class="QGridLayout" name="gridLayout_2" rowstretch="1,1,1,1">
+        <property name="bottomMargin">
+         <number>60</number>
+        </property>
+        <property name="verticalSpacing">
+         <number>150</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="IconWidget" name="IconWidget_6">
+          <property name="minimumSize">
+           <size>
+            <width>50</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="icon">
+           <iconset resource="../../../qtResource/resource.qrc">
+            <normaloff>:/icons/icons/查询.png</normaloff>:/icons/icons/查询.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="PrimaryPushButton" name="searchPushButton">
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>150</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>导入单个酸轧在线判定表</string>
+          </property>
+          <property name="text">
+           <string>钢卷号查询</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="IconWidget" name="IconWidget_7">
+          <property name="minimumSize">
+           <size>
+            <width>50</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="icon">
+           <iconset resource="../../../qtResource/resource.qrc">
+            <normaloff>:/icons/icons/跟踪.png</normaloff>:/icons/icons/跟踪.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="PrimaryPushButton" name="rollingInfoPushButton">
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>150</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>导入单个酸轧在线判定表</string>
+          </property>
+          <property name="text">
+           <string>轧制时间重量总览</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="IconWidget" name="IconWidget_8">
+          <property name="minimumSize">
+           <size>
+            <width>50</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="icon">
+           <iconset resource="../../../qtResource/resource.qrc">
+            <normaloff>:/icons/icons/冷轧.png</normaloff>:/icons/icons/冷轧.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="PrimaryPushButton" name="rollerInfoPushButton">
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>150</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>导入单个酸轧在线判定表</string>
+          </property>
+          <property name="text">
+           <string>轧辊参数总览</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="IconWidget" name="IconWidget_10">
+          <property name="minimumSize">
+           <size>
+            <width>50</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="icon">
+           <iconset resource="../../../qtResource/resource.qrc">
+            <normaloff>:/icons/icons/板形分析.png</normaloff>:/icons/icons/板形分析.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="PrimaryPushButton" name="iuInfoPushButton">
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>150</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>导入单个酸轧在线判定表</string>
+          </property>
+          <property name="text">
+           <string>IU信息统计</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ComboBox</class>
+   <extends>QPushButton</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>PushButton</class>
+   <extends>QPushButton</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>PrimaryPushButton</class>
+   <extends>PushButton</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>IconWidget</class>
+   <extends>QWidget</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>CardWidget</class>
+   <extends>QFrame</extends>
+   <header>qfluentwidgets</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>SubtitleLabel</class>
+   <extends>QLabel</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>TableView</class>
+   <extends>QTableView</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../../../qtResource/resource.qrc"/>
+ </resources>
+ <connections/>
+</ui>

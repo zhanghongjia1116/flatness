@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SinglePolicyCompare</class>
+ <widget class="QMainWindow" name="SinglePolicyCompare">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1428</width>
+    <height>1182</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>单策略对比</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <widget class="QGroupBox" name="groupBox_6">
+      <property name="title">
+       <string/>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_5" rowstretch="1,9" columnstretch="1,9">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item row="0" column="0" colspan="2">
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QPushButton" name="pushButton_xuanzeshuju">
+           <property name="text">
+            <string>选择数据</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QTextEdit" name="textEdit"/>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="0">
+        <layout class="QVBoxLayout" name="verticalLayout_3" stretch="8,2">
+         <item>
+          <widget class="QGroupBox" name="groupBox_4">
+           <property name="title">
+            <string>板形控制策略</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_2" stretch="2,3,3">
+            <item>
+             <widget class="QGroupBox" name="groupBox">
+              <property name="title">
+               <string>顺序控制策略</string>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout">
+               <item>
+                <widget class="QRadioButton" name="radioButton">
+                 <property name="text">
+                  <string>固定优先序列</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QRadioButton" name="radioButton_2">
+                 <property name="text">
+                  <string>动态优先序列</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_shunxu">
+                 <property name="text">
+                  <string>模型计算</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="groupBox_2">
+              <property name="title">
+               <string>比例控制策略</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout">
+               <item row="0" column="0" colspan="2">
+                <widget class="QPushButton" name="pushButton_bili">
+                 <property name="text">
+                  <string>初始化比例系数</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label">
+                 <property name="text">
+                  <string>工作辊弯辊比例：</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QLineEdit" name="lineEdit_wrbbili"/>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_2">
+                 <property name="text">
+                  <string>中间辊弯辊比例：</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QLineEdit" name="lineEdit_irbbili"/>
+               </item>
+               <item row="3" column="0">
+                <widget class="QLabel" name="label_3">
+                 <property name="text">
+                  <string>中间辊窜辊比例：</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QLineEdit" name="lineEdit_irsbili"/>
+               </item>
+               <item row="4" column="0" colspan="2">
+                <widget class="QPushButton" name="pushButton_bilijisuan">
+                 <property name="text">
+                  <string>模型计算</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="groupBox_3">
+              <property name="title">
+               <string>优化控制策略</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_3">
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_4">
+                 <property name="text">
+                  <string>学习率：</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="2">
+                <widget class="QLineEdit" name="lineEdit_adam_2"/>
+               </item>
+               <item row="2" column="1" colspan="2">
+                <widget class="QLineEdit" name="lineEdit_adam_1"/>
+               </item>
+               <item row="4" column="0" colspan="2">
+                <widget class="QLabel" name="label_6">
+                 <property name="text">
+                  <string>二阶矩估计指数衰减率：</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0" colspan="2">
+                <widget class="QLabel" name="label_5">
+                 <property name="text">
+                  <string>一阶矩估计指数衰减率：</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="2">
+                <widget class="QLineEdit" name="lineEdit_adam_3"/>
+               </item>
+               <item row="1" column="0" colspan="3">
+                <widget class="QPushButton" name="pushButton_Adam">
+                 <property name="text">
+                  <string>初始化Adam参数</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="0" colspan="3">
+                <widget class="QPushButton" name="pushButton_Adamjisuan">
+                 <property name="text">
+                  <string>模型计算</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_7">
+           <property name="title">
+            <string>显示选择</string>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_4">
+            <item row="4" column="3" colspan="2">
+             <widget class="QLabel" name="label_8">
+              <property name="text">
+               <string>帧图像</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="1" colspan="2">
+             <widget class="QLineEdit" name="lineEdit_danzhen_2"/>
+            </item>
+            <item row="4" column="0">
+             <widget class="QLabel" name="label_7">
+              <property name="text">
+               <string>选择第</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0" colspan="2">
+             <widget class="QLabel" name="label_9">
+              <property name="text">
+               <string>该卷带钢共</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="4">
+             <widget class="QLabel" name="label_10">
+              <property name="text">
+               <string>帧</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="2" colspan="2">
+             <widget class="QLineEdit" name="lineEdit_danzhen_1"/>
+            </item>
+            <item row="2" column="0" colspan="5">
+             <widget class="QPushButton" name="pushButton_xianshituxiang">
+              <property name="text">
+               <string>显示图像</string>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="0" colspan="5">
+             <widget class="QPushButton" name="pushButton_xianshituxiang_2">
+              <property name="text">
+               <string>显示该帧图像</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="1">
+        <widget class="QGroupBox" name="groupBox_5">
+         <property name="title">
+          <string>图形展示模块</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_2" rowstretch="5,5" columnstretch="1,1" rowminimumheight="0,0" columnminimumwidth="0,0">
+          <property name="sizeConstraint">
+           <enum>QLayout::SetDefaultConstraint</enum>
+          </property>
+          <item row="1" column="0" colspan="2">
+           <layout class="QVBoxLayout" name="verticalLayout_8" stretch="6,1">
+            <item>
+             <layout class="QGridLayout" name="gridLayout_11">
+              <item row="0" column="0">
+               <widget class="QGraphicsView" name="graphicsView_tuxing_3"/>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_8">
+              <item>
+               <widget class="QPushButton" name="pushButton_qingkonghuabu_3">
+                <property name="text">
+                 <string>清空画布</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item row="0" column="1">
+           <layout class="QVBoxLayout" name="verticalLayout_7" stretch="6,1">
+            <item>
+             <layout class="QGridLayout" name="gridLayout_10">
+              <item row="0" column="0">
+               <widget class="QGraphicsView" name="graphicsView_tuxing_2"/>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_7">
+              <item>
+               <widget class="QPushButton" name="pushButton_qingkonghuabu_2">
+                <property name="text">
+                 <string>清空画布</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item row="0" column="0">
+           <layout class="QVBoxLayout" name="verticalLayout_6" stretch="6,1">
+            <item>
+             <layout class="QGridLayout" name="gridLayout_9">
+              <item row="0" column="0">
+               <widget class="QGraphicsView" name="graphicsView_tuxing"/>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_6">
+              <item>
+               <widget class="QPushButton" name="pushButton_qingkonghuabu">
+                <property name="text">
+                 <string>清空画布</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

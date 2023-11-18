@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SinglePolicyCompare</class>
+ <widget class="QMainWindow" name="SinglePolicyCompare">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1406</width>
+    <height>1100</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>多策略对比</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_3">
+    <item row="0" column="0">
+     <widget class="QGroupBox" name="groupBox_3">
+      <property name="title">
+       <string/>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_2" rowstretch="1,9" columnstretch="8,2">
+       <item row="0" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QPushButton" name="pushButton_xuanzeshuju">
+           <property name="text">
+            <string>选择数据</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QTextEdit" name="textEdit"/>
+         </item>
+        </layout>
+       </item>
+       <item row="0" column="1">
+        <widget class="QGroupBox" name="groupBox">
+         <property name="title">
+          <string>策略选择</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QComboBox" name="comboBox_celue1">
+            <item>
+             <property name="text">
+              <string>---请选择控制策略---</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>固定优先序列</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>动态优先序列</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>比例控制策略</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Adam优化控制策略</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="comboBox_celue2">
+            <item>
+             <property name="text">
+              <string>---请选择控制策略---</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>固定优先序列</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>动态优先序列</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>比例控制策略</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Adam优化控制策略</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_xianshituxiang">
+            <property name="text">
+             <string>显示图像</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="QGroupBox" name="groupBox_2">
+         <property name="title">
+          <string>图像显示</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout" rowstretch="0,0">
+          <item row="0" column="0">
+           <layout class="QVBoxLayout" name="verticalLayout_6" stretch="6,1">
+            <item>
+             <layout class="QGridLayout" name="gridLayout_9">
+              <item row="0" column="0">
+               <widget class="QGraphicsView" name="graphicsView_tuxing"/>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_6">
+              <item>
+               <widget class="QPushButton" name="pushButton_qingkonghuabu">
+                <property name="text">
+                 <string>清空画布</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item row="0" column="1">
+           <layout class="QVBoxLayout" name="verticalLayout_7" stretch="6,1">
+            <item>
+             <layout class="QGridLayout" name="gridLayout_10">
+              <item row="0" column="0">
+               <widget class="QGraphicsView" name="graphicsView_tuxing_2"/>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_7">
+              <item>
+               <widget class="QPushButton" name="pushButton_qingkonghuabu_2">
+                <property name="text">
+                 <string>清空画布</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item row="0" column="2">
+           <layout class="QVBoxLayout" name="verticalLayout_8" stretch="6,1">
+            <item>
+             <layout class="QGridLayout" name="gridLayout_11">
+              <item row="0" column="0">
+               <widget class="QGraphicsView" name="graphicsView_tuxing_3"/>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_8">
+              <item>
+               <widget class="QPushButton" name="pushButton_qingkonghuabu_3">
+                <property name="text">
+                 <string>清空画布</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item row="1" column="0" colspan="3">
+           <layout class="QVBoxLayout" name="verticalLayout_9" stretch="6,1">
+            <item>
+             <layout class="QGridLayout" name="gridLayout_12">
+              <item row="0" column="0">
+               <widget class="QGraphicsView" name="graphicsView_tuxing_4"/>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_9">
+              <item>
+               <widget class="QPushButton" name="pushButton_qingkonghuabu_4">
+                <property name="text">
+                 <string>清空画布</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

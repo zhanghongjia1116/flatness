@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>RollingSearch</class>
+ <widget class="QWidget" name="RollingSearch">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1000</width>
+    <height>606</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>轧辊带钢索引查询</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../../qtResource/resource.qrc">
+    <normaloff>:/icons/icons/查询.png</normaloff>:/icons/icons/查询.png</iconset>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout_2">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,1">
+     <item>
+      <widget class="CardWidget" name="CardWidget">
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="CalendarPicker" name="CalendarPicker"/>
+        </item>
+        <item>
+         <widget class="TableWidget" name="TableWidget"/>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0">
+       <item>
+        <widget class="CardWidget" name="CardWidget_2">
+         <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="2,1">
+          <item>
+           <layout class="QGridLayout" name="gridLayout">
+            <property name="verticalSpacing">
+             <number>10</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="StrongBodyLabel" name="StrongBodyLabel">
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>热卷号</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="LineEdit" name="LineEdit"/>
+            </item>
+            <item row="1" column="0">
+             <widget class="StrongBodyLabel" name="StrongBodyLabel_2">
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>机架</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="ComboBox" name="ComboBox">
+              <property name="text">
+               <string>请选择机架</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="PrimaryPushButton" name="PrimaryPushButton">
+            <property name="text">
+             <string>显示</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="CardWidget" name="CardWidget_3">
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <property name="spacing">
+           <number>1</number>
+          </property>
+          <property name="bottomMargin">
+           <number>30</number>
+          </property>
+          <item>
+           <widget class="SubtitleLabel" name="SubtitleLabel">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>支撑辊</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QGridLayout" name="gridLayout_2" columnstretch="1,5,3">
+            <property name="horizontalSpacing">
+             <number>5</number>
+            </property>
+            <property name="verticalSpacing">
+             <number>10</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="BodyLabel" name="BodyLabel">
+              <property name="text">
+               <string>上辊号</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="LineEdit" name="LineEdit_3"/>
+            </item>
+            <item row="0" column="1">
+             <widget class="LineEdit" name="LineEdit_2"/>
+            </item>
+            <item row="1" column="0">
+             <widget class="BodyLabel" name="BodyLabel_2">
+              <property name="text">
+               <string>下辊号</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="2" rowspan="2">
+             <widget class="LineEdit" name="LineEdit_4">
+              <property name="text">
+               <string>索引/全部钢卷</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="CardWidget" name="CardWidget_4">
+         <layout class="QVBoxLayout" name="verticalLayout_5">
+          <property name="bottomMargin">
+           <number>30</number>
+          </property>
+          <item>
+           <widget class="SubtitleLabel" name="SubtitleLabel_3">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>中间辊</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QGridLayout" name="gridLayout_4" columnstretch="1,5,3">
+            <property name="horizontalSpacing">
+             <number>5</number>
+            </property>
+            <property name="verticalSpacing">
+             <number>10</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="BodyLabel" name="BodyLabel_5">
+              <property name="text">
+               <string>上辊号</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="LineEdit" name="LineEdit_8"/>
+            </item>
+            <item row="0" column="1">
+             <widget class="LineEdit" name="LineEdit_9"/>
+            </item>
+            <item row="1" column="0">
+             <widget class="BodyLabel" name="BodyLabel_6">
+              <property name="text">
+               <string>下辊号</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="2" rowspan="2">
+             <widget class="LineEdit" name="LineEdit_10">
+              <property name="text">
+               <string>索引/全部钢卷</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="CardWidget" name="CardWidget_5">
+         <layout class="QVBoxLayout" name="verticalLayout_6">
+          <property name="bottomMargin">
+           <number>30</number>
+          </property>
+          <item>
+           <widget class="SubtitleLabel" name="SubtitleLabel_4">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>工作辊</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QGridLayout" name="gridLayout_5" columnstretch="1,5,3">
+            <property name="horizontalSpacing">
+             <number>5</number>
+            </property>
+            <property name="verticalSpacing">
+             <number>10</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="BodyLabel" name="BodyLabel_7">
+              <property name="text">
+               <string>上辊号</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="LineEdit" name="LineEdit_11"/>
+            </item>
+            <item row="0" column="1">
+             <widget class="LineEdit" name="LineEdit_12"/>
+            </item>
+            <item row="1" column="0">
+             <widget class="BodyLabel" name="BodyLabel_8">
+              <property name="text">
+               <string>下辊号</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="2" rowspan="2">
+             <widget class="LineEdit" name="LineEdit_13">
+              <property name="text">
+               <string>索引/全部钢卷</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ComboBox</class>
+   <extends>QPushButton</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>PushButton</class>
+   <extends>QPushButton</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>PrimaryPushButton</class>
+   <extends>PushButton</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>CardWidget</class>
+   <extends>QFrame</extends>
+   <header>qfluentwidgets</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>CalendarPicker</class>
+   <extends>QPushButton</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>BodyLabel</class>
+   <extends>QLabel</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>StrongBodyLabel</class>
+   <extends>QLabel</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>SubtitleLabel</class>
+   <extends>QLabel</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>LineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>TableWidget</class>
+   <extends>QTableWidget</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../../../qtResource/resource.qrc"/>
+ </resources>
+ <connections/>
+</ui>

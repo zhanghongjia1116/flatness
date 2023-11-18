@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MyTerminal</class>
+ <widget class="QWidget" name="MyTerminal">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>823</width>
+    <height>535</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MyTerminal</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../qtResource/resource.qrc">
+    <normaloff>:/icons/icons/终端.png</normaloff>:/icons/icons/终端.png</iconset>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QPlainTextEdit" name="terminal">
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(0, 0, 0);
+border: 1px solid rgba(0, 0, 0, 13);
+border-bottom: 1px solid rgba(0, 0, 0, 100);
+border-radius: 5px;
+/* font: 14px &quot;Segoe UI&quot;, &quot;Microsoft YaHei&quot;; */
+padding: 0px 10px;
+selection-background-color: #00a7b3;
+font: 12pt &quot;Adobe Heiti Std&quot;;</string>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+     <property name="placeholderText">
+      <string>Console</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../qtResource/resource.qrc"/>
+ </resources>
+ <connections/>
+</ui>

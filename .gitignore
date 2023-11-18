@@ -1,0 +1,88 @@
+*.csv
+*.pkl
+*.xlsx
+*.xls
+*.zip
+*.rar
+*.7z
+*.dat
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Virtual Environment
+venv/
+env/
+*.env
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+
+# PyInstaller
+dist/
+build/
+*.exe
+*.msi
+*.spec
+
+# Flask
+instance/
+.webassets-cache
+
+# Django
+*.log
+*.pot
+*.pyc
+db.sqlite3
+__pycache__
+local_settings.py
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Java
+*.class
+*.war
+*.ear
+hs_err_pid*
+
+# Maven
+target/
+
+# Gradle
+build/
+
+# IntelliJ
+.idea/
+
+# Visual Studio Code
+.vscode/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Eclipse
+*.project
+*.classpath
+*.settings/
+
+# macOS
+.vscode/
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini

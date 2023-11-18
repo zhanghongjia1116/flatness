@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>banxingzhiliang</class>
+ <widget class="QWidget" name="banxingzhiliang">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1300</width>
+    <height>1200</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>板形质量评价</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../qtResource/resource.qrc">
+    <normaloff>:/icons/icons/help.png</normaloff>:/icons/icons/help.png</iconset>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,20">
+   <item>
+    <widget class="NavigationBar" name="NavigationBar" native="true"/>
+   </item>
+   <item>
+    <widget class="QStackedWidget" name="stackedWidget">
+     <widget class="QWidget" name="fullLengthQualityPage">
+      <layout class="QHBoxLayout" name="horizontalLayout_3"/>
+     </widget>
+     <widget class="QWidget" name="annualQualityPage">
+      <layout class="QHBoxLayout" name="horizontalLayout_5"/>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>NavigationBar</class>
+   <extends>QWidget</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../qtResource/resource.qrc"/>
+ </resources>
+ <connections/>
+</ui>

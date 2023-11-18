@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AvgIUAndLiquid</class>
+ <widget class="QWidget" name="AvgIUAndLiquid">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1771</width>
+    <height>978</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>全年浓度与IU均值散点</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../../qtResource/resource.qrc">
+    <normaloff>:/icons/icons/预览.png</normaloff>:/icons/icons/预览.png</iconset>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="1">
+   <item>
+    <widget class="CardWidget" name="CardWidget">
+     <layout class="QVBoxLayout" name="verticalLayout_4" stretch="1,20">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="RadioButton" name="RadioButton2021">
+          <property name="text">
+           <string>2021</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="RadioButton" name="RadioButton2022">
+          <property name="text">
+           <string>2022</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="RadioButton" name="RadioButton2023">
+          <property name="text">
+           <string>2023</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QGridLayout" name="gridLayoutLeft">
+        <item row="0" column="0">
+         <widget class="QGraphicsView" name="graphicsView"/>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>RadioButton</class>
+   <extends>QRadioButton</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>CardWidget</class>
+   <extends>QFrame</extends>
+   <header>qfluentwidgets</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../../../qtResource/resource.qrc"/>
+ </resources>
+ <connections/>
+</ui>
