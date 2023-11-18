@@ -10,7 +10,7 @@ from PyQt5.QtCore import pyqtSlot, QThread, pyqtSignal, Qt, QMutex, QEvent, QAbs
 from PyQt5.QtGui import QStandardItemModel, QStandardItem, QTextCursor
 from PyQt5.QtWidgets import QWidget, QDialog, QMessageBox, QTableWidgetItem, QFileDialog, QApplication
 from prompt import showMessageBox
-from my_utils.zhhj_data import 轧辊数据
+from zhhj_data import 轧辊数据
 from ..view.Ui_RollingInterfaceMain import Ui_RollingInterfaceMain
 from ..controller.辊类选择界面 import RollingChoose
 from ..controller.选择轧辊类型警告界面 import WarningDialog

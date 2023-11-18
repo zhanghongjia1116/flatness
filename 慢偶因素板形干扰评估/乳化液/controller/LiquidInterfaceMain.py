@@ -13,7 +13,7 @@ from PyQt5.QtWidgets import QWidget, QDialog, QMessageBox, QTableWidgetItem, QFi
 from tqdm import tqdm
 from display import PandasModel
 from prompt import showMessageBox
-from my_utils.zhhj_data import 乳化液数据
+from zhhj_data import 乳化液数据
 
 from .特定时间段IU均值 import SpecialNumIU
 from ..view.Ui_LiquidInterfaceMain import Ui_Form
