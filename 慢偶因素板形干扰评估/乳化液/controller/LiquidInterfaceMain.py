@@ -87,6 +87,10 @@ class LiquidInterfaceMain(QWidget, Ui_Form):
             # 清空TableView
             df = pd.DataFrame()
         self.displayData = df
+        if df.shape[0] > 100:
+            df = df.iloc[:100, :]
+        else:
+            df = df
         pdModel = PandasModel(df)
         self.TableView.setModel(pdModel)
         self.TableView.resizeColumnsToContents()
@@ -144,7 +148,7 @@ class LiquidInterfaceMain(QWidget, Ui_Form):
             self.processData = pd.read_pickle(self.processDataPath[0])
             self.displayData = self.processData
 
-            pdModel = PandasModel(self.displayData)
+            pdModel = PandasModel(self.displayData.iloc[:100, :])
             self.TableView.setModel(pdModel)
             self.TableView.resizeColumnsToContents()
             self.importRawDataPushButton.setEnabled(True)

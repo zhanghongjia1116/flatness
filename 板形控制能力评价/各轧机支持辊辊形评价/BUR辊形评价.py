@@ -9,33 +9,9 @@ from matplotlib.cm import get_cmap
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT
 from .Ui_BUR辊形评价 import Ui_BUREvaluate
 from qfluentwidgets import MessageBox
-
+from display import PandasModel
 
 # from 详细信息 import MatplotlibWidget, MplCanvas
-
-
-class pandasModel(QAbstractTableModel):
-
-    def __init__(self, data):
-        QAbstractTableModel.__init__(self)
-        self._data = data
-
-    def rowCount(self, parent=None):
-        return self._data.shape[0]
-
-    def columnCount(self, parnet=None):
-        return self._data.shape[1]
-
-    def data(self, index, role=Qt.DisplayRole):
-        if index.isValid():
-            if role == Qt.DisplayRole:
-                return str(self._data.iloc[index.row(), index.column()])
-        return None
-
-    def headerData(self, col, orientation, role):
-        if orientation == Qt.Horizontal and role == Qt.DisplayRole:
-            return self._data.columns[col]
-        return None
 
 
 class BUREvaluate(Ui_BUREvaluate, QWidget):
@@ -136,7 +112,11 @@ class BUREvaluate(Ui_BUREvaluate, QWidget):
                                     '5#中间辊弯辊', '5#中间辊窜辊', '5#工作辊弯辊']
             # 为数据帧添加行号
             # display_data.insert(0, '序号', range(1, display_data.shape[0] + 1))
-            pdModel = pandasModel(display_data)
+            if display_data.shape[0] > 100:
+                df = display_data.iloc[:100, :]
+            else:
+                df = display_data
+            pdModel = PandasModel(df)
             self.preViewTableBUR.setModel(pdModel)
             # 设置表头
             self.preViewTableBUR.resizeColumnsToContents()
@@ -214,7 +194,11 @@ class BUREvaluate(Ui_BUREvaluate, QWidget):
             else:
                 # 为数据帧添加行号
                 presetValue.insert(0, '序号', range(1, presetValue.shape[0] + 1))
-                pdModel = pandasModel(presetValue)
+                if presetValue.shape[0] > 100:
+                    df = presetValue.iloc[:100, :]
+                else:
+                    df = presetValue
+                pdModel = PandasModel(df)
                 self.highValueTableBUR.setModel(pdModel)
                 self.highValueTableBUR.resizeColumnsToContents()
                 self.displayPushButtonBUR.setEnabled(True)

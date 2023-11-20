@@ -107,7 +107,10 @@ class CVCEvaluate(Ui_CVCEvaluate, QWidget):
             display_data.columns = ['策略号', '入口卷号', '生产结束时刻', 'CVC窜辊']
             # 为数据帧添加行号
             display_data.insert(0, '序号', range(1, len(display_data) + 1))
-            pdModel = PandasModel(display_data)
+            if display_data.shape[0] < 100:
+                pdModel = PandasModel(display_data)
+            else:
+                pdModel = PandasModel(display_data.iloc[:100, :])
             self.preViewTableCVC.setModel(pdModel)
             self.preViewTableCVC.setColumnWidth(0, 80)
             self.preViewTableCVC.setColumnWidth(1, 80)
@@ -178,7 +181,10 @@ class CVCEvaluate(Ui_CVCEvaluate, QWidget):
         display_data.columns = ['策略号', '入口材料号', '生产结束时刻', 'CVC窜辊']
         # 为数据帧添加行号
         display_data.insert(0, '序号', range(1, len(self.highValueDataCVC) + 1))
-        pdModel = PandasModel(display_data)
+        if display_data.shape[0] < 100:
+            pdModel = PandasModel(display_data)
+        else:
+            pdModel = PandasModel(display_data.iloc[:100, :])
         self.highValueTableCVC.setModel(pdModel)
         self.highValueTableCVC.setColumnWidth(0, 80)
         self.highValueTableCVC.setColumnWidth(1, 80)
@@ -199,10 +205,6 @@ class CVCEvaluate(Ui_CVCEvaluate, QWidget):
         #     w.cancelButton.setText('close')
         #     w.exec()
         #     self.displayPushButtonCVC.setEnabled(True)
-
-    def update_highValueTable_view(self, model):
-        self.highValueTableCVC.setModel(model)
-        self.highValueTableCVC.resizeColumnsToContents()
 
     # def updateCanvas(self, leftCanvas, rightCanvas):
     #     leftCanvas.toolbar = NavigationToolbar2QT(leftCanvas, self)  # 添加toolbar
