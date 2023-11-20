@@ -87,6 +87,7 @@ class LiquidInterfaceMain(QWidget, Ui_Form):
             # 清空TableView
             df = pd.DataFrame()
         self.displayData = df
+        # 设置展示数据的条数
         if df.shape[0] > 100:
             df = df.iloc[:100, :]
         else:
