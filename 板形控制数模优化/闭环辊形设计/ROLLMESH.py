@@ -1,12 +1,16 @@
-import DATA_ROLL
-import DATA_MESH
-import DATA_FORC
+from DATA_ROLL import DataRoll
+from DATA_MESH import DataMesh
+from DATA_FORC import DataForc
 import numpy as np
 import math
 
 IXB = np.array([0, 15, 65, 70, 100, 235, 300, 300, 235, 100, 70, 65, 15], dtype=np.float64)
 IXI = np.array([0, 10, 15, 25, 40, 140, 170, 170, 140, 40, 25, 15, 10], dtype=np.float64)
 IXW = np.array([0, 10, 15, 20, 40, 135, 160, 160, 135, 40, 20, 15, 10], dtype=np.float64)
+
+data_mesh = DataMesh()
+data_roll = DataRoll()
+data_forc = DataForc()
 
 
 def MES():
@@ -22,7 +26,7 @@ def MES():
     JP: int = 0
     JQ: int = 0
     N: int = 0
-    INB = DATA_MESH.INB
+    INB = data_mesh.INB
     IDP[1] = 1
     IDP[2] = 2 * INB + 1
     IDP[3] = 3 * INB + 10
@@ -31,9 +35,9 @@ def MES():
     IDP[6] = 3 * INB + 3 * (INB - 1) / 4 + (INB - 1) / 4 / 2 + 48
     IDP[7] = 4 * INB + (INB - 1) / 2 + 68
     IDP[8] = 5 * INB + (INB - 1) / 2 + (INB - 1) / 4 + 73
-    DATA_MESH.NPBR = 7 * INB + int((INB - 1) / 4) + 72
-    NPBR = DATA_MESH.NPBR
-    INI = DATA_MESH.INI
+    data_mesh.NPBR = 7 * INB + int((INB - 1) / 4) + 72
+    NPBR = data_mesh.NPBR
+    INI = data_mesh.INI
     IDP[9] = NPBR + 1
     IDP[10] = NPBR + 2 * INI + 1
     IDP[11] = NPBR + 3 * INI + 10
@@ -42,9 +46,9 @@ def MES():
     IDP[14] = NPBR + 3 * INI + 3 * (INI - 1) / 4 + (INI - 1) / 4 / 2 + 48
     IDP[15] = NPBR + 4 * INI + (INI - 1) / 2 + 68
     IDP[16] = NPBR + 5 * INI + (INI - 1) / 2 + (INI - 1) / 4 + 73
-    DATA_MESH.NPIR = 7 * INI + int((INI - 1) / 4) + 72
-    NPIR = DATA_MESH.NPIR
-    INW = DATA_MESH.INW
+    data_mesh.NPIR = 7 * INI + int((INI - 1) / 4) + 72
+    NPIR = data_mesh.NPIR
+    INW = data_mesh.INW
     IDP[17] = NPBR + NPIR + 1
     IDP[18] = NPBR + NPIR + 2 * INW + 1
     IDP[19] = NPBR + NPIR + 3 * INW + 10
@@ -53,8 +57,8 @@ def MES():
     IDP[22] = NPBR + NPIR + 3 * INW + 3 * (INW - 1) / 4 + (INW - 1) / 4 / 2 + 48
     IDP[23] = NPBR + NPIR + 4 * INW + (INW - 1) / 2 + 68
     IDP[24] = NPBR + NPIR + 5 * INW + (INW - 1) / 2 + (INW - 1) / 4 + 73
-    DATA_MESH.NPWR = 7 * INW + int((INW - 1) / 4) + 72
-    NPWR = DATA_MESH.NPWR
+    data_mesh.NPWR = 7 * INW + int((INW - 1) / 4) + 72
+    NPWR = data_mesh.NPWR
     IDP[25] = 3 * INB + (INB - 1) / 2 + 32
     IDP[26] = 3 * INB + 3 * (INB - 1) / 4 + 43
     IDP[27] = 4 * INB + (INB - 1) / 4 + 68
@@ -187,8 +191,8 @@ def MES():
     IDE[6] = 9 * INB + (INB - 1) / 2 + (INB - 1) / 8 + 80
     IDE[7] = 10 * INB + (INB - 1) / 4 + 95
     IDE[8] = 11 * INB + (INB - 1) / 2 + 94
-    DATA_MESH.NEBR = 12 * INB + int((INB - 1) / 2) + 92
-    NEBR = DATA_MESH.NEBR
+    data_mesh.NEBR = 12 * INB + int((INB - 1) / 2) + 92
+    NEBR = data_mesh.NEBR
     IDE[9] = NEBR + 1
     IDE[10] = NEBR + INI + 3 * (INI - 1) / 4
     IDE[11] = NEBR + INI + (INI - 1) / 2 + 3 * (INI - 1) / 4 + 3 * (INI - 1) / 8 + 6
@@ -197,8 +201,8 @@ def MES():
     IDE[14] = NEBR + 9 * INI + (INI - 1) / 2 + (INI - 1) / 8 + 80
     IDE[15] = NEBR + 10 * INI + (INI - 1) / 4 + 95
     IDE[16] = NEBR + 11 * INI + (INI - 1) / 2 + 94
-    DATA_MESH.NEIR = 12 * INI + int((INI - 1) / 2) + 92
-    NEIR = DATA_MESH.NEIR
+    data_mesh.NEIR = 12 * INI + int((INI - 1) / 2) + 92
+    NEIR = data_mesh.NEIR
     IDE[17] = NEBR + NEIR + 1
     IDE[18] = NEBR + NEIR + INW + 3 * (INW - 1) / 4
     IDE[19] = NEBR + NEIR + INW + (INW - 1) / 2 + 3 * (INW - 1) / 4 + 3 * (INW - 1) / 8 + 6
@@ -207,8 +211,8 @@ def MES():
     IDE[22] = NEBR + NEIR + 9 * INW + (INW - 1) / 2 + (INW - 1) / 8 + 80
     IDE[23] = NEBR + NEIR + 10 * INW + (INW - 1) / 4 + 95
     IDE[24] = NEBR + NEIR + 11 * INW + (INW - 1) / 2 + 94
-    DATA_MESH.NEWR = 12 * INW + int((INW - 1) / 2) + 92
-    NEWR = DATA_MESH.NEWR
+    data_mesh.NEWR = 12 * INW + int((INW - 1) / 2) + 92
+    NEWR = data_mesh.NEWR
     IDE[25] = 3 * INB + (INB - 1) / 8 + 24
     IDE[26] = 3 * INB + (INB - 1) / 4 + (INB - 1) / 8 + 34
     IDE[27] = 4 * INB + 49
@@ -333,30 +337,30 @@ def MES():
     IVN[23] = IVE[23] + 3 * (INW - 1) / 8 + 6 - 1
     IVN[24] = IVE[24] + 3 * (INW - 1) / 4 - 1
 
-    DATA_MESH.NP = NPBR + NPIR + NPWR
-    DATA_MESH.NE = NEBR + NEIR + NEWR
-    for I in range(1, DATA_MESH.NE + 1):
+    data_mesh.NP = NPBR + NPIR + NPWR
+    data_mesh.NE = NEBR + NEIR + NEWR
+    for I in range(1, data_mesh.NE + 1):
         for N in range(1, 3 + 1):
-            DATA_MESH.MS[I, N] = 0
+            data_mesh.MS[I, N] = 0
 
     for I in range(1, 48 + 1):
         JP = IDP[I]
         JQ = IDQ[I]
         for N in range(IDE[I], IDN[I] + 1, 2):
             if I >= 25:
-                DATA_MESH.MS[N, 1] = JP
-                DATA_MESH.MS[N, 2] = JP + 1
-                DATA_MESH.MS[N, 3] = JQ
-                DATA_MESH.MS[N + 1, 1] = JP + 1
-                DATA_MESH.MS[N + 1, 2] = JQ + 1
-                DATA_MESH.MS[N + 1, 3] = JQ
+                data_mesh.MS[N, 1] = JP
+                data_mesh.MS[N, 2] = JP + 1
+                data_mesh.MS[N, 3] = JQ
+                data_mesh.MS[N + 1, 1] = JP + 1
+                data_mesh.MS[N + 1, 2] = JQ + 1
+                data_mesh.MS[N + 1, 3] = JQ
             else:
-                DATA_MESH.MS[N, 1] = JP
-                DATA_MESH.MS[N, 2] = JQ + 1
-                DATA_MESH.MS[N, 3] = JQ
-                DATA_MESH.MS[N + 1, 1] = JP
-                DATA_MESH.MS[N + 1, 2] = JP + 1
-                DATA_MESH.MS[N + 1, 3] = JQ + 1
+                data_mesh.MS[N, 1] = JP
+                data_mesh.MS[N, 2] = JQ + 1
+                data_mesh.MS[N, 3] = JQ
+                data_mesh.MS[N + 1, 1] = JP
+                data_mesh.MS[N + 1, 2] = JP + 1
+                data_mesh.MS[N + 1, 3] = JQ + 1
             JP = JP + 1
             JQ = JQ + 1
 
@@ -365,40 +369,40 @@ def MES():
         JQ = IVQ[I]
         for N in range(IVE[I], IVN[I] + 1, 3):
             if I >= 13:
-                DATA_MESH.MS[N, 1] = JP
-                DATA_MESH.MS[N, 2] = JQ + 1
-                DATA_MESH.MS[N, 3] = JQ
-                DATA_MESH.MS[N + 1, 1] = JP
-                DATA_MESH.MS[N + 1, 2] = JP + 1
-                DATA_MESH.MS[N + 1, 3] = JQ + 1
-                DATA_MESH.MS[N + 2, 1] = JP + 1
-                DATA_MESH.MS[N + 2, 2] = JQ + 2
-                DATA_MESH.MS[N + 2, 3] = JQ + 1
+                data_mesh.MS[N, 1] = JP
+                data_mesh.MS[N, 2] = JQ + 1
+                data_mesh.MS[N, 3] = JQ
+                data_mesh.MS[N + 1, 1] = JP
+                data_mesh.MS[N + 1, 2] = JP + 1
+                data_mesh.MS[N + 1, 3] = JQ + 1
+                data_mesh.MS[N + 2, 1] = JP + 1
+                data_mesh.MS[N + 2, 2] = JQ + 2
+                data_mesh.MS[N + 2, 3] = JQ + 1
                 JP = JP + 1
                 JQ = JQ + 2
             else:
-                DATA_MESH.MS[N, 1] = JP
-                DATA_MESH.MS[N, 2] = JP + 1
-                DATA_MESH.MS[N, 3] = JQ
-                DATA_MESH.MS[N + 1, 1] = JP + 1
-                DATA_MESH.MS[N + 1, 2] = JQ + 1
-                DATA_MESH.MS[N + 1, 3] = JQ
-                DATA_MESH.MS[N + 2, 1] = JP + 1
-                DATA_MESH.MS[N + 2, 2] = JP + 2
-                DATA_MESH.MS[N + 2, 3] = JQ + 1
+                data_mesh.MS[N, 1] = JP
+                data_mesh.MS[N, 2] = JP + 1
+                data_mesh.MS[N, 3] = JQ
+                data_mesh.MS[N + 1, 1] = JP + 1
+                data_mesh.MS[N + 1, 2] = JQ + 1
+                data_mesh.MS[N + 1, 3] = JQ
+                data_mesh.MS[N + 2, 1] = JP + 1
+                data_mesh.MS[N + 2, 2] = JP + 2
+                data_mesh.MS[N + 2, 3] = JQ + 1
                 JP = JP + 2
                 JQ = JQ + 1
 
-    DATA_MESH.INC[1] = 3 * INB + (INB - 1) / 2 + 33
-    DATA_MESH.INC[2] = 3 * INB + (INB - 1) / 2 + (INB - 1) / 4 + 41
-    DATA_MESH.INC[3] = 3 * INB + (INB - 1) / 2 + (INB - 1) / 4 / 2 + 37
-    DATA_MESH.INC[4] = NPBR + 3 * INI + (INI - 1) / 2 + (INI - 1) / 4 / 2 + 37
-    DATA_MESH.INC[5] = NPBR + NPIR + 3 * INW + (INW - 1) / 2 + (INW - 1) / 4 / 2 + 37
-    DATA_MESH.NSBRD = NPBR - (INB - 1)
-    DATA_MESH.NSIRT = NPBR + 1
-    DATA_MESH.NSIRD = NPBR + NPIR - (INI - 1)
-    DATA_MESH.NSWRT = NPBR + NPIR + 1
-    DATA_MESH.NSWRD = NPBR + NPIR + NPWR - (INW - 1)
+    data_mesh.INC[1] = 3 * INB + (INB - 1) / 2 + 33
+    data_mesh.INC[2] = 3 * INB + (INB - 1) / 2 + (INB - 1) / 4 + 41
+    data_mesh.INC[3] = 3 * INB + (INB - 1) / 2 + (INB - 1) / 4 / 2 + 37
+    data_mesh.INC[4] = NPBR + 3 * INI + (INI - 1) / 2 + (INI - 1) / 4 / 2 + 37
+    data_mesh.INC[5] = NPBR + NPIR + 3 * INW + (INW - 1) / 2 + (INW - 1) / 4 / 2 + 37
+    data_mesh.NSBRD = NPBR - (INB - 1)
+    data_mesh.NSIRT = NPBR + 1
+    data_mesh.NSIRD = NPBR + NPIR - (INI - 1)
+    data_mesh.NSWRT = NPBR + NPIR + 1
+    data_mesh.NSWRD = NPBR + NPIR + NPWR - (INW - 1)
 
 
 def XYS():
@@ -414,20 +418,20 @@ def XYS():
     NIR = np.zeros(13 + 1, dtype=np.int32)
     NWR = np.zeros(13 + 1, dtype=np.int32)
 
-    IYB0 = np.zeros(DATA_MESH.INB + 1, dtype=np.float64)
-    IYB1 = np.zeros(DATA_MESH.INB + 1, dtype=np.float64)
-    IYB2 = np.zeros(DATA_MESH.INB + 1, dtype=np.float64)
-    IYB3 = np.zeros(DATA_MESH.INB + 1, dtype=np.float64)
-    IYI0 = np.zeros(DATA_MESH.INI + 1, dtype=np.float64)
-    IYI1 = np.zeros(DATA_MESH.INI + 1, dtype=np.float64)
-    IYI2 = np.zeros(DATA_MESH.INI + 1, dtype=np.float64)
-    IYI3 = np.zeros(DATA_MESH.INI + 1, dtype=np.float64)
-    IYW0 = np.zeros(DATA_MESH.INW + 1, dtype=np.float64)
-    IYW1 = np.zeros(DATA_MESH.INW + 1, dtype=np.float64)
-    IYW2 = np.zeros(DATA_MESH.INW + 1, dtype=np.float64)
-    IYW3 = np.zeros(DATA_MESH.INW + 1, dtype=np.float64)
+    IYB0 = np.zeros(data_mesh.INB + 1, dtype=np.float64)
+    IYB1 = np.zeros(data_mesh.INB + 1, dtype=np.float64)
+    IYB2 = np.zeros(data_mesh.INB + 1, dtype=np.float64)
+    IYB3 = np.zeros(data_mesh.INB + 1, dtype=np.float64)
+    IYI0 = np.zeros(data_mesh.INI + 1, dtype=np.float64)
+    IYI1 = np.zeros(data_mesh.INI + 1, dtype=np.float64)
+    IYI2 = np.zeros(data_mesh.INI + 1, dtype=np.float64)
+    IYI3 = np.zeros(data_mesh.INI + 1, dtype=np.float64)
+    IYW0 = np.zeros(data_mesh.INW + 1, dtype=np.float64)
+    IYW1 = np.zeros(data_mesh.INW + 1, dtype=np.float64)
+    IYW2 = np.zeros(data_mesh.INW + 1, dtype=np.float64)
+    IYW3 = np.zeros(data_mesh.INW + 1, dtype=np.float64)
 
-    INB = DATA_MESH.INB
+    INB = data_mesh.INB
     KNBR[1] = 1
     KNBR[2] = INB + 1
     KNBR[3] = 2 * INB + 1
@@ -441,8 +445,8 @@ def XYS():
     KNBR[11] = 4 * INB + 3 * (INB - 1) / 4 + 73
     KNBR[12] = 5 * INB + (INB - 1) / 4 + 73
     KNBR[13] = 6 * INB + (INB - 1) / 4 + 73
-    NPBR = DATA_MESH.NPBR
-    INI = DATA_MESH.INI
+    NPBR = data_mesh.NPBR
+    INI = data_mesh.INI
     KNIR[1] = NPBR + 1
     KNIR[2] = NPBR + INI + 1
     KNIR[3] = NPBR + 2 * INI + 1
@@ -456,8 +460,8 @@ def XYS():
     KNIR[11] = NPBR + 4 * INI + 3 * (INI - 1) / 4 + 73
     KNIR[12] = NPBR + 5 * INI + (INI - 1) / 4 + 73
     KNIR[13] = NPBR + 6 * INI + (INI - 1) / 4 + 73
-    NPIR = DATA_MESH.NPIR
-    INW = DATA_MESH.INW
+    NPIR = data_mesh.NPIR
+    INW = data_mesh.INW
     KNWR[1] = NPBR + NPIR + 1
     KNWR[2] = NPBR + NPIR + INW + 1
     KNWR[3] = NPBR + NPIR + 2 * INW + 1
@@ -523,30 +527,30 @@ def XYS():
     DBN_NOM = 2 * (IXB[5] + IXB[6])
     DIN_NOM = 2 * (IXI[5] + IXI[6])
     DWN_NOM = 2 * (IXW[5] + IXW[6])
-    for I in range(1, DATA_MESH.NP + 1):
-        DATA_MESH.X[I] = 0.0
-        DATA_MESH.Y[I] = 0.0
+    for I in range(1, data_mesh.NP + 1):
+        data_mesh.X[I] = 0.0
+        data_mesh.Y[I] = 0.0
 
     for I in range(1, 3 + 1):
-        IXB[I] = IXB[I] * DATA_ROLL.DB / DB_NOM
-        IXI[I] = IXI[I] * DATA_ROLL.DI / DI_NOM
-        IXW[I] = IXW[I] * DATA_ROLL.DW / DW_NOM
+        IXB[I] = IXB[I] * data_roll.DB / DB_NOM
+        IXI[I] = IXI[I] * data_roll.DI / DI_NOM
+        IXW[I] = IXW[I] * data_roll.DW / DW_NOM
 
     for I in range(5, 8 + 1):
-        IXB[I] = IXB[I] * DATA_ROLL.DBN / DBN_NOM
-        IXI[I] = IXI[I] * DATA_ROLL.DIN / DIN_NOM
-        IXW[I] = IXW[I] * DATA_ROLL.DWN / DWN_NOM
+        IXB[I] = IXB[I] * data_roll.DBN / DBN_NOM
+        IXI[I] = IXI[I] * data_roll.DIN / DIN_NOM
+        IXW[I] = IXW[I] * data_roll.DWN / DWN_NOM
 
-    IXB[4] = DATA_ROLL.DB / 2 - IXB[1] - IXB[2] - IXB[3] - IXB[5] - IXB[6]
-    IXI[4] = DATA_ROLL.DI / 2 - IXI[1] - IXI[2] - IXI[3] - IXI[5] - IXI[6]
-    IXW[4] = DATA_ROLL.DW / 2 - IXW[1] - IXW[2] - IXW[3] - IXW[5] - IXW[6]
+    IXB[4] = data_roll.DB / 2 - IXB[1] - IXB[2] - IXB[3] - IXB[5] - IXB[6]
+    IXI[4] = data_roll.DI / 2 - IXI[1] - IXI[2] - IXI[3] - IXI[5] - IXI[6]
+    IXW[4] = data_roll.DW / 2 - IXW[1] - IXW[2] - IXW[3] - IXW[5] - IXW[6]
     IXB[9] = IXB[4]
     IXI[9] = IXI[4]
     IXW[9] = IXW[4]
     for I in range(10, 12 + 1):
-        IXB[I] = IXB[I] * DATA_ROLL.DB / DB_NOM
-        IXI[I] = IXI[I] * DATA_ROLL.DI / DI_NOM
-        IXW[I] = IXW[I] * DATA_ROLL.DW / DW_NOM
+        IXB[I] = IXB[I] * data_roll.DB / DB_NOM
+        IXI[I] = IXI[I] * data_roll.DI / DI_NOM
+        IXW[I] = IXW[I] * data_roll.DW / DW_NOM
 
     for I in range(1, 3 + 1):
         IXH[13, I] = 0
@@ -565,153 +569,153 @@ def XYS():
             if J == 2: INK = NIR[LX]
             if J == 3: INK = NWR[LX]
             for KK in range(1, INK + 1):
-                DATA_MESH.X[NKS - 1 + KK] = IXH[LX, J] * 1e0
+                data_mesh.X[NKS - 1 + KK] = IXH[LX, J] * 1e0
 
     for K in range(1, NPBR + 1):
-        DATA_MESH.X[K] = DATA_MESH.X[K] + DATA_ROLL.DW * 1e0 + DATA_ROLL.DI * 1e0
+        data_mesh.X[K] = data_mesh.X[K] + data_roll.DW * 1e0 + data_roll.DI * 1e0
 
     KK = NPBR + 1
     LX = NPBR + NPIR
     for K in range(KK, LX + 1):
-        DATA_MESH.X[K] = DATA_MESH.X[K] + DATA_ROLL.DW * 1e0
+        data_mesh.X[K] = data_mesh.X[K] + data_roll.DW * 1e0
 
     KK = INB - 1
     for I in range(1, KK + 1):
-        IYB0[I] = DATA_MESH.SP
+        IYB0[I] = data_mesh.SP
 
     KK = int((INB - 1) / 2)
     for I in range(1, KK + 1):
-        IYB1[I] = 2 * DATA_MESH.SP
+        IYB1[I] = 2 * data_mesh.SP
 
     for I in range(1, 4 + 1):
-        IYB2[I] = DATA_ROLL.BRTR / 4
+        IYB2[I] = data_roll.BRTR / 4
 
     KK = 4 + int((INB - 1) / 2)
     for I in range(5, KK + 1):
-        IYB2[I] = 2 * DATA_MESH.SP
+        IYB2[I] = 2 * data_mesh.SP
 
     KK = 4 + int((INB - 1) / 2) + 1
     LX = 8 + int((INB - 1) / 2)
     for I in range(KK, LX + 1):
-        IYB2[I] = DATA_ROLL.BRTL / 4
+        IYB2[I] = data_roll.BRTL / 4
 
     YSTP = 0
     KK = int((INB - 1) / 4) + 4
     for I in range(1, KK + 1):
         YSTP = YSTP + IYB2[I]
 
-    IYB3[1] = 400.0 * DATA_ROLL.DB / DB_NOM
-    IYB3[2] = (DATA_ROLL.LHR - YSTP) * 200.0 / (200.0 + 165.0)
-    IYB3[3] = (DATA_ROLL.LHR - YSTP) * 165.0 / (200.0 + 165.0)
-    IYB3[4] = DATA_ROLL.BRTR / 2
-    IYB3[5] = DATA_ROLL.BRTR / 2
+    IYB3[1] = 400.0 * data_roll.DB / DB_NOM
+    IYB3[2] = (data_roll.LHR - YSTP) * 200.0 / (200.0 + 165.0)
+    IYB3[3] = (data_roll.LHR - YSTP) * 165.0 / (200.0 + 165.0)
+    IYB3[4] = data_roll.BRTR / 2
+    IYB3[5] = data_roll.BRTR / 2
     KK = int((INB - 1) / 4) + 5
     for I in range(6, KK + 1):
-        IYB3[I] = 4 * DATA_MESH.SP
+        IYB3[I] = 4 * data_mesh.SP
 
-    IYB3[KK + 1] = DATA_ROLL.BRTL / 2
-    IYB3[KK + 2] = DATA_ROLL.BRTL / 2
+    IYB3[KK + 1] = data_roll.BRTL / 2
+    IYB3[KK + 2] = data_roll.BRTL / 2
     YSTP = 0
     KK = int((INB - 1) / 4) + 5
     LX = int((INB - 1) / 2) + 8
     for I in range(KK, LX + 1):
         YSTP = YSTP + IYB2[I]
 
-    IYB3[KK + 3] = (DATA_ROLL.LHL - YSTP) * 165.0 / (200.0 + 165.0)
-    IYB3[KK + 4] = (DATA_ROLL.LHL - YSTP) * 200.0 / (200.0 + 165.0)
-    IYB3[KK + 5] = 400.0 * DATA_ROLL.DB / DB_NOM
+    IYB3[KK + 3] = (data_roll.LHL - YSTP) * 165.0 / (200.0 + 165.0)
+    IYB3[KK + 4] = (data_roll.LHL - YSTP) * 200.0 / (200.0 + 165.0)
+    IYB3[KK + 5] = 400.0 * data_roll.DB / DB_NOM
 
     KK = INI - 1
     for I in range(1, KK + 1):
-        IYI0[I] = DATA_MESH.SP
+        IYI0[I] = data_mesh.SP
 
     KK = int((INI - 1) / 2)
     for I in range(1, KK + 1):
-        IYI1[I] = 2 * DATA_MESH.SP
+        IYI1[I] = 2 * data_mesh.SP
 
     for I in range(1, 4 + 1):
-        IYI2[I] = DATA_ROLL.IRTR / 4
+        IYI2[I] = data_roll.IRTR / 4
 
     KK = 4 + int((INI - 1) / 2)
     for I in range(5, KK + 1):
-        IYI2[I] = 2 * DATA_MESH.SP
+        IYI2[I] = 2 * data_mesh.SP
 
     KK = 4 + int((INI - 1) / 2) + 1
     LX = 8 + int((INI - 1) / 2)
     for I in range(KK, LX + 1):
-        IYI2[I] = DATA_ROLL.IRTL / 4
+        IYI2[I] = data_roll.IRTL / 4
 
     YSTP = 0
     KK = int((INI - 1) / 4) + 4
     for I in range(1, KK + 1):
         YSTP = YSTP + IYI2[I]
 
-    IYI3[1] = 300.0 * DATA_ROLL.DI / DI_NOM
-    IYI3[2] = (DATA_ROLL.LMR - YSTP) * 200.0 / (200.0 + 165.0)
-    IYI3[3] = (DATA_ROLL.LMR - YSTP) * 165.0 / (200.0 + 165.0)
-    IYI3[4] = DATA_ROLL.IRTR / 2
-    IYI3[5] = DATA_ROLL.IRTR / 2
+    IYI3[1] = 300.0 * data_roll.DI / DI_NOM
+    IYI3[2] = (data_roll.LMR - YSTP) * 200.0 / (200.0 + 165.0)
+    IYI3[3] = (data_roll.LMR - YSTP) * 165.0 / (200.0 + 165.0)
+    IYI3[4] = data_roll.IRTR / 2
+    IYI3[5] = data_roll.IRTR / 2
     KK = int((INI - 1) / 4) + 5
     for I in range(6, KK + 1):
-        IYI3[I] = 4 * DATA_MESH.SP
+        IYI3[I] = 4 * data_mesh.SP
 
-    IYI3[KK + 1] = DATA_ROLL.IRTL / 2
-    IYI3[KK + 2] = DATA_ROLL.IRTL / 2
+    IYI3[KK + 1] = data_roll.IRTL / 2
+    IYI3[KK + 2] = data_roll.IRTL / 2
     YSTP = 0
     KK = int((INI - 1) / 4) + 5
     LX = int((INI - 1) / 2) + 8
     for I in range(KK, LX + 1):
         YSTP = YSTP + IYI2[I]
 
-    IYI3[KK + 3] = (DATA_ROLL.LML - YSTP) * 165.0 / (200.0 + 165.0)
-    IYI3[KK + 4] = (DATA_ROLL.LML - YSTP) * 200.0 / (200.0 + 165.0)
-    IYI3[KK + 5] = 300.0 * DATA_ROLL.DI / DI_NOM
+    IYI3[KK + 3] = (data_roll.LML - YSTP) * 165.0 / (200.0 + 165.0)
+    IYI3[KK + 4] = (data_roll.LML - YSTP) * 200.0 / (200.0 + 165.0)
+    IYI3[KK + 5] = 300.0 * data_roll.DI / DI_NOM
 
     KK = INW - 1
     for I in range(1, KK + 1):
-        IYW0[I] = DATA_MESH.SP
+        IYW0[I] = data_mesh.SP
 
     KK = int((INW - 1) / 2)
     for I in range(1, KK + 1):
-        IYW1[I] = 2 * DATA_MESH.SP
+        IYW1[I] = 2 * data_mesh.SP
 
     for I in range(1, 4 + 1):
-        IYW2[I] = DATA_ROLL.WRTR / 4
+        IYW2[I] = data_roll.WRTR / 4
 
     KK = 4 + int((INW - 1) / 2)
     for I in range(5, KK + 1):
-        IYW2[I] = 2 * DATA_MESH.SP
+        IYW2[I] = 2 * data_mesh.SP
 
     KK = 4 + int((INW - 1) / 2) + 1
     LX = 8 + int((INW - 1) / 2)
     for I in range(KK, LX + 1):
-        IYW2[I] = DATA_ROLL.WRTL / 4
+        IYW2[I] = data_roll.WRTL / 4
 
     YSTP = 0
     KK = int((INW - 1) / 4) + 4
     for I in range(1, KK + 1):
         YSTP = YSTP + IYW2[I]
 
-    IYW3[1] = 250.0 * DATA_ROLL.DW / DW_NOM
-    IYW3[2] = (DATA_ROLL.LFR - YSTP) * 200.0 / (200.0 + 165.0)
-    IYW3[3] = (DATA_ROLL.LFR - YSTP) * 165.0 / (200.0 + 165.0)
-    IYW3[4] = DATA_ROLL.WRTR / 2
-    IYW3[5] = DATA_ROLL.WRTR / 2
+    IYW3[1] = 250.0 * data_roll.DW / DW_NOM
+    IYW3[2] = (data_roll.LFR - YSTP) * 200.0 / (200.0 + 165.0)
+    IYW3[3] = (data_roll.LFR - YSTP) * 165.0 / (200.0 + 165.0)
+    IYW3[4] = data_roll.WRTR / 2
+    IYW3[5] = data_roll.WRTR / 2
     KK = int((INW - 1) / 4) + 5
     for I in range(6, KK + 1):
-        IYW3[I] = 4 * DATA_MESH.SP
+        IYW3[I] = 4 * data_mesh.SP
 
-    IYW3[KK + 1] = DATA_ROLL.WRTL / 2
-    IYW3[KK + 2] = DATA_ROLL.WRTL / 2
+    IYW3[KK + 1] = data_roll.WRTL / 2
+    IYW3[KK + 2] = data_roll.WRTL / 2
     YSTP = 0
     KK = int((INW - 1) / 4) + 5
     LX = int((INW - 1) / 2) + 8
     for I in range(KK, LX + 1):
         YSTP = YSTP + IYW2[I]
 
-    IYW3[KK + 3] = (DATA_ROLL.LFL - YSTP) * 165.0 / (200.0 + 165.0)
-    IYW3[KK + 4] = (DATA_ROLL.LFL - YSTP) * 200.0 / (200.0 + 165.0)
-    IYW3[KK + 5] = 250.0 * DATA_ROLL.DW / DW_NOM
+    IYW3[KK + 3] = (data_roll.LFL - YSTP) * 165.0 / (200.0 + 165.0)
+    IYW3[KK + 4] = (data_roll.LFL - YSTP) * 200.0 / (200.0 + 165.0)
+    IYW3[KK + 5] = 250.0 * data_roll.DW / DW_NOM
 
     IYH[1, 1] = 0
     KK = int((INB - 1) / 2 / 2)
@@ -767,33 +771,33 @@ def XYS():
             if J == 2: INK = NIR[LX] - 1
             if J == 3: INK = NWR[LX] - 1
             if LX == 4 or LX == 10:
-                DATA_MESH.Y[NKS] = -IYH[2, J] * 1e0
+                data_mesh.Y[NKS] = -IYH[2, J] * 1e0
                 for K in range(1, INK + 1):
                     if J == 1: YSTP = IYB2[K] * 1e0
                     if J == 2: YSTP = IYI2[K] * 1e0
                     if J == 3: YSTP = IYW2[K] * 1e0
-                    DATA_MESH.Y[NKS + K] = DATA_MESH.Y[NKS + K - 1] + YSTP
+                    data_mesh.Y[NKS + K] = data_mesh.Y[NKS + K - 1] + YSTP
             elif LX == 3 or LX == 11:
-                DATA_MESH.Y[NKS] = -IYH[1, J] * 1e0
+                data_mesh.Y[NKS] = -IYH[1, J] * 1e0
                 for K in range(1, INK + 1):
                     if J == 1: YSTP = IYB1[K] * 1e0
                     if J == 2: YSTP = IYI1[K] * 1e0
                     if J == 3: YSTP = IYW1[K] * 1e0
-                    DATA_MESH.Y[NKS + K] = DATA_MESH.Y[NKS + K - 1] + YSTP
+                    data_mesh.Y[NKS + K] = data_mesh.Y[NKS + K - 1] + YSTP
             elif LX > 4 and LX < 10:
-                DATA_MESH.Y[NKS] = -IYH[3, J] * 1e0
+                data_mesh.Y[NKS] = -IYH[3, J] * 1e0
                 for K in range(1, INK + 1):
                     if J == 1: YSTP = IYB3[K] * 1e0
                     if J == 2: YSTP = IYI3[K] * 1e0
                     if J == 3: YSTP = IYW3[K] * 1e0
-                    DATA_MESH.Y[NKS + K] = DATA_MESH.Y[NKS + K - 1] + YSTP
+                    data_mesh.Y[NKS + K] = data_mesh.Y[NKS + K - 1] + YSTP
             else:
-                DATA_MESH.Y[NKS] = -IYH[1, J] * 1e0
+                data_mesh.Y[NKS] = -IYH[1, J] * 1e0
                 for K in range(1, INK + 1):
                     if J == 1: YSTP = IYB0[K] * 1e0
                     if J == 2: YSTP = IYI0[K] * 1e0
                     if J == 3: YSTP = IYW0[K] * 1e0
-                    DATA_MESH.Y[NKS + K] = DATA_MESH.Y[NKS + K - 1] + YSTP
+                    data_mesh.Y[NKS + K] = data_mesh.Y[NKS + K - 1] + YSTP
 
 
 def THY(R1, X1, X2):
@@ -818,27 +822,27 @@ def THY(R1, X1, X2):
 
 
 def THS():
-    X = DATA_MESH.X
-    TEQB = DATA_MESH.TEQB
-    TEQI = DATA_MESH.TEQI
-    TEQW = DATA_MESH.TEQW
-    NE = DATA_MESH.NE
-    MS = DATA_MESH.MS
-    NEBR = DATA_MESH.NEBR
-    NEIR = DATA_MESH.NEIR
-    NEWR = DATA_MESH.NEWR
-    INB = DATA_MESH.INB
-    INI = DATA_MESH.INI
-    INW = DATA_MESH.INW
-    DB = DATA_ROLL.DB
-    DI = DATA_ROLL.DI
-    DW = DATA_ROLL.DW
+    X = data_mesh.X
+    TEQB = data_mesh.TEQB
+    TEQI = data_mesh.TEQI
+    TEQW = data_mesh.TEQW
+    NE = data_mesh.NE
+    MS = data_mesh.MS
+    NEBR = data_mesh.NEBR
+    NEIR = data_mesh.NEIR
+    NEWR = data_mesh.NEWR
+    INB = data_mesh.INB
+    INI = data_mesh.INI
+    INW = data_mesh.INW
+    DB = data_roll.DB
+    DI = data_roll.DI
+    DW = data_roll.DW
 
-    TKK = np.zeros(33+1)
-    IES = np.zeros(132+1, dtype=np.int32)
-    IEN = np.zeros(132+1, dtype=np.int32)
-    IR = np.zeros(33+1)
-    ICX = np.zeros(33+1)
+    TKK = np.zeros(33 + 1)
+    IES = np.zeros(132 + 1, dtype=np.int32)
+    IEN = np.zeros(132 + 1, dtype=np.int32)
+    IR = np.zeros(33 + 1)
+    ICX = np.zeros(33 + 1)
 
     IES[1] = 1
     IES[2] = NEBR / 2 - (INB - 1) + 1
@@ -939,7 +943,7 @@ def THS():
     IES[97] = IES[93] + 3 * (INW - 1) / 4
     IES[98] = IES[94] - (INW - 1) / 2
     IES[99] = IES[95] + 3 * (INW - 1) / 4
-    IES[100]= IES[96] - (INW - 1) / 2
+    IES[100] = IES[96] - (INW - 1) / 2
     IES[101] = IES[97] + (INW - 1) / 2 + 6
     IES[102] = IES[98] - 3 * (INW - 1) / 8
     IES[103] = IES[99] + (INW - 1) / 2
@@ -1105,14 +1109,14 @@ def THS():
     IEN[130] = IES[130] + 6 - 1
     IEN[131] = IES[131] + 6 - 1
     IEN[132] = IES[132] + 6 - 1
-    for I in range(1, NE+1):
-        DATA_MESH.TH[I] = 0.0
+    for I in range(1, NE + 1):
+        data_mesh.TH[I] = 0.0
 
-    for I in range(1, 33+1):
-        DATA_MESH.NO_S[I] = IES[4 * (I - 1) + 1]
-        DATA_MESH.NO_S[I + 33] = IES[4 * (I - 1) + 2]
+    for I in range(1, 33 + 1):
+        data_mesh.NO_S[I] = IES[4 * (I - 1) + 1]
+        data_mesh.NO_S[I + 33] = IES[4 * (I - 1) + 2]
 
-    for I in range(1, 33+1):
+    for I in range(1, 33 + 1):
         if I >= 1 and I <= 6:  IR[I] = DB / 2
         if I >= 7 and I <= 9:  IR[I] = IXB[4] + IXB[5] + IXB[6]
         if I >= 10 and I <= 11: IR[I] = IXB[5] + IXB[6]
@@ -1123,17 +1127,17 @@ def THS():
         if I >= 29 and I <= 31: IR[I] = IXW[4] + IXW[5] + IXW[6]
         if I >= 32 and I <= 33: IR[I] = IXW[5] + IXW[6]
 
-    for I in range(1, 33+1):
-        if I >= 1 and I <= 11:  ICX[I] = DB / 2 + DW + DI
+    for I in range(1, 33 + 1):
+        if 1 <= I <= 11:  ICX[I] = DB / 2 + DW + DI
         if I >= 12 and I <= 22:  ICX[I] = DI / 2 + DW
         if I >= 23 and I <= 33:  ICX[I] = DW / 2
 
-    for K in range(1, 33+1):
+    for K in range(1, 33 + 1):
         N = IES[(K - 1) * 4 + 1]
         R1 = IR[K] * 1e0
         CX = ICX[K] * 1e0
-        X1 = abs(DATA_MESH.X[MS[N, 1]] - CX)
-        X2 = abs(DATA_MESH.X[MS[N, 3]] - CX)
+        X1 = abs(data_mesh.X[MS[N, 1]] - CX)
+        X2 = abs(data_mesh.X[MS[N, 3]] - CX)
         if X1 < X2:
             XX1 = X2
             XX2 = X1
@@ -1143,11 +1147,11 @@ def THS():
         TKK[K] = THY(R1, XX1, XX2)
 
     EQB = ((DB / 2) ** 3 - (DB / 2 - IXB[1]) ** 3) / (
-                (DB / 2 - IXB[1]) ** 3 - (DB / 2 - IXB[1] - IXB[2]) ** 3)
+            (DB / 2 - IXB[1]) ** 3 - (DB / 2 - IXB[1] - IXB[2]) ** 3)
     EQI = ((DI / 2) ** 3 - (DI / 2 - IXI[1]) ** 3) / (
-                (DI / 2 - IXI[1]) ** 3 - (DI / 2 - IXI[1] - IXI[2]) ** 3)
+            (DI / 2 - IXI[1]) ** 3 - (DI / 2 - IXI[1] - IXI[2]) ** 3)
     EQW = ((DW / 2) ** 3 - (DW / 2 - IXW[1]) ** 3) / (
-                (DW / 2 - IXW[1]) ** 3 - (DW / 2 - IXW[1] - IXW[2]) ** 3)
+            (DW / 2 - IXW[1]) ** 3 - (DW / 2 - IXW[1] - IXW[2]) ** 3)
     TRB = (TKK[1] - TEQB) * EQB
     TRI = (TKK[12] - TEQI) * EQI
     TRW = (TKK[23] - TEQW) * EQW
@@ -1160,86 +1164,86 @@ def THS():
     TKK[13] = TKK[13] + TRI
     TKK[24] = TKK[24] + TRW
 
-    for K in range(1, 33+1):
-        for M in range(1, 4+1):
+    for K in range(1, 33 + 1):
+        for M in range(1, 4 + 1):
             M1 = IES[(K - 1) * 4 + M]
             M2 = IEN[(K - 1) * 4 + M]
-            for I in range(M1, M2+1):
-                DATA_MESH.TH[I] = TKK[K]
+            for I in range(M1, M2 + 1):
+                data_mesh.TH[I] = TKK[K]
 
 
 def XYP():
-    INB = DATA_MESH.INB
-    INI = DATA_MESH.INI
-    INW = DATA_MESH.INW
-    NSBRD = DATA_MESH.NSBRD
-    NSIRT = DATA_MESH.NSIRT
-    NSIRD = DATA_MESH.NSIRD
-    NSWRT = DATA_MESH.NSWRT
-    NSWRD = DATA_MESH.NSWRD
-    X = DATA_MESH.X
-    Y = DATA_MESH.Y
-    NP = DATA_MESH.NP
-    SP = DATA_MESH.SP
-    PROBR = DATA_MESH.PROBR
-    PROIR = DATA_MESH.PROIR
-    PROWR = DATA_MESH.PROWR
-    NPBR = DATA_MESH.NPBR
-    NPIR = DATA_MESH.NPIR
+    INB = data_mesh.INB
+    INI = data_mesh.INI
+    INW = data_mesh.INW
+    NSBRD = data_mesh.NSBRD
+    NSIRT = data_mesh.NSIRT
+    NSIRD = data_mesh.NSIRD
+    NSWRT = data_mesh.NSWRT
+    NSWRD = data_mesh.NSWRD
+    X = data_mesh.X
+    Y = data_mesh.Y
+    NP = data_mesh.NP
+    SP = data_mesh.SP
+    PROBR = data_mesh.PROBR
+    PROIR = data_mesh.PROIR
+    PROWR = data_mesh.PROWR
+    NPBR = data_mesh.NPBR
+    NPIR = data_mesh.NPIR
 
-    SFTI = DATA_FORC.SFTI
-    SFTW = DATA_FORC.SFTW
+    SFTI = data_forc.SFTI
+    SFTW = data_forc.SFTW
 
-    DI = DATA_ROLL.DI
-    DW = DATA_ROLL.DW
+    DI = data_roll.DI
+    DW = data_roll.DW
 
     TPBR = 0.0e0
     if SFTI < 0 and abs(SFTI - int(SFTI / SP) * SP) > SP / 2:
-        DATA_MESH.KSFTI = int(SFTI / SP) - 1
+        data_mesh.KSFTI = int(SFTI / SP) - 1
     elif SFTI > 0 and abs(SFTI - int(SFTI / SP) * SP) > SP / 2:
-        DATA_MESH.KSFTI = int(SFTI / SP) + 1
+        data_mesh.KSFTI = int(SFTI / SP) + 1
     else:
-        DATA_MESH.KSFTI = int(SFTI / SP)
+        data_mesh.KSFTI = int(SFTI / SP)
 
     if SFTW < 0 and abs(SFTW - int(SFTW / SP) * SP) > SP / 2:
-        DATA_MESH.KSFTW = int(SFTW / SP) - 1
+        data_mesh.KSFTW = int(SFTW / SP) - 1
     elif SFTW > 0 and abs(SFTW - int(SFTW / SP) * SP) > SP / 2:
-        DATA_MESH.KSFTW = int(SFTW / SP) + 1
+        data_mesh.KSFTW = int(SFTW / SP) + 1
     else:
-        DATA_MESH.KSFTW = int(SFTW / SP)
+        data_mesh.KSFTW = int(SFTW / SP)
 
-    DATA_MESH.KSFTW = 0
+    data_mesh.KSFTW = 0
 
-    DATA_FORC.SFTI = DATA_MESH.KSFTI * SP
-    DATA_FORC.SFTW = DATA_MESH.KSFTW * SP
-    SFTI = DATA_FORC.SFTI
-    SFTW = DATA_FORC.SFTW
+    data_forc.SFTI = data_mesh.KSFTI * SP
+    data_forc.SFTW = data_mesh.KSFTW * SP
+    SFTI = data_forc.SFTI
+    SFTW = data_forc.SFTW
     KK = NPBR + NPIR
-    for I in range(NSIRT, KK+1):
-        DATA_MESH.Y[I] = DATA_MESH.Y[I] - SFTI
+    for I in range(NSIRT, KK + 1):
+        data_mesh.Y[I] = data_mesh.Y[I] - SFTI
 
-    for I in range(NSWRT, NP+1):
-        DATA_MESH.Y[I] = DATA_MESH.Y[I] - SFTW
+    for I in range(NSWRT, NP + 1):
+        data_mesh.Y[I] = data_mesh.Y[I] - SFTW
 
-    for I in range(1, INB+1):
-        DATA_MESH.X[NSBRD - 1 + I] = DATA_MESH.X[NSBRD - 1 + I] + PROBR[I] * 0.001e0
-        if DATA_MESH.X[NSBRD - 1 + I] < (DW + DI): DATA_MESH.X[NSBRD - 1 + I] = DW + DI
+    for I in range(1, INB + 1):
+        data_mesh.X[NSBRD - 1 + I] = data_mesh.X[NSBRD - 1 + I] + PROBR[I] * 0.001e0
+        if data_mesh.X[NSBRD - 1 + I] < (DW + DI): data_mesh.X[NSBRD - 1 + I] = DW + DI
 
-    for I in range(1, INI+1):
-        DATA_MESH.X[NSIRT - 1 + I] = DATA_MESH.X[NSIRT - 1 + I] - PROIR[I] * 0.001e0
-        DATA_MESH.X[NSIRD - 1 + I] = DATA_MESH.X[NSIRD - 1 + I] + PROIR[I] * 0.001e0
+    for I in range(1, INI + 1):
+        data_mesh.X[NSIRT - 1 + I] = data_mesh.X[NSIRT - 1 + I] - PROIR[I] * 0.001e0
+        data_mesh.X[NSIRD - 1 + I] = data_mesh.X[NSIRD - 1 + I] + PROIR[I] * 0.001e0
 
-    for I in range(1, INI+1):
-        if DATA_MESH.X[NSIRT - 1 + I] > (DW + DI): DATA_MESH.X[NSIRT - 1 + I] = DW + DI
-        if DATA_MESH.X[NSIRD - 1 + I] < DW: DATA_MESH.X[NSIRD - 1 + I] = DW
+    for I in range(1, INI + 1):
+        if data_mesh.X[NSIRT - 1 + I] > (DW + DI): data_mesh.X[NSIRT - 1 + I] = DW + DI
+        if data_mesh.X[NSIRD - 1 + I] < DW: data_mesh.X[NSIRD - 1 + I] = DW
 
-    for I in range(1, INW+1):
-        DATA_MESH.X[NSWRT - 1 + I] = DATA_MESH.X[NSWRT - 1 + I] - PROWR[I] * 0.001e0
-        DATA_MESH.X[NSWRD - 1 + I] = DATA_MESH.X[NSWRD - 1 + I] + PROWR[I] * 0.001e0
+    for I in range(1, INW + 1):
+        data_mesh.X[NSWRT - 1 + I] = data_mesh.X[NSWRT - 1 + I] - PROWR[I] * 0.001e0
+        data_mesh.X[NSWRD - 1 + I] = data_mesh.X[NSWRD - 1 + I] + PROWR[I] * 0.001e0
 
-    for I in range(1, INW+1):
-        if DATA_MESH.X[NSWRT - 1 + I] > DW: DATA_MESH.X[NSWRT - 1 + I] = DW
-        if DATA_MESH.X[NSWRD - 1 + I] < 0.0e0: DATA_MESH.X[NSWRD - 1 + I] = 0.0e0
+    for I in range(1, INW + 1):
+        if data_mesh.X[NSWRT - 1 + I] > DW: data_mesh.X[NSWRT - 1 + I] = DW
+        if data_mesh.X[NSWRD - 1 + I] < 0.0e0: data_mesh.X[NSWRD - 1 + I] = 0.0e0
 
 
 def ROLLMESH():

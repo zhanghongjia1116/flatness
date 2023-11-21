@@ -88,7 +88,7 @@ class StopInterface(Ui_StopInterface, QWidget):
             print(f'处理完成---->{os.path.basename(file)}')
             print('\n')
         self.displayData = stop_data
-        pd_model = NumberedTableModel(self.displayData)
+        pd_model = NumberedTableModel(stop_data)
         self.TableView.setModel(pd_model)
         self.TableView.resizeColumnsToContents()
         self.TableView.resizeRowsToContents()
@@ -271,17 +271,16 @@ class StopInterface(Ui_StopInterface, QWidget):
             else:
                 print(f"Unsupported file format: {file_name}")
                 return
-            self.process_data = df
+            self.displayData = df
 
-            # 展示当前df
             pd_model = NumberedTableModel(df)
             self.TableView.setModel(pd_model)
             self.TableView.resizeColumnsToContents()
             self.TableView.resizeRowsToContents()
 
         try:
-            min_year = self.process_data.iloc[0, 1].year
-            max_year = self.process_data.iloc[-1, 1].year
+            min_year = self.displayData.iloc[0, 1].year
+            max_year = self.displayData.iloc[-1, 1].year
             self.ComboBox.clear()
             self.ComboBox.addItem('选择年份')
             year_list = [i for i in range(min_year, max_year + 1)]
@@ -311,8 +310,9 @@ class StopInterface(Ui_StopInterface, QWidget):
             selected_year_data: pd.DataFrame = self.process_data[self.process_data['停机开始时间'].dt.year == year]
             total_minutes = selected_year_data['停机时间(分钟)'].sum()
             total_reason = selected_year_data.shape[0]
+            self.displayData = selected_year_data
 
-            # 显示当前ComboBox对应数据
+            # 显示当前ComboBox对应数据的一部分
             pd_model = PandasModel(selected_year_data)
             self.TableView.setModel(pd_model)
             self.TableView.resizeColumnsToContents()
