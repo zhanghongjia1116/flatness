@@ -53,4 +53,4 @@ class Ui_banxingkongzhishumo(object):
 
 
 from qfluentwidgets import NavigationBar
-import resource_rc
+from qtResource import resource_rc

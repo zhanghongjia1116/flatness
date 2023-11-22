@@ -151,4 +151,4 @@ class Ui_RollingInterfaceMain(object):
         self.iuInfoPushButton.setToolTip(_translate("RollingInterfaceMain", "导入单个酸轧在线判定表"))
         self.iuInfoPushButton.setText(_translate("RollingInterfaceMain", "IU信息统计"))
 from qfluentwidgets import CardWidget, ComboBox, IconWidget, PrimaryPushButton, PushButton, SubtitleLabel, TableView
-import resource_rc
+from qtResource import resource_rc

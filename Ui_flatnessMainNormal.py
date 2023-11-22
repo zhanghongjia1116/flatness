@@ -145,4 +145,4 @@ class Ui_MainWindow(object):
         self.PrimaryPushButton_6.setText(_translate("SinglePolicyCompare", "板形控制能力评价"))
         self.PrimaryPushButton_7.setText(_translate("SinglePolicyCompare", "板形控制数模优化"))
 from qfluentwidgets import CardWidget, PrimaryPushButton
-import resource_rc
+from qtResource import resource_rc

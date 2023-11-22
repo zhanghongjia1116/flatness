@@ -5,7 +5,7 @@ import numpy as np
 import DATA_FORC
 import DATA_MESH
 import DATA_SHAP
-from DATA_ROLL import DataRoll
+import DATA_ROLL
 
 
 def REGR(IK):

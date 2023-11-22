@@ -12,7 +12,7 @@ from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as Navigatio
 import matplotlib.pyplot as plt
 from matplotlib.ticker import FixedFormatter
 
-from MyIcon import MyIcon
+from qtResource.MyIcon import MyIcon
 from qfluentwidgets import CardWidget
 
 

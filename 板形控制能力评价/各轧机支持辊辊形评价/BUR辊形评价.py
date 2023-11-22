@@ -9,7 +9,7 @@ from matplotlib.cm import get_cmap
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT
 from .Ui_BUR辊形评价 import Ui_BUREvaluate
 from qfluentwidgets import MessageBox
-from display import PandasModel
+from my_utils.display import PandasModel
 
 # from 详细信息 import MatplotlibWidget, MplCanvas
 

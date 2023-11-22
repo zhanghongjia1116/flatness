@@ -147,4 +147,4 @@ class Ui_Form(object):
         self.SpecificTimePushButton.setToolTip(_translate("Form", "导入单个酸轧在线判定表"))
         self.SpecificTimePushButton.setText(_translate("Form", "特定时间IU均值"))
 from qfluentwidgets import CardWidget, ComboBox, IconWidget, PrimaryPushButton, PushButton, SubtitleLabel, TableView, TitleLabel
-import resource_rc
+from qtResource import resource_rc

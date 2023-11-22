@@ -189,4 +189,4 @@ class Ui_RegulatoryEfficacy(object):
         self.pushButton_baocun.setText(_translate("RegulatoryEfficacy", "保存"))
         self.groupBox_3.setTitle(_translate("RegulatoryEfficacy", "图形展示模块"))
         self.pushButton_qingkonghuabu.setText(_translate("RegulatoryEfficacy", "清空画布"))
-import resource_rc
+from qtResource import resource_rc

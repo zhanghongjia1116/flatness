@@ -48,4 +48,4 @@ class Ui_Monitor(object):
         _translate = QtCore.QCoreApplication.translate
         Monitor.setWindowTitle(_translate("Monitor", "异常板形监测溯源"))
 from qfluentwidgets import NavigationBar
-import resource_rc
+from qtResource import resource_rc

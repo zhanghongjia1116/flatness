@@ -9,7 +9,7 @@ from Ui_flatnessMainNormal import Ui_MainWindow
 from qfluentwidgets import Pivot, setTheme, Theme, SegmentedWidget, FluentIcon
 # from 慢偶因素板形干扰评估.慢偶因素Main import AccidentalFactor
 from 慢偶因素板形干扰评估.慢偶因素Main import 慢偶因素
-from myterminal import MyTerminal
+from my_utils.myterminal import MyTerminal
 from 异常板形监测溯源.异常板形监测溯源Main import 异常板形监测溯源
 from 板形质量评价.板形质量评价Main import 板形质量评价
 from 板形调控功效挖掘.板形调控功效挖掘 import 板形调控功效挖掘

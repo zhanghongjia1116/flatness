@@ -8,7 +8,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QTableWidgetItem, QVBoxLayout
 from matplotlib import pyplot as plt
 from qfluentwidgets import NavigationItemPosition, MessageBox
 from qfluentwidgets import FluentIcon as FIF
-from MyIcon import MyIcon
+from qtResource.MyIcon import MyIcon
 from threading import Thread
 from .Ui_板形控制能力评价Main import Ui_FlatnessControlAbility
 

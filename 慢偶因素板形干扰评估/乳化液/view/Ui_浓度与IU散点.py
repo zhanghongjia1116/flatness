@@ -59,4 +59,4 @@ class Ui_AvgIUAndLiquid(object):
         self.RadioButton2022.setText(_translate("AvgIUAndLiquid", "2022"))
         self.RadioButton2023.setText(_translate("AvgIUAndLiquid", "2023"))
 from qfluentwidgets import CardWidget, RadioButton
-import resource_rc
+from qtResource import resource_rc

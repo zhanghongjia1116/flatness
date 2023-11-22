@@ -112,4 +112,4 @@ class Ui_StopRollSearch(object):
         self.label_2.setText(_translate("StopRollSearch", "停机后钢卷信息"))
 
 
-import resource_rc
+from qtResource import resource_rc

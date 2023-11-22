@@ -11,8 +11,8 @@ from PyQt5.QtCore import pyqtSlot, QThread, pyqtSignal, Qt, QMutex, QEvent, QAbs
 from PyQt5.QtGui import QStandardItemModel, QStandardItem, QTextCursor
 from PyQt5.QtWidgets import QWidget, QDialog, QMessageBox, QTableWidgetItem, QFileDialog, QApplication
 from tqdm import tqdm
-from display import PandasModel
-from prompt import showMessageBox
+from my_utils.display import PandasModel
+from my_utils.prompt import showMessageBox
 from my_utils.zhhj_data import 乳化液数据
 
 from .特定时间段IU均值 import SpecialNumIU

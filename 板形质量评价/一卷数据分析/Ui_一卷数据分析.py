@@ -235,4 +235,4 @@ class Ui_MainWindow(object):
         self.label.setText(_translate("SinglePolicyCompare", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt;\">带头100米</span></p></body></html>"))
         self.label_2.setText(_translate("SinglePolicyCompare", "<html><head/><body><p align=\"center\"><span style=\" font-size:16pt;\">带中部分</span></p></body></html>"))
         self.label_3.setText(_translate("SinglePolicyCompare", "<html><head/><body><p align=\"center\"><span style=\" font-size:16pt;\">带尾100米</span></p></body></html>"))
-import resource_rc
+from qtResource import resource_rc

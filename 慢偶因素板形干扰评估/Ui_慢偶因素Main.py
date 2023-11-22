@@ -74,4 +74,4 @@ class Ui_AccidentalFactor(object):
 
 
 from qfluentwidgets import NavigationBar
-import resource_rc
+from qtResource import resource_rc

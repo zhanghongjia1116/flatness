@@ -84,4 +84,4 @@ class Ui_SpecialNumIU(object):
         self.CaptionLabel_2.setText(_translate("SpecialNumIU", "截止时间"))
         self.PrimaryPushButton.setText(_translate("SpecialNumIU", "显示图像"))
 from qfluentwidgets import CalendarPicker, CaptionLabel, CardWidget, PrimaryPushButton, TimeEdit
-import resource_rc
+from qtResource import resource_rc

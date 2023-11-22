@@ -47,4 +47,4 @@ class Ui_banxingzhiliang(object):
         _translate = QtCore.QCoreApplication.translate
         banxingzhiliang.setWindowTitle(_translate("banxingzhiliang", "板形质量评价"))
 from qfluentwidgets import NavigationBar
-import resource_rc
+from qtResource import resource_rc

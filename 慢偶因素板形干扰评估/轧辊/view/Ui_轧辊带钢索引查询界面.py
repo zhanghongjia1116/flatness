@@ -219,4 +219,4 @@ class Ui_RollingSearch(object):
 
 from qfluentwidgets import BodyLabel, CalendarPicker, CardWidget, ComboBox, LineEdit, PrimaryPushButton, \
     StrongBodyLabel, SubtitleLabel, TableView
-import resource_rc
+from qtResource import resource_rc

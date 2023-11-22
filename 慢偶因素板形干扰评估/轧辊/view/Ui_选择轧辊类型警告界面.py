@@ -63,4 +63,4 @@ class Ui_warningDialog(object):
         self.PrimaryPushButton.setText(_translate("warningDialog", "确定"))
         self.PrimaryPushButton_2.setText(_translate("warningDialog", "返回"))
 from qfluentwidgets import CardWidget, PrimaryPushButton, SubtitleLabel
-import resource_rc
+from qtResource import resource_rc

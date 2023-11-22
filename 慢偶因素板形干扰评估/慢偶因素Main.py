@@ -7,7 +7,7 @@ from PyQt5.QtGui import QDesktopServices, QFont, QIcon, QPixmap
 from PyQt5.QtWidgets import QApplication, QWidget
 from qfluentwidgets import NavigationItemPosition, FluentIconBase, Theme, getIconColor, MessageBox, Icon
 from qfluentwidgets import FluentIcon as FIF
-from MyIcon import MyIcon
+from qtResource.MyIcon import MyIcon
 from .Ui_慢偶因素Main import Ui_AccidentalFactor
 
 

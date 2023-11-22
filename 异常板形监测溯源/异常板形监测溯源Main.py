@@ -11,7 +11,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QFileDialog, QMessageBox
 # from matplotlib.backends.backend_qt import NavigationToolbar2QT
 from qfluentwidgets import NavigationItemPosition, FluentIconBase, Theme, getIconColor, MessageBox, Icon
 from qfluentwidgets import FluentIcon as FIF
-from MyIcon import MyIcon
+from qtResource.MyIcon import MyIcon
 from .Ui_异常板形监测溯源Main import Ui_Monitor
 
 

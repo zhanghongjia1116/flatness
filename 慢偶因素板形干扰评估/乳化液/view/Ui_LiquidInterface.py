@@ -233,4 +233,4 @@ class Ui_LiquidForm(object):
         self.PrimaryPushButton_9.setToolTip(_translate("LiquidForm", "导出经过处理的酸轧在线判定表"))
         self.PrimaryPushButton_9.setText(_translate("LiquidForm", "匹配冷卷号"))
 from qfluentwidgets import CardWidget, IconWidget, PrimaryPushButton, TitleLabel
-import resource_rc
+from qtResource import resource_rc

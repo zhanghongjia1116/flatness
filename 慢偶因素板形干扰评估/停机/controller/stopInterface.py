@@ -8,8 +8,8 @@ from PyQt5.QtWidgets import QWidget, QGraphicsDropShadowEffect, QFileDialog
 from PyQt5.QtCore import pyqtSlot, pyqtSignal
 from qfluentwidgets import FluentIcon, setFont, InfoBarIcon
 import os
-from prompt import showMessageBox
-from display import NumberedTableModel, PandasModel
+from my_utils.prompt import showMessageBox
+from my_utils.display import NumberedTableModel, PandasModel
 from ..view.Ui_StopInterface import Ui_StopInterface
 # from Ui_StopInterface import Ui_StopInterface
 from .draw_pic import MplCanvas

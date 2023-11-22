@@ -172,4 +172,4 @@ class Ui_StopInterface(object):
 
 
 from qfluentwidgets import CardWidget, ComboBox, PushButton, SubtitleLabel, TableView
-import resource_rc
+from qtResource import resource_rc

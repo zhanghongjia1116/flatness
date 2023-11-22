@@ -5,7 +5,7 @@ from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QWidget
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT
 from qfluentwidgets import MessageBox
-from display import PandasModel
+from my_utils.display import PandasModel
 from .Ui_CVC辊形评价 import Ui_CVCEvaluate
 
 from .详细信息 import MatplotlibWidget, MplCanvas

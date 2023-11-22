@@ -4,7 +4,7 @@ from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QWidget
 from matplotlib.backends.backend_qt import NavigationToolbar2QT
 
-from prompt import showMessageBox
+from my_utils.prompt import showMessageBox
 from .draw_pic import MplCanvas
 from ..view.Ui_特定时间段IU均值 import Ui_SpecialNumIU
 

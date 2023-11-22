@@ -4,7 +4,7 @@ import pandas as pd
 from PyQt5.QtCore import pyqtSignal
 from PyQt5.QtWidgets import QWidget, QApplication, QMessageBox
 
-from display import PandasModel
+from my_utils.display import PandasModel
 from ..view.Ui_轧辊带钢索引查询界面 import Ui_RollingSearch
 
 

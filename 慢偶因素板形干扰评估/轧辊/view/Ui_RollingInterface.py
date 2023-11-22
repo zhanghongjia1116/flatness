@@ -247,4 +247,4 @@ class Ui_RollingForm(object):
         self.previewPushButton.setToolTip(_translate("RollingForm", "导出经过处理的酸轧在线判定表"))
         self.previewPushButton.setText(_translate("RollingForm", "预览数据"))
 from qfluentwidgets import CardWidget, IconWidget, PrimaryPushButton, TitleLabel
-import resource_rc
+from qtResource import resource_rc

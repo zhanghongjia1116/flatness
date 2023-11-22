@@ -75,4 +75,4 @@ class Ui_rollingChooseDialog(object):
         self.CheckBox_4.setText(_translate("rollingChooseDialog", "TCM-5架"))
         self.PrimaryPushButton.setText(_translate("rollingChooseDialog", "确定"))
 from qfluentwidgets import CardWidget, CheckBox, PrimaryPushButton
-import resource_rc
+from qtResource import resource_rc

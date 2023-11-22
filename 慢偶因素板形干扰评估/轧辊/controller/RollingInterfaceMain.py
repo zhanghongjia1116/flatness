@@ -9,7 +9,7 @@ from PyQt5.QtCore import pyqtSlot, QThread, pyqtSignal, Qt, QMutex, QEvent, QAbs
     QObject
 from PyQt5.QtGui import QStandardItemModel, QStandardItem, QTextCursor
 from PyQt5.QtWidgets import QWidget, QDialog, QMessageBox, QTableWidgetItem, QFileDialog, QApplication
-from prompt import showMessageBox
+from my_utils.prompt import showMessageBox
 from my_utils.zhhj_data import 轧辊数据
 from ..view.Ui_RollingInterfaceMain import Ui_RollingInterfaceMain
 from ..controller.辊类选择界面 import RollingChoose
@@ -88,7 +88,7 @@ class RollingInterfaceMain(QWidget, Ui_RollingInterfaceMain):
             rollingType = self.ComboBox.currentText()
             if rollingType != '请选择轧辊类型':
                 df = pd.concat(self.rawdataDict[rollingType])
-                from display import PandasModel
+                from my_utils.display import PandasModel
                 pdModel = PandasModel(df)
                 self.TableView.setModel(pdModel)
                 self.TableView.resizeColumnsToContents()

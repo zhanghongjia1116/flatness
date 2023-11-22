@@ -79,4 +79,4 @@ class Ui_StopRollSearch(object):
         self.SubtitleLabel_2.setText(_translate("StopRollSearch", "停机前钢卷信息"))
         self.SubtitleLabel_3.setText(_translate("StopRollSearch", "停机后钢卷信息"))
 from qfluentwidgets import CalendarPicker, CardWidget, SubtitleLabel, TableWidget
-import resource_rc
+from qtResource import resource_rc
