@@ -473,6 +473,6 @@ def plot_line2(iu, iu1, iu2, ax1, name1, name2, figure):
     ax1.legend()
     plt.rcParams['font.sans-serif'] = ['FangSong']
     plt.rcParams['axes.unicode_minus'] = False
-    ax1.set_title("iu值下降比较")
+    ax1.set_title("iu值下降图")
     ax1.set_ylabel('IU', fontsize=10)
     ax1.set_xlabel('OS           归一化板宽           DS', fontsize=10)

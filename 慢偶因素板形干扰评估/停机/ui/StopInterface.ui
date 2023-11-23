@@ -43,7 +43,7 @@
          <string>合并酸轧判定</string>
         </property>
         <property name="icon">
-         <iconset resource="../../../qtResource/resource.qrc">
+         <iconset resource="../../../../../../anaconda3/envs/GUI/Lib/site-packages/qtResource/resource.qrc">
           <normaloff>:/icons/icons/format.png</normaloff>:/icons/icons/format.png</iconset>
         </property>
        </widget>
@@ -99,7 +99,7 @@
            <string>导入并格式化</string>
           </property>
           <property name="icon">
-           <iconset resource="../../../qtResource/resource.qrc">
+           <iconset resource="../../../../../../anaconda3/envs/GUI/Lib/site-packages/qtResource/resource.qrc">
             <normaloff>:/icons/icons/导入.png</normaloff>:/icons/icons/导入.png</iconset>
           </property>
          </widget>
@@ -110,7 +110,7 @@
            <string>合并</string>
           </property>
           <property name="icon">
-           <iconset resource="../../../qtResource/resource.qrc">
+           <iconset resource="../../../../../../anaconda3/envs/GUI/Lib/site-packages/qtResource/resource.qrc">
             <normaloff>:/icons/icons/数据集合并.png</normaloff>:/icons/icons/数据集合并.png</iconset>
           </property>
          </widget>
@@ -121,7 +121,7 @@
            <string>导出</string>
           </property>
           <property name="icon">
-           <iconset resource="../../../qtResource/resource.qrc">
+           <iconset resource="../../../../../../anaconda3/envs/GUI/Lib/site-packages/qtResource/resource.qrc">
             <normaloff>:/icons/icons/导出.png</normaloff>:/icons/icons/导出.png</iconset>
           </property>
          </widget>
@@ -257,7 +257,7 @@
          <string>导入处理数据</string>
         </property>
         <property name="icon">
-         <iconset resource="../../../qtResource/resource.qrc">
+         <iconset resource="../../../../../../anaconda3/envs/GUI/Lib/site-packages/qtResource/resource.qrc">
           <normaloff>:/icons/icons/导入.png</normaloff>:/icons/icons/导入.png</iconset>
         </property>
        </widget>
@@ -296,7 +296,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../../qtResource/resource.qrc"/>
+  <include location="../../../../../../anaconda3/envs/GUI/Lib/site-packages/qtResource/resource.qrc"/>
  </resources>
  <connections/>
 </ui>
