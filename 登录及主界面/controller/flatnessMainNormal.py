@@ -5,11 +5,11 @@ from PyQt5 import QtGui
 from PyQt5.QtCore import Qt, pyqtSlot
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QApplication, QWidget, QStackedWidget, QVBoxLayout, QLabel, QSizePolicy, QMainWindow
-from Ui_flatnessMainNormal import Ui_MainWindow
+from 登录及主界面.view.Ui_flatnessMainNormal import Ui_FlatnessMain
 from qfluentwidgets import Pivot, setTheme, Theme, SegmentedWidget, FluentIcon
 # from 慢偶因素板形干扰评估.慢偶因素Main import AccidentalFactor
 from 慢偶因素板形干扰评估.慢偶因素Main import 慢偶因素
-from my_utils.myterminal import MyTerminal
+from my_utils.myterminal import MyTerminal   # 定义在虚拟环境的lib site-packages中
 from 异常板形监测溯源.异常板形监测溯源Main import 异常板形监测溯源
 from 板形质量评价.板形质量评价Main import 板形质量评价
 from 板形调控功效挖掘.板形调控功效挖掘 import 板形调控功效挖掘
@@ -18,7 +18,7 @@ from 板形控制能力评价.板形控制能力评价Main import 板形控制�
 from 板形控制数模优化.板形控制数模优化Main import 板形控制数模优化
 
 
-class MainWindow(QMainWindow, Ui_MainWindow):
+class MainWindow(QMainWindow, Ui_FlatnessMain):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
@@ -44,8 +44,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def on_PrimaryPushButton_3_clicked(self):
         self.慢偶因素板形干扰评估 = 慢偶因素()
         self.慢偶因素板形干扰评估.show()
-        self.terminal = MyTerminal()
-        self.terminal.show()
 
     @pyqtSlot()
     def on_PrimaryPushButton_4_clicked(self):

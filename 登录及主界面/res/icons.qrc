@@ -1,0 +1,19 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>icons/close.svg</file>
+    <file>icons/minimize.svg</file>
+    <file>icons/首页.ico</file>
+    <file>icons/lock_32x32.png</file>
+    <file>icons/mail_32x32.png</file>
+    <file>icons/rocket_48x48.png</file>
+    <file>icons/user_32x32.png</file>
+  </qresource>
+  <qresource prefix="images">
+    <file>img/fish.png</file>
+    <file>img/SY-pic.jpg</file>
+    <file>img/北京科技大学.jpg</file>
+    <file>img/首钢.jpg</file>
+    <file>img/首钢.png</file>
+    <file>img/combination.jpg</file>
+  </qresource>
+</RCC>

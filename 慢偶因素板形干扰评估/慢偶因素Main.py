@@ -9,6 +9,7 @@ from qfluentwidgets import NavigationItemPosition, FluentIconBase, Theme, getIco
 from qfluentwidgets import FluentIcon as FIF
 from qtResource.MyIcon import MyIcon
 from .Ui_慢偶因素Main import Ui_AccidentalFactor
+from my_utils.myterminal import MyTerminal
 
 
 class 慢偶因素(Ui_AccidentalFactor, QWidget):
@@ -19,6 +20,8 @@ class 慢偶因素(Ui_AccidentalFactor, QWidget):
         # self.stackedWidget = self.stackedWidget
         self.setupUi(self)
         self.initNavigation()
+        self.terminal = MyTerminal()
+        self.terminal.show()
 
     def initNavigation(self):
         # self.stackedWidget.
@@ -74,6 +77,10 @@ class 慢偶因素(Ui_AccidentalFactor, QWidget):
         w.cancelButton.setText('close')
 
         w.exec()
+
+    def closeEvent(self, a0):
+        self.terminal.close()
+        super().closeEvent(a0)
 
 
 if __name__ == '__main__':

@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>LoginWindow</class>
+ <widget class="QWidget" name="LoginWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>450</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>登录界面</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../res/icons.qrc">
+    <normaloff>:/images/img/首钢.png</normaloff>:/images/img/首钢.png</iconset>
+  </property>
+  <widget class="QWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>450</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton#login_pushButton {
+    background-color: qlineargradient(spread: pad, x1: 0, y1: 0.505682, x2: 1, y2: 0.477, stop: 0 rgba(11, 131, 120, 219), stop: 1 rgba(85, 98, 112, 226));
+    color: rgba(255, 255, 255, 210);
+    border-radius: 5px;
+}
+
+QPushButton#login_pushButton:hover {
+    background-color: qlineargradient(spread: pad, x1: 0, y1: 0.505682, x2: 1, y2: 0.477, stop: 0 rgba(150, 123, 1111, 219), stop: 1 rgba(85, 81, 84, 226));
+}
+
+QPushButton#entry_pushButton {
+border: none; /* 这里设置了无边框 */
+}
+
+
+QPushButton#login_pushButton:pressed {
+    padding-left: 5px;
+    padding-top: 5px;
+    background-color: rgba(150, 123, 111, 255);
+}
+
+QPushButton#forget_password_pushButton,
+QPushButton#register_pushButton,
+QPushButton#mysql_pushButton {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    border-bottom: 1px solid rgb(179, 179, 179);
+    color: rgba(0, 0, 0, 240);
+}
+
+QPushButton#github_pushButton,
+QPushButton#phone_pushButton,
+QPushButton#email_pushButton {
+    background-color: rgba(0, 0, 0, 0);
+    color: rgba(85, 98, 112, 255);
+}
+
+QPushButton#github_pushButton:hover,
+QPushButton#phone_pushButton:hover,
+QPushButton#email_pushButton:hover {
+    color: rgba(131, 96, 53, 255);
+}
+
+QPushButton#github_pushButton:pressed,
+QPushButton#phone_pushButton:pressed,
+QPushButton#email_pushButton:pressed {
+    padding-left: 5px;
+    padding-top: 5px;
+    color: rgba(91, 88, 53, 255);
+}
+
+QPushButton#close_pushButton{
+ background-color: #ce5137;
+ border-radius:10px;
+}
+
+QPushButton#close_pushButton:hover{
+ background-size: cover;
+ background-image: url(:/icons/icons/close.svg);
+}
+
+QPushButton#min_pushButton{
+ background-color: #a1c661;
+ border-radius:10px;
+}
+
+QPushButton#min_pushButton:hover{
+ background-size: cover;
+ background-image: url(:/icons/icons/minimize.svg);
+}
+
+</string>
+   </property>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>60</y>
+      <width>180</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>180</width>
+      <height>40</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>180</width>
+      <height>40</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>楷体</family>
+      <pointsize>20</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:rgba(0,0,0,200);</string>
+    </property>
+    <property name="text">
+     <string>登录界面</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="login_pushButton">
+    <property name="geometry">
+     <rect>
+      <x>585</x>
+      <y>260</y>
+      <width>190</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>190</width>
+      <height>40</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>190</width>
+      <height>40</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>华文楷体</family>
+      <pointsize>20</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="text">
+     <string>登录</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="github_pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>351</y>
+      <width>30</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Social Media Circled</family>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>)</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>10</y>
+      <width>240</width>
+      <height>431</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgba(255,255,255,255);
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="close_pushButton">
+    <property name="geometry">
+     <rect>
+      <x>770</x>
+      <y>20</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>20</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>20</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="password_lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>585</x>
+      <y>195</y>
+      <width>190</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>190</width>
+      <height>40</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>190</width>
+      <height>40</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>华文楷体</family>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgba(0,0,0,0);
+border:none;
+border-bottom:2px solid rgba(46,82,101,200);
+color:rgba(0,0,0,240);
+padding-bottom:7px;</string>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Password</enum>
+    </property>
+    <property name="placeholderText">
+     <string>密码</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="entry_pushButton">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>420</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>75</width>
+      <height>23</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>75</width>
+      <height>23</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>华文楷体</family>
+      <pointsize>12</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="text">
+     <string>直接进入</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>10</y>
+      <width>521</width>
+      <height>431</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/images/img/combination.jpg);
+background-color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>410</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 10pt &quot;Consolas&quot;;</string>
+    </property>
+    <property name="text">
+     <string>designed by MeZhou group</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="forget_password_pushButton">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>310</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>75</width>
+      <height>23</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>75</width>
+      <height>23</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>华文楷体</family>
+      <pointsize>12</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="text">
+     <string>忘记密码？</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="user_name_lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>585</x>
+      <y>130</y>
+      <width>190</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>190</width>
+      <height>40</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>190</width>
+      <height>40</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>华文楷体</family>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgba(0,0,0,0);
+border:none;
+border-bottom:2px solid rgba(46,82,101,200);
+color:rgba(0,0,0,240);
+padding-bottom:7px;</string>
+    </property>
+    <property name="placeholderText">
+     <string>用户名</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="register_pushButton">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>310</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>75</width>
+      <height>23</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>75</width>
+      <height>23</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>华文楷体</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="text">
+     <string>用户注册</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="mysql_pushButton">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>20</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>75</width>
+      <height>23</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>75</width>
+      <height>23</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>华文楷体</family>
+      <pointsize>13</pointsize>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="text">
+     <string>数据库</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="phone_pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>659</x>
+      <y>351</y>
+      <width>30</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Social Media Circled</family>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>#</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="min_pushButton">
+    <property name="geometry">
+     <rect>
+      <x>750</x>
+      <y>20</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>20</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>20</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="email_pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>708</x>
+      <y>351</y>
+      <width>30</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Social Media Circled</family>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>k</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>10</y>
+      <width>81</width>
+      <height>431</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-top-left-radius:50px;
+background-color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <zorder>label_3</zorder>
+   <zorder>label_4</zorder>
+   <zorder>close_pushButton</zorder>
+   <zorder>password_lineEdit</zorder>
+   <zorder>label</zorder>
+   <zorder>label_2</zorder>
+   <zorder>forget_password_pushButton</zorder>
+   <zorder>user_name_lineEdit</zorder>
+   <zorder>register_pushButton</zorder>
+   <zorder>mysql_pushButton</zorder>
+   <zorder>phone_pushButton_2</zorder>
+   <zorder>min_pushButton</zorder>
+   <zorder>email_pushButton_2</zorder>
+   <zorder>github_pushButton_2</zorder>
+   <zorder>login_pushButton</zorder>
+   <zorder>label_5</zorder>
+   <zorder>entry_pushButton</zorder>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../res/icons.qrc"/>
+ </resources>
+ <connections/>
+</ui>

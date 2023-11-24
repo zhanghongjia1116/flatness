@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FlatnessMain</class>
+ <widget class="QMainWindow" name="FlatnessMain">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>885</width>
+    <height>606</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>灯塔工厂上线</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../../../../miniconda3/envs/newgui/Lib/site-packages/qtResource/resource.qrc">
+    <normaloff>:/icons/images/首钢.png</normaloff>:/icons/images/首钢.png</iconset>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">font: 25pt &quot;隶书&quot;;</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <property name="topMargin">
+     <number>20</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="CardWidget" name="CardWidget">
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="spacing">
+        <number>40</number>
+       </property>
+       <item>
+        <widget class="PrimaryPushButton" name="PrimaryPushButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>隶书</family>
+           <pointsize>25</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>板形质量评价</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../../../../../miniconda3/envs/newgui/Lib/site-packages/qtResource/resource.qrc">
+           <normaloff>:/icons/icons/板形质量评价.png</normaloff>:/icons/icons/板形质量评价.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>25</width>
+           <height>25</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="PrimaryPushButton" name="PrimaryPushButton_2">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>隶书</family>
+           <pointsize>25</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>异常板形监测溯源</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../../../../../miniconda3/envs/newgui/Lib/site-packages/qtResource/resource.qrc">
+           <normaloff>:/icons/icons/异常板形监测溯源.png</normaloff>:/icons/icons/异常板形监测溯源.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>25</width>
+           <height>25</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="PrimaryPushButton" name="PrimaryPushButton_3">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>隶书</family>
+           <pointsize>25</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>慢偶因素板形干扰评估</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../../../../../miniconda3/envs/newgui/Lib/site-packages/qtResource/resource.qrc">
+           <normaloff>:/icons/icons/慢偶因素板形干扰评估.png</normaloff>:/icons/icons/慢偶因素板形干扰评估.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>25</width>
+           <height>25</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="PrimaryPushButton" name="PrimaryPushButton_4">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>隶书</family>
+           <pointsize>25</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>板形调控功效挖掘</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../../../../../miniconda3/envs/newgui/Lib/site-packages/qtResource/resource.qrc">
+           <normaloff>:/icons/icons/板形调控功效挖掘.png</normaloff>:/icons/icons/板形调控功效挖掘.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>25</width>
+           <height>25</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="CardWidget" name="CardWidget_2">
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="spacing">
+        <number>40</number>
+       </property>
+       <item>
+        <widget class="PrimaryPushButton" name="PrimaryPushButton_5">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>隶书</family>
+           <pointsize>25</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>板形生成数据建模</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../../../../../miniconda3/envs/newgui/Lib/site-packages/qtResource/resource.qrc">
+           <normaloff>:/icons/icons/板形生成数据建模.png</normaloff>:/icons/icons/板形生成数据建模.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>25</width>
+           <height>25</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="PrimaryPushButton" name="PrimaryPushButton_6">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>隶书</family>
+           <pointsize>25</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>板形控制能力评价</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../../../../../miniconda3/envs/newgui/Lib/site-packages/qtResource/resource.qrc">
+           <normaloff>:/icons/icons/板形控制能力评价.png</normaloff>:/icons/icons/板形控制能力评价.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="PrimaryPushButton" name="PrimaryPushButton_7">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>隶书</family>
+           <pointsize>25</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>板形控制数模优化</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../../../../../miniconda3/envs/newgui/Lib/site-packages/qtResource/resource.qrc">
+           <normaloff>:/icons/icons/板形控制数模优化.png</normaloff>:/icons/icons/板形控制数模优化.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>25</width>
+           <height>25</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="PrimaryPushButton" name="PrimaryPushButton_8">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>隶书</family>
+           <pointsize>25</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>工序间数据服务</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../../../../../miniconda3/envs/newgui/Lib/site-packages/qtResource/resource.qrc">
+           <normaloff>:/icons/icons/工序间数据服务.png</normaloff>:/icons/icons/工序间数据服务.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>25</width>
+           <height>25</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PushButton</class>
+   <extends>QPushButton</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>PrimaryPushButton</class>
+   <extends>PushButton</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>CardWidget</class>
+   <extends>QFrame</extends>
+   <header>qfluentwidgets</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../../../../../miniconda3/envs/newgui/Lib/site-packages/qtResource/resource.qrc"/>
+ </resources>
+ <connections/>
+</ui>
