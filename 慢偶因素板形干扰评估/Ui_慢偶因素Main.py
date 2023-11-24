@@ -14,6 +14,7 @@ from .轧辊.controller.RollingInterfaceMain import RollingInterfaceMain
 from .停机.controller.stopInterface import StopInterface
 from .班组.controller.ClassInterface import MainWindow as ClassInterface
 from .压下率.controller.ReductionInterface import ReductionInterface
+from .热轧来料.controller.HotRollingInterface import HotRollingInterface
 
 
 class Ui_AccidentalFactor(object):
@@ -50,7 +51,7 @@ class Ui_AccidentalFactor(object):
         self.horizontalLayout_8 = QtWidgets.QHBoxLayout(self.StopPage)
         self.horizontalLayout_8.setObjectName("horizontalLayout_8")
         self.stackedWidget.addWidget(self.StopPage)
-        self.MaterialPage = QtWidgets.QWidget()
+        self.MaterialPage = HotRollingInterface()
         self.MaterialPage.setObjectName("MaterialPage")
         self.horizontalLayout_21 = QtWidgets.QHBoxLayout(self.MaterialPage)
         self.horizontalLayout_21.setObjectName("horizontalLayout_21")
