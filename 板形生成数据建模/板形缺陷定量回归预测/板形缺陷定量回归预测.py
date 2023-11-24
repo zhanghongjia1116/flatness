@@ -10,7 +10,10 @@ import numpy as np
 import pandas as pd
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QMainWindow, QFileDialog, QMessageBox
-from keras.models import load_model
+try:
+    from keras.models import load_model
+except:
+    pass
 from sklearn.metrics import r2_score, mean_squared_error
 
 from .Ui_板形缺陷定量回归预测 import Ui_mainWindow

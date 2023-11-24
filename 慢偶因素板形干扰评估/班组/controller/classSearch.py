@@ -12,10 +12,13 @@ from pylab import mpl
 
 mpl.rcParams['font.sans-serif'] = ['FangSong']  # 设置matplotlib可以显示汉语
 mpl.rcParams['axes.unicode_minus'] = False
-import pymysql
-import pymysql.cursors
+try:
+    import pymysql
+    import pymysql.cursors
 
-pymysql.install_as_MySQLdb()
+    pymysql.install_as_MySQLdb()
+except:
+    pass
 
 
 # mysql连接

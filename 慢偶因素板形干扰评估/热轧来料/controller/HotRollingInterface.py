@@ -1,8 +1,8 @@
-from ..view.Ui_HotRollingInterface import Ui_HotRolling
+from ..view.Ui_HotRollingInterface import Ui_HotRollingInterface
 from PyQt5.QtWidgets import QWidget, QApplication
 
 
-class HotRollingInterface(QWidget, Ui_HotRolling):
+class HotRollingInterface(QWidget, Ui_HotRollingInterface):
     def __init__(self):
         super().__init__()
         self.setupUi(self)

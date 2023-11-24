@@ -18,7 +18,6 @@ from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QMainWindow
 from PyQt5 import QtWidgets, QtGui
 from .Ui_板形调控功效挖掘 import Ui_RegulatoryEfficacy
-from qtpy import QtCore
 
 
 def get_J(_w, _flat, _eff):
