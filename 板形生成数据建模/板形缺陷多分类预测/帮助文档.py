@@ -7,7 +7,7 @@ Module implementing SinglePolicyCompare.
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QMainWindow
 
-from 板形缺陷多分类预测.Ui_帮助文档 import Ui_MainWindow
+from 板形生成数据建模.板形缺陷多分类预测.Ui_帮助文档 import Ui_MainWindow
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):

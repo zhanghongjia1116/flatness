@@ -37,25 +37,6 @@ class FullLengthQuality(QMainWindow, Ui_MainWindow):
         self.pushButton_2.setEnabled(False)
         # self.pushButton_3.setEnabled(False)
         self.pushButton_4.setEnabled(False)
-        self.initComboBox()
-
-    def initComboBox(self):
-        self.comboBox_3.addItem("IU的4个指标折线图")
-        self.comboBox_3.addItem("三维板形")
-        self.comboBox_3.addItem("热度图")
-        self.comboBox_3.addItem("浪形百分比")
-        self.comboBox_3.addItem("浪形百分比-复杂浪形")
-        self.comboBox_3.addItem("IU百分比")
-        self.comboBox_3.addItem("IU概率密度图")
-        self.comboBox_3.addItem("浪形模态图-绝对值均值")
-        self.comboBox_3.addItem("浪形模态图-均方根")
-        self.comboBox_3.addItem("浪形模态图-最大-最小")
-        self.comboBox_2.addItem("百分比分布")
-        self.comboBox_2.addItem("概率密度图")
-        self.comboBox.addItem("IU绝对值均值")
-        self.comboBox.addItem("IU均方根")
-        self.comboBox.addItem("IU最大-最小")
-        self.comboBox.addItem("IU最大值")
 
     @pyqtSlot()
     def on_pushButton_clicked(self):

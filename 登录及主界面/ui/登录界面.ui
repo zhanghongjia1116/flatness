@@ -360,11 +360,23 @@ background-color: rgb(255, 255, 255);</string>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>620</x>
+      <x>580</x>
       <y>410</y>
-      <width>171</width>
+      <width>220</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>220</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>220</width>
+      <height>16777215</height>
+     </size>
     </property>
     <property name="styleSheet">
      <string notr="true">font: 10pt &quot;Consolas&quot;;</string>
@@ -409,7 +421,7 @@ background-color: rgb(255, 255, 255);</string>
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="text">
-     <string>忘记密码？</string>
+     <string>忘记密码</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="user_name_lineEdit">
@@ -645,7 +657,6 @@ background-color: rgb(255, 255, 255);</string>
    <zorder>close_pushButton</zorder>
    <zorder>password_lineEdit</zorder>
    <zorder>label</zorder>
-   <zorder>label_2</zorder>
    <zorder>forget_password_pushButton</zorder>
    <zorder>user_name_lineEdit</zorder>
    <zorder>register_pushButton</zorder>
@@ -657,6 +668,7 @@ background-color: rgb(255, 255, 255);</string>
    <zorder>login_pushButton</zorder>
    <zorder>label_5</zorder>
    <zorder>entry_pushButton</zorder>
+   <zorder>label_2</zorder>
   </widget>
  </widget>
  <resources>

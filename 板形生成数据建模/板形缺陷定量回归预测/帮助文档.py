@@ -7,7 +7,7 @@ Module implementing help.
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QMainWindow
 
-from .Ui_帮助文档 import Ui_help
+from 板形生成数据建模.板形缺陷定量回归预测.Ui_帮助文档 import Ui_help
 
 
 class help(QMainWindow, Ui_help):

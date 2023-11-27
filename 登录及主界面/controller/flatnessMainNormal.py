@@ -6,6 +6,7 @@ from PyQt5.QtCore import Qt, pyqtSlot
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QApplication, QWidget, QStackedWidget, QVBoxLayout, QLabel, QSizePolicy, QMainWindow
 from 登录及主界面.view.Ui_flatnessMainNormal import Ui_FlatnessMain
+from my_utils.prompt import showMessageBox
 from qfluentwidgets import Pivot, setTheme, Theme, SegmentedWidget, FluentIcon
 # from 慢偶因素板形干扰评估.慢偶因素Main import AccidentalFactor
 from 慢偶因素板形干扰评估.慢偶因素Main import 慢偶因素
@@ -64,6 +65,10 @@ class MainWindow(QMainWindow, Ui_FlatnessMain):
     def on_PrimaryPushButton_7_clicked(self):
         self.板形控制数模优化 = 板形控制数模优化()
         self.板形控制数模优化.show()
+
+    @pyqtSlot()
+    def on_PrimaryPushButton_8_clicked(self):
+        showMessageBox('提示', "数据服务内嵌于各功能模块中.", parent=self)
 
 
 if __name__ == '__main__':

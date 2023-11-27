@@ -272,21 +272,22 @@ class MainWindowC2(QMainWindow, Ui_MainWindowC2):
         # 生成资源文件目录访问路径 相对路径
         model_path = f"{os.path.dirname(__file__)}/二分类模型"
 
+        # try:
         try:
-            try:
-                self.comboBox_2.setVisible(True)
-            except:
-                pass
-            self.comboBox_2.clear()
-            self.comboBox_2.addItem('请选择想要评估的钢卷号')
-            self.comboBox_2.addItems(self.juan_hao)
-            model = joblib.load(f'{model_path}\erfenlei_{self.comboBox.currentText()}.m')
-            self.C_pre = [model.predict(one) for one in self.xtest]
-            self.textEdit.setText('已完成预测！')
+            self.comboBox_2.setVisible(True)
+        except:
+            pass
+        self.comboBox_2.clear()
+        self.comboBox_2.addItem('请选择想要评估的钢卷号')
+        self.comboBox_2.addItems(self.juan_hao)
+        print(fr"{model_path}\erfenlei_{self.comboBox.currentText()}.m")
+        model = joblib.load(fr'{model_path}\erfenlei_{self.comboBox.currentText()}.m')
+        self.C_pre = [model.predict(one) for one in self.xtest]
+        self.textEdit.setText('已完成预测！')
 
-        except Exception as e:
-            print(e)
-            QMessageBox.information(self, '提示框', '预测出错', QMessageBox.Ok)
+        # except Exception as e:
+        #     print(e)
+        #     QMessageBox.information(self, '提示框', '预测出错', QMessageBox.Ok)
 
     @pyqtSlot()
     def on_pushButton_3_clicked(self):

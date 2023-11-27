@@ -2,12 +2,11 @@ import sys
 import os
 from PyQt5.QtWidgets import QApplication
 from loguru import logger
-
-os.chdir(os.path.dirname(__file__))
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from 登录及主界面.controller.登录界面 import LoginWindow
-# from 登录及主界面.controller.flatnessMainNormal import MainWindow
 from 登录及主界面.controller.splash import SplashScreen
+
+
+# from 登录及主界面.controller.flatnessMainNormal import MainWindow
 
 
 class App(QApplication):

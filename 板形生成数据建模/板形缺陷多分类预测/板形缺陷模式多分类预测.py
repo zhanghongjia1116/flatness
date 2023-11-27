@@ -41,7 +41,7 @@ class MainWindowC(QMainWindow, Ui_MainWindowC):
 
     @pyqtSlot()
     def on_help_triggered(self):
-        from .帮助文档 import MainWindow
+        from 板形生成数据建模.板形缺陷多分类预测.帮助文档 import MainWindow
         self.help_ui = MainWindow()
         self.help_ui.show()
         # QMessageBox.information(self, '提示信息', '这是一个帮助文档', QMessageBox.Ok)
@@ -65,93 +65,6 @@ class MainWindowC(QMainWindow, Ui_MainWindowC):
         """
         数据导入
         """
-        # try:
-        #     self.data_path = \
-        #         QFileDialog.getOpenFileName(self, "ADD", os.getcwd(), "CSV Files(*.csv);;XLSX Files(*.xlsx)")[0]
-        #     self.data = pd.read_csv(self.data_path, encoding='gbk').dropna().reset_index(drop=True)
-        #     feature = ['RCH2: Wedge passline deviation', 'RCH3: Wedge passline deviation',
-        #                'RCH4: Wedge passline deviation',
-        #                'RCH5: Wedge passline deviation', 'F5 ref tension after stand 5',
-        #                'F5 actual value after stand 5 smoothed', 'F5 flatness error tilt', 'F5  flatness error WR-bend',
-        #                'F5  flatness error IR-bend', 'F5 flatness error', 'F5  flatness error IR-shift', 'F5 add tilt',
-        #                'F5 add WR-bend',
-        #                'F5 add IR-bend', 'F5 add IR-shift', 'F5 strip length', 'F5 emulsion flow',
-        #                'F5 release tilt control', 'F5 tilt control active', 'F5 release WR-bend control',
-        #                'F5 WR-bend control active', 'F5 release IR-bend control', 'F5 IR-bend control active',
-        #                'F5 release IR-shifting control', 'F5 IR-shifting control active',
-        #                'F5 IR-bending control active MONI',
-        #                'F5 IR-shifting control active MONI', 'STAND_01_reduction', 'STAND_02_reduction',
-        #                'STAND_03_reduction',
-        #                'STAND_04_reduction', 'STAND_05_reduction', 'THC: h ref. S1 entry(ims)',
-        #                'THC: h ref. S1 exit(ims)',
-        #                'THC: act. thickness S1 entry', 'THC: act. thickness S1 exit', 'THX: h ref S5 exit',
-        #                'THX: h act S5 exit', 'SLC laser speed behind S1', 'SLC laser speed behind S4',
-        #                'SLC laser speed behind S5', 'SLC act. speed exit flatness roll', 'SLC act. speed stand 1',
-        #                'SLC act. speed stand 2', 'SLC act. speed stand 3', 'SLC act speed stand 4',
-        #                'SLC act.speed stand 5',
-        #                'SLC strip speed S1 - S2', 'SLC strip speed S2 - S3', 'SLC strip speed S3 - S4',
-        #                'SLC strip speed S4 - S5', 'SLC strip speed after S5', 'SLC Slip factor stand 1',
-        #                'SLC Slip factor stand 2', 'SLC Slip factor stand 3', 'SLC Slip factor stand 4',
-        #                'SLC Slip factor stand 5', 'N1 ITC tension ref value', 'N1 ITC tension actual value DS',
-        #                'N1 ITC tension actual value OS', 'N1 ITC tension actual value at ctrl',
-        #                'N1 ITC diff.tension at ctrl',
-        #                'N2 ITC tension ref value', 'N2 ITC tension actual value DS', 'N2 ITC tension actual value OS',
-        #                'N2 ITC tension actual value at ctrl', 'N2 ITC diff.tension at ctrl', 'N3 ITC tension ref value',
-        #                'N3 ITC tension actual value DS', 'N3 ITC tension actual value OS',
-        #                'N3 ITC tension actual value at ctrl', 'N3 ITC diff.tension at ctrl', 'N4 ITC tension ref value',
-        #                'N4 ITC tension actual value DS', 'N4 ITC tension actual value OS',
-        #                'N4 ITC tension actual value at ctrl', 'N4 ITC diff.tension at ctrl', 'N5 ITC tension ref value',
-        #                'N5 ITC tension actual value DS', 'N5 ITC tension actual value OS',
-        #                'N5 ITC tension actual value at ctrl', 'N5 ITC diff.tension at ctrl',
-        #                'N5 tension actual value DS after S5', 'N5 tension actual value OS after S5',
-        #                'D1 XSS position actual value', 'D1 WSS position ref value', 'D1 XFR roll force actual value',
-        #                'D1 WFR roll force ref value', 'D1 XSSd tilting actual value', 'D1 WSSd tilting ref value',
-        #                'D1 DIFF RF CTRL act value (DS-OS)', 'D2 XSS position actual value', 'D2 WSS position ref value',
-        #                'D2 XFR roll force actual value', 'D2 WFR roll force ref value', 'D2 XSSd tilting actual value',
-        #                'D2 WSSd tilting ref value', 'D2 DIFF RF CTRL act value (DS-OS)', 'D3 XSS position actual value',
-        #                'D3 WSS position ref value', 'D3 XFR roll force actual value', 'D3 WFR roll force ref value',
-        #                'D3 XSSd tilting actual value', 'D3 WSSd tilting ref value', 'D3 DIFF RF CTRL act value (DS-OS)',
-        #                'D4 XSS position actual value', 'D4 WSS position ref value', 'D4 XFR roll force actual value',
-        #                'D4 WFR roll force ref value', 'D4 XSSd tilting actual value', 'D4 WSSd tilting ref value',
-        #                'D4 DIFF RF CTRL act value (DS-OS)', 'D5 XSS position actual value', 'D5 WSS position ref value',
-        #                'D5 XFR roll force actual value', 'D5 WFR roll force ref value', 'D5 XSSd tilting actual value',
-        #                'D5 WSSd tilting ref value', 'D5 DIFF RF CTRL act value (DS-OS)', 'B1 BURB actual value',
-        #                'B1 BURB ref value', 'B1 WRB actual value', 'B1 WRB ref value', 'B1 IRB ref value',
-        #                'B1 IRB ref value ctrl1', 'B1 IRB actual value ctrl1', 'B1 IRB ref value ctrl2',
-        #                'B1 IRB actual value ctrl2', 'B2 BURB actual value', 'B2 BURB ref value', 'B2 WRB actual value',
-        #                'B2 WRB ref value', 'B2 IRB ref value', 'B2 IRB ref value ctrl1', 'B2 IRB actual value ctrl1',
-        #                'B2 IRB ref value ctrl2', 'B2 IRB actual value ctrl2', 'B3 BURB actual value',
-        #                'B3 BURB ref value',
-        #                'B3 WRB actual value', 'B3 WRB ref value', 'B3 IRB ref value', 'B3 IRB ref value ctrl1',
-        #                'B3 IRB actual value ctrl1', 'B3 IRB ref value ctrl2', 'B3 IRB actual value ctrl2',
-        #                'WR bending actual value', 'B4 IRB ref value', 'B4 IRB ref value ctrl1',
-        #                'B4 IRB actual value ctrl1',
-        #                'B4 IRB ref value ctrl2', 'B4 IRB actual value ctrl2', 'B5 BURB actual value',
-        #                'B5 WRB actual value',
-        #                'B5 WRB ref value', 'B5 IRB ref value', 'B5 IRB ref value ctrl1', 'B5 IRB actual value ctrl1',
-        #                'B5 IRB ref value ctrl2', 'B5 IRB actual value ctrl2', 'S1 top IR shfiting ref value',
-        #                'S1 top IR shfitingl actual value', 'S1 bot IR shfiting ref value',
-        #                'S1 bot IR shfitingl actual value',
-        #                'S1 ref value level 2', 'S2 top IR shfiting ref value', 'S2 top IR shfiting actual value',
-        #                'S2 bot IR shfiting ref value', 'S2 bot IR shfiting actual value', 'S2 ref value level 2',
-        #                'S3 top IR shfitingl ref value', 'S3 top IR shfiting actual value',
-        #                'S3 bot IR shfiting ref value',
-        #                'S3 bot IR shfiting actual value', 'S3 ref value level 2', 'S4 top  IR shfiting  ref value',
-        #                'S4 top  IR shfiting actual value', 'S4 bot IR shfiting ref value',
-        #                'S4 bot IR shfiting actual value',
-        #                'S4 ref value level 2', 'S5 top IR shfiting ref value', 'S5 top IR shfiting actual value',
-        #                'S5 bot IR shfiting ref value', 'S5 bot IR shfiting actual value', 'S5 ref value level 2',
-        #                'S2 FLOW',
-        #                'S3 FLOW', 'T3 TEMP.', 'T3 LEV.', 'RCH1: Wedge passline deviation', 'POS', 'deg0', 'deg1',
-        #                'deg2',
-        #                'deg3', 'deg4']
-        #
-        #     self.xtest = self.data[feature]
-        #
-        #     self.textEdit.setText('选择的数据路径为“%s”，\n数据已成功导入！' % self.data_path)
-        # except:
-        #     QMessageBox.information(self, '提示信息', '数据选择出错，请重新选择数据', QMessageBox.Ok)
-
         try:
             self.comboBox_2.clear()
             self.comboBox_2.setVisible(False)
@@ -274,15 +187,8 @@ class MainWindowC(QMainWindow, Ui_MainWindowC):
         """
 
         # 生成资源的相对路径
-        def resource_path(relative_path):
-            if getattr(sys, 'frozen', False):  # 是否Bundle Resource 捆绑资源
-                base_path = sys._MEIPASS
-            else:
-                base_path = os.path.abspath(".")
-            return os.path.join(base_path, relative_path)
-
-        print(resource_path(
-            '板形生成数据建模/板形缺陷多分类预测\\多分类模型\duofenlei_%s.m' % self.comboBox.currentText()))
+        # 生成资源文件目录访问路径 相对路径
+        model_path = f"{os.path.dirname(__file__)}/多分类模型"
         try:
             try:
                 self.comboBox_2.setVisible(True)
@@ -291,9 +197,7 @@ class MainWindowC(QMainWindow, Ui_MainWindowC):
             self.comboBox_2.clear()
             self.comboBox_2.addItem('请选择想要评估的钢卷号')
             self.comboBox_2.addItems(self.juan_hao)
-            model = joblib.load(
-                resource_path(
-                    '板形生成数据建模/板形缺陷多分类预测\\多分类模型\duofenlei_%s.m' % self.comboBox.currentText()))
+            model = joblib.load(f"{model_path}\duofenlei_{self.comboBox.currentText()}.m")
             self.C_pre = [model.predict(one) for one in self.xtest]
             self.textEdit.setText('已完成预测！')
         except:

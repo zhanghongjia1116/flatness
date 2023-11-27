@@ -4,7 +4,7 @@ from enum import Enum
 from PyQt5 import QtGui
 from PyQt5.QtCore import pyqtSignal, QUrl, QSize
 from PyQt5.QtGui import QDesktopServices, QFont, QIcon, QPixmap
-from PyQt5.QtWidgets import QApplication, QWidget
+from PyQt5.QtWidgets import QApplication, QWidget, QDesktopWidget
 from qfluentwidgets import NavigationItemPosition, FluentIconBase, Theme, getIconColor, MessageBox, Icon
 from qfluentwidgets import FluentIcon as FIF
 from qtResource.MyIcon import MyIcon
@@ -20,6 +20,18 @@ class 板形生成数据建模(Ui_板形生成数据建模, QWidget):
         # self.stackedWidget = self.stackedWidget
         self.setupUi(self)
         self.initNavigation()
+        # self.centerWindow()
+
+    def centerWindow(self):
+        # 获取主屏幕的几何信息
+        screenGeometry = QDesktopWidget().screenGeometry()
+
+        # 计算窗口在屏幕上的中心坐标
+        x = (screenGeometry.width() - self.width()) // 2
+        y = (screenGeometry.height() - self.height()) // 2
+
+        # 移动窗口到中心
+        self.move(x, y)
 
     def initNavigation(self):
         # self.stackedWidget.

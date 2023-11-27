@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>885</width>
+    <width>933</width>
     <height>606</height>
    </rect>
   </property>
@@ -14,14 +14,21 @@
    <string>灯塔工厂上线</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../../../../../miniconda3/envs/newgui/Lib/site-packages/qtResource/resource.qrc">
+   <iconset>
     <normaloff>:/icons/images/首钢.png</normaloff>:/icons/images/首钢.png</iconset>
   </property>
   <property name="autoFillBackground">
    <bool>false</bool>
   </property>
   <property name="styleSheet">
-   <string notr="true">font: 25pt &quot;隶书&quot;;</string>
+   <string notr="true">PrimaryPushButton#PrimaryPushButton{font: 25pt &quot;隶书&quot;;}
+PrimaryPushButton#PrimaryPushButton_2{font: 25pt &quot;隶书&quot;;}
+PrimaryPushButton#PrimaryPushButton_3{font: 25pt &quot;隶书&quot;;}
+PrimaryPushButton#PrimaryPushButton_4{font: 25pt &quot;隶书&quot;;}
+PrimaryPushButton#PrimaryPushButton_5{font: 25pt &quot;隶书&quot;;}
+PrimaryPushButton#PrimaryPushButton_6{font: 25pt &quot;隶书&quot;;}
+PrimaryPushButton#PrimaryPushButton_7{font: 25pt &quot;隶书&quot;;}
+PrimaryPushButton#PrimaryPushButton_8{font: 25pt &quot;隶书&quot;;}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -61,7 +68,7 @@
           <string>板形质量评价</string>
          </property>
          <property name="icon">
-          <iconset resource="../../../../../miniconda3/envs/newgui/Lib/site-packages/qtResource/resource.qrc">
+          <iconset>
            <normaloff>:/icons/icons/板形质量评价.png</normaloff>:/icons/icons/板形质量评价.png</iconset>
          </property>
          <property name="iconSize">
@@ -93,7 +100,7 @@
           <string>异常板形监测溯源</string>
          </property>
          <property name="icon">
-          <iconset resource="../../../../../miniconda3/envs/newgui/Lib/site-packages/qtResource/resource.qrc">
+          <iconset>
            <normaloff>:/icons/icons/异常板形监测溯源.png</normaloff>:/icons/icons/异常板形监测溯源.png</iconset>
          </property>
          <property name="iconSize">
@@ -125,7 +132,7 @@
           <string>慢偶因素板形干扰评估</string>
          </property>
          <property name="icon">
-          <iconset resource="../../../../../miniconda3/envs/newgui/Lib/site-packages/qtResource/resource.qrc">
+          <iconset>
            <normaloff>:/icons/icons/慢偶因素板形干扰评估.png</normaloff>:/icons/icons/慢偶因素板形干扰评估.png</iconset>
          </property>
          <property name="iconSize">
@@ -157,7 +164,7 @@
           <string>板形调控功效挖掘</string>
          </property>
          <property name="icon">
-          <iconset resource="../../../../../miniconda3/envs/newgui/Lib/site-packages/qtResource/resource.qrc">
+          <iconset>
            <normaloff>:/icons/icons/板形调控功效挖掘.png</normaloff>:/icons/icons/板形调控功效挖掘.png</iconset>
          </property>
          <property name="iconSize">
@@ -198,7 +205,7 @@
           <string>板形生成数据建模</string>
          </property>
          <property name="icon">
-          <iconset resource="../../../../../miniconda3/envs/newgui/Lib/site-packages/qtResource/resource.qrc">
+          <iconset>
            <normaloff>:/icons/icons/板形生成数据建模.png</normaloff>:/icons/icons/板形生成数据建模.png</iconset>
          </property>
          <property name="iconSize">
@@ -230,7 +237,7 @@
           <string>板形控制能力评价</string>
          </property>
          <property name="icon">
-          <iconset resource="../../../../../miniconda3/envs/newgui/Lib/site-packages/qtResource/resource.qrc">
+          <iconset>
            <normaloff>:/icons/icons/板形控制能力评价.png</normaloff>:/icons/icons/板形控制能力评价.png</iconset>
          </property>
          <property name="iconSize">
@@ -262,7 +269,7 @@
           <string>板形控制数模优化</string>
          </property>
          <property name="icon">
-          <iconset resource="../../../../../miniconda3/envs/newgui/Lib/site-packages/qtResource/resource.qrc">
+          <iconset>
            <normaloff>:/icons/icons/板形控制数模优化.png</normaloff>:/icons/icons/板形控制数模优化.png</iconset>
          </property>
          <property name="iconSize">
@@ -294,7 +301,7 @@
           <string>工序间数据服务</string>
          </property>
          <property name="icon">
-          <iconset resource="../../../../../miniconda3/envs/newgui/Lib/site-packages/qtResource/resource.qrc">
+          <iconset>
            <normaloff>:/icons/icons/工序间数据服务.png</normaloff>:/icons/icons/工序间数据服务.png</iconset>
          </property>
          <property name="iconSize">
@@ -330,8 +337,6 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources>
-  <include location="../../../../../miniconda3/envs/newgui/Lib/site-packages/qtResource/resource.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

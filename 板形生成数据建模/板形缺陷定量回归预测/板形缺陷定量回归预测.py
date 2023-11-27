@@ -5,6 +5,7 @@ Module implementing mainWindow.
 """
 import os
 import numpy as np
+import joblib
 import pandas as pd
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QMainWindow, QFileDialog, QMessageBox
@@ -53,26 +54,18 @@ class MainWindow(QMainWindow, Ui_mainWindow):
         @type str
         """
 
-        def resource_path(relative_path):
-            if getattr(sys, 'frozen', False):  # 是否Bundle Resource 捆绑资源
-                base_path = sys._MEIPASS
-            else:
-                base_path = os.path.abspath(".")
-            return os.path.join(base_path, relative_path)
+        # 生成资源文件目录访问路径 相对路径
+        model_path = f"{os.path.dirname(__file__)}/定量回归模型"
 
         try:
             self.textEdit.setText('您选择的模型为“%s”' % p0)
             if p0 == 'BP':
-                self.scalarX = joblib.load(
-                    resource_path('板形生成数据建模/板形缺陷定量回归预测\\定量回归模型\标准化X.m'))
-                self.scalarY = joblib.load(
-                    resource_path('板形生成数据建模/板形缺陷定量回归预测\\定量回归模型\标准化Y.m'))
+                self.scalarX = joblib.load(rf'{model_path}\标准化X.m')
+                self.scalarY = joblib.load(rf'{model_path}\标准化Y.m')
                 self.x = [self.scalarX.transform(one) for one in self.xtest]
             if p0 == 'RNN':
-                self.scalarX = joblib.load(
-                    resource_path('板形生成数据建模/板形缺陷定量回归预测\\定量回归模型\标准化X.m'))
-                self.scalarY = joblib.load(
-                    resource_path('板形生成数据建模/板形缺陷定量回归预测\\定量回归模型\标准化Y.m'))
+                self.scalarX = joblib.load(rf'{model_path}\标准化X.m')
+                self.scalarY = joblib.load(rf'{model_path}\标准化Y.m')
                 x = [self.scalarX.transform(one) for one in self.xtest]
                 self.x = [one.reshape(one.shape[0], 1, one.shape[1]).astype('float32') for one in x]
 
@@ -205,58 +198,51 @@ class MainWindow(QMainWindow, Ui_mainWindow):
         模型预测
         """
 
-        def resource_path(relative_path):
-            if getattr(sys, 'frozen', False):  # 是否Bundle Resource 捆绑资源
-                base_path = sys._MEIPASS
-            else:
-                base_path = os.path.abspath(".")
-            return os.path.join(base_path, relative_path)
+        model_path = f"{os.path.dirname(__file__)}/定量回归模型"
 
+        # try:
         try:
-            try:
-                self.comboBox_3.setVisible(True)
-            except:
-                pass
-            self.comboBox_3.clear()
-            self.comboBox_3.addItem('请选择想要评估的钢卷号')
-            self.comboBox_3.addItems(self.juan_hao)
-            if self.comboBox.currentText() == 'CatBoost':
-                sum_pre = []
-                sum_true = []
-                for j in range(len(self.data)):
-                    test_pre = []
-                    test_true = []
-                    for i in range(5):
-                        model = joblib.load(resource_path(
-                            'flatness_regression\\定量回归模型\%sDeg%s.m' % (self.comboBox.currentText(), i)))
-
-                        ytest_true = self.data[j].loc[:, 'ydeg%s' % i]
-                        test_true.append(ytest_true)
-                        ytest_pre = model.predict(self.xtest[j])
-                        test_pre.append(ytest_pre)
-                    sum_pre.append(test_pre)
-                    sum_true.append(test_true)
-                self.test_pre = [pd.DataFrame(sum_pre_i).T for sum_pre_i in sum_pre]
-                print(self.test_pre)
-                self.test_true = [pd.DataFrame(sum_true_i).T for sum_true_i in sum_true]
-
-            elif self.comboBox.currentText() == 'BP' or 'RNN':
-                import tensorflow as tf
-                os.environ["CUDA_VISIBLE_DEVICES"] = "0"
-                config = tf.compat.v1.ConfigProto()
-                config.gpu_options.allow_growth = True
-                session = tf.compat.v1.Session(config=config)
-                model = load_model(resource_path(
-                    '板形生成数据建模/板形缺陷定量回归预测\\定量回归模型\%s.h5' % self.comboBox.currentText()))
-                y = [model.predict(one) for one in self.x]
-                self.test_pre = [pd.DataFrame(self.scalarY.inverse_transform(one)) for one in y]
-                self.test_true = [one[['ydeg0', 'ydeg1', 'ydeg2', 'ydeg3', 'ydeg4']] for one in self.data]
-
-            else:
-                QMessageBox.information(self, '提示框', 'BP、LSTM、RNN不如CatBoost，建议选择CatBoost', QMessageBox.Ok)
-            self.textEdit.setText('已完成预测！')
+            self.comboBox_3.setVisible(True)
         except:
-            QMessageBox.information(self, '提示框', 'BP、RNN所需环境不稳定，建议选择CatBoost', QMessageBox.Ok)
+            pass
+        self.comboBox_3.clear()
+        self.comboBox_3.addItem('请选择想要评估的钢卷号')
+        self.comboBox_3.addItems(self.juan_hao)
+        if self.comboBox.currentText() == 'CatBoost':
+            sum_pre = []
+            sum_true = []
+            for j in range(len(self.data)):
+                test_pre = []
+                test_true = []
+                for i in range(5):
+                    model = joblib.load(fr'{model_path}\{self.comboBox.currentText()}Deg{i}.m')
+
+                    ytest_true = self.data[j].loc[:, 'ydeg%s' % i]
+                    test_true.append(ytest_true)
+                    ytest_pre = model.predict(self.xtest[j])
+                    test_pre.append(ytest_pre)
+                sum_pre.append(test_pre)
+                sum_true.append(test_true)
+            self.test_pre = [pd.DataFrame(sum_pre_i).T for sum_pre_i in sum_pre]
+            print(self.test_pre)
+            self.test_true = [pd.DataFrame(sum_true_i).T for sum_true_i in sum_true]
+
+        elif self.comboBox.currentText() == 'BP' or 'RNN':
+            import tensorflow as tf
+            os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+            config = tf.compat.v1.ConfigProto()
+            config.gpu_options.allow_growth = True
+            session = tf.compat.v1.Session(config=config)
+            model = load_model(fr'{model_path}\{self.comboBox.currentText()}.h5')
+            y = [model.predict(one) for one in self.x]
+            self.test_pre = [pd.DataFrame(self.scalarY.inverse_transform(one)) for one in y]
+            self.test_true = [one[['ydeg0', 'ydeg1', 'ydeg2', 'ydeg3', 'ydeg4']] for one in self.data]
+
+        else:
+            QMessageBox.information(self, '提示框', 'BP、LSTM、RNN不如CatBoost，建议选择CatBoost', QMessageBox.Ok)
+        self.textEdit.setText('已完成预测！')
+        # except:
+        #     QMessageBox.information(self, '提示框', 'BP、RNN所需环境不稳定，建议选择CatBoost', QMessageBox.Ok)
 
     @pyqtSlot(str)
     def on_comboBox_3_activated(self, p0):

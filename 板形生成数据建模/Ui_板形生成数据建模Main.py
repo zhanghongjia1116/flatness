@@ -17,7 +17,10 @@ from .板形缺陷定量回归预测.板形缺陷定量回归预测 import MainW
 class Ui_板形生成数据建模(object):
     def setupUi(self, banxingshengchengshuju):
         banxingshengchengshuju.setObjectName("banxingshengchengshuju")
-        banxingshengchengshuju.resize(864, 611)
+        banxingshengchengshuju.resize(1200, 900)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/icons/icons/板形生成数据建模.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        banxingshengchengshuju.setWindowIcon(icon)
         self.horizontalLayout = QtWidgets.QHBoxLayout(banxingshengchengshuju)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.NavigationBar = NavigationBar(banxingshengchengshuju)
@@ -26,12 +29,15 @@ class Ui_板形生成数据建模(object):
         self.stackedWidget = QtWidgets.QStackedWidget(banxingshengchengshuju)
         self.stackedWidget.setObjectName("stackedWidget")
         self.existPage = MainWindowC2()
+        # self.existPage = QtWidgets.QWidget()
         self.existPage.setObjectName("existPage")
         self.stackedWidget.addWidget(self.existPage)
         self.classificationPage = MainWindowC()
+        # self.classificationPage = QtWidgets.QWidget()
         self.classificationPage.setObjectName("classificationPage")
         self.stackedWidget.addWidget(self.classificationPage)
         self.regressionPage = MainWindow()
+        # self.regressionPage = QtWidgets.QWidget()
         self.regressionPage.setObjectName("regressionPage")
         self.stackedWidget.addWidget(self.regressionPage)
         self.horizontalLayout.addWidget(self.stackedWidget)
@@ -43,5 +49,5 @@ class Ui_板形生成数据建模(object):
 
     def retranslateUi(self, banxingshengchengshuju):
         _translate = QtCore.QCoreApplication.translate
-        banxingshengchengshuju.setWindowTitle(_translate("banxingshengchengshuju", "Form"))
+        banxingshengchengshuju.setWindowTitle(_translate("banxingshengchengshuju", "板形生成数据建模"))
 from qfluentwidgets import NavigationBar

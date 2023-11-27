@@ -21,77 +21,77 @@ class Ui_LoginWindow(object):
         self.widget = QtWidgets.QWidget(LoginWindow)
         self.widget.setGeometry(QtCore.QRect(0, 0, 800, 450))
         self.widget.setStyleSheet("QPushButton#login_pushButton {\n"
-"    background-color: qlineargradient(spread: pad, x1: 0, y1: 0.505682, x2: 1, y2: 0.477, stop: 0 rgba(11, 131, 120, 219), stop: 1 rgba(85, 98, 112, 226));\n"
-"    color: rgba(255, 255, 255, 210);\n"
-"    border-radius: 5px;\n"
-"}\n"
-"\n"
-"QPushButton#login_pushButton:hover {\n"
-"    background-color: qlineargradient(spread: pad, x1: 0, y1: 0.505682, x2: 1, y2: 0.477, stop: 0 rgba(150, 123, 1111, 219), stop: 1 rgba(85, 81, 84, 226));\n"
-"}\n"
-"\n"
-"QPushButton#entry_pushButton {\n"
-"border: none; /* 这里设置了无边框 */\n"
-"}\n"
-"\n"
-"\n"
-"QPushButton#login_pushButton:pressed {\n"
-"    padding-left: 5px;\n"
-"    padding-top: 5px;\n"
-"    background-color: rgba(150, 123, 111, 255);\n"
-"}\n"
-"\n"
-"QPushButton#forget_password_pushButton,\n"
-"QPushButton#register_pushButton,\n"
-"QPushButton#mysql_pushButton {\n"
-"    background-color: rgba(0, 0, 0, 0);\n"
-"    border: none;\n"
-"    border-bottom: 1px solid rgb(179, 179, 179);\n"
-"    color: rgba(0, 0, 0, 240);\n"
-"}\n"
-"\n"
-"QPushButton#github_pushButton,\n"
-"QPushButton#phone_pushButton,\n"
-"QPushButton#email_pushButton {\n"
-"    background-color: rgba(0, 0, 0, 0);\n"
-"    color: rgba(85, 98, 112, 255);\n"
-"}\n"
-"\n"
-"QPushButton#github_pushButton:hover,\n"
-"QPushButton#phone_pushButton:hover,\n"
-"QPushButton#email_pushButton:hover {\n"
-"    color: rgba(131, 96, 53, 255);\n"
-"}\n"
-"\n"
-"QPushButton#github_pushButton:pressed,\n"
-"QPushButton#phone_pushButton:pressed,\n"
-"QPushButton#email_pushButton:pressed {\n"
-"    padding-left: 5px;\n"
-"    padding-top: 5px;\n"
-"    color: rgba(91, 88, 53, 255);\n"
-"}\n"
-"\n"
-"QPushButton#close_pushButton{\n"
-" background-color: #ce5137;\n"
-" border-radius:10px;\n"
-"}\n"
-"\n"
-"QPushButton#close_pushButton:hover{\n"
-" background-size: cover;\n"
-" background-image: url(:/icons/icons/close.svg);\n"
-"}\n"
-"\n"
-"QPushButton#min_pushButton{\n"
-" background-color: #a1c661;\n"
-" border-radius:10px;\n"
-"}\n"
-"\n"
-"QPushButton#min_pushButton:hover{\n"
-" background-size: cover;\n"
-" background-image: url(:/icons/icons/minimize.svg);\n"
-"}\n"
-"\n"
-"")
+                                  "    background-color: qlineargradient(spread: pad, x1: 0, y1: 0.505682, x2: 1, y2: 0.477, stop: 0 rgba(11, 131, 120, 219), stop: 1 rgba(85, 98, 112, 226));\n"
+                                  "    color: rgba(255, 255, 255, 210);\n"
+                                  "    border-radius: 5px;\n"
+                                  "}\n"
+                                  "\n"
+                                  "QPushButton#login_pushButton:hover {\n"
+                                  "    background-color: qlineargradient(spread: pad, x1: 0, y1: 0.505682, x2: 1, y2: 0.477, stop: 0 rgba(150, 123, 1111, 219), stop: 1 rgba(85, 81, 84, 226));\n"
+                                  "}\n"
+                                  "\n"
+                                  "QPushButton#entry_pushButton {\n"
+                                  "border: none; /* 这里设置了无边框 */\n"
+                                  "}\n"
+                                  "\n"
+                                  "\n"
+                                  "QPushButton#login_pushButton:pressed {\n"
+                                  "    padding-left: 5px;\n"
+                                  "    padding-top: 5px;\n"
+                                  "    background-color: rgba(150, 123, 111, 255);\n"
+                                  "}\n"
+                                  "\n"
+                                  "QPushButton#forget_password_pushButton,\n"
+                                  "QPushButton#register_pushButton,\n"
+                                  "QPushButton#mysql_pushButton {\n"
+                                  "    background-color: rgba(0, 0, 0, 0);\n"
+                                  "    border: none;\n"
+                                  "    border-bottom: 1px solid rgb(179, 179, 179);\n"
+                                  "    color: rgba(0, 0, 0, 240);\n"
+                                  "}\n"
+                                  "\n"
+                                  "QPushButton#github_pushButton,\n"
+                                  "QPushButton#phone_pushButton,\n"
+                                  "QPushButton#email_pushButton {\n"
+                                  "    background-color: rgba(0, 0, 0, 0);\n"
+                                  "    color: rgba(85, 98, 112, 255);\n"
+                                  "}\n"
+                                  "\n"
+                                  "QPushButton#github_pushButton:hover,\n"
+                                  "QPushButton#phone_pushButton:hover,\n"
+                                  "QPushButton#email_pushButton:hover {\n"
+                                  "    color: rgba(131, 96, 53, 255);\n"
+                                  "}\n"
+                                  "\n"
+                                  "QPushButton#github_pushButton:pressed,\n"
+                                  "QPushButton#phone_pushButton:pressed,\n"
+                                  "QPushButton#email_pushButton:pressed {\n"
+                                  "    padding-left: 5px;\n"
+                                  "    padding-top: 5px;\n"
+                                  "    color: rgba(91, 88, 53, 255);\n"
+                                  "}\n"
+                                  "\n"
+                                  "QPushButton#close_pushButton{\n"
+                                  " background-color: #ce5137;\n"
+                                  " border-radius:10px;\n"
+                                  "}\n"
+                                  "\n"
+                                  "QPushButton#close_pushButton:hover{\n"
+                                  " background-size: cover;\n"
+                                  " background-image: url(:/icons/icons/close.svg);\n"
+                                  "}\n"
+                                  "\n"
+                                  "QPushButton#min_pushButton{\n"
+                                  " background-color: #a1c661;\n"
+                                  " border-radius:10px;\n"
+                                  "}\n"
+                                  "\n"
+                                  "QPushButton#min_pushButton:hover{\n"
+                                  " background-size: cover;\n"
+                                  " background-image: url(:/icons/icons/minimize.svg);\n"
+                                  "}\n"
+                                  "\n"
+                                  "")
         self.widget.setObjectName("widget")
         self.label_5 = QtWidgets.QLabel(self.widget)
         self.label_5.setGeometry(QtCore.QRect(590, 60, 180, 40))
@@ -133,7 +133,7 @@ class Ui_LoginWindow(object):
         self.label_4 = QtWidgets.QLabel(self.widget)
         self.label_4.setGeometry(QtCore.QRect(560, 10, 240, 431))
         self.label_4.setStyleSheet("background-color:rgba(255,255,255,255);\n"
-"")
+                                   "")
         self.label_4.setText("")
         self.label_4.setObjectName("label_4")
         self.close_pushButton = QtWidgets.QPushButton(self.widget)
@@ -153,10 +153,10 @@ class Ui_LoginWindow(object):
         font.setPointSize(15)
         self.password_lineEdit.setFont(font)
         self.password_lineEdit.setStyleSheet("background-color:rgba(0,0,0,0);\n"
-"border:none;\n"
-"border-bottom:2px solid rgba(46,82,101,200);\n"
-"color:rgba(0,0,0,240);\n"
-"padding-bottom:7px;")
+                                             "border:none;\n"
+                                             "border-bottom:2px solid rgba(46,82,101,200);\n"
+                                             "color:rgba(0,0,0,240);\n"
+                                             "padding-bottom:7px;")
         self.password_lineEdit.setEchoMode(QtWidgets.QLineEdit.Password)
         self.password_lineEdit.setObjectName("password_lineEdit")
         self.entry_pushButton = QtWidgets.QPushButton(self.widget)
@@ -174,11 +174,13 @@ class Ui_LoginWindow(object):
         self.label = QtWidgets.QLabel(self.widget)
         self.label.setGeometry(QtCore.QRect(40, 10, 521, 431))
         self.label.setStyleSheet("image: url(:/images/img/combination.jpg);\n"
-"background-color: rgb(255, 255, 255);")
+                                 "background-color: rgb(255, 255, 255);")
         self.label.setText("")
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(self.widget)
-        self.label_2.setGeometry(QtCore.QRect(620, 410, 171, 31))
+        self.label_2.setGeometry(QtCore.QRect(580, 410, 220, 31))
+        self.label_2.setMinimumSize(QtCore.QSize(220, 0))
+        self.label_2.setMaximumSize(QtCore.QSize(220, 16777215))
         self.label_2.setStyleSheet("font: 10pt \"Consolas\";")
         self.label_2.setAlignment(QtCore.Qt.AlignCenter)
         self.label_2.setObjectName("label_2")
@@ -203,10 +205,10 @@ class Ui_LoginWindow(object):
         font.setPointSize(15)
         self.user_name_lineEdit.setFont(font)
         self.user_name_lineEdit.setStyleSheet("background-color:rgba(0,0,0,0);\n"
-"border:none;\n"
-"border-bottom:2px solid rgba(46,82,101,200);\n"
-"color:rgba(0,0,0,240);\n"
-"padding-bottom:7px;")
+                                              "border:none;\n"
+                                              "border-bottom:2px solid rgba(46,82,101,200);\n"
+                                              "color:rgba(0,0,0,240);\n"
+                                              "padding-bottom:7px;")
         self.user_name_lineEdit.setObjectName("user_name_lineEdit")
         self.register_pushButton = QtWidgets.QPushButton(self.widget)
         self.register_pushButton.setGeometry(QtCore.QRect(690, 310, 75, 23))
@@ -261,7 +263,7 @@ class Ui_LoginWindow(object):
         self.label_3 = QtWidgets.QLabel(self.widget)
         self.label_3.setGeometry(QtCore.QRect(0, 10, 81, 431))
         self.label_3.setStyleSheet("border-top-left-radius:50px;\n"
-"background-color: rgb(255, 255, 255);")
+                                   "background-color: rgb(255, 255, 255);")
         self.label_3.setText("")
         self.label_3.setObjectName("label_3")
         self.label_3.raise_()
@@ -269,7 +271,6 @@ class Ui_LoginWindow(object):
         self.close_pushButton.raise_()
         self.password_lineEdit.raise_()
         self.label.raise_()
-        self.label_2.raise_()
         self.forget_password_pushButton.raise_()
         self.user_name_lineEdit.raise_()
         self.register_pushButton.raise_()
@@ -281,6 +282,7 @@ class Ui_LoginWindow(object):
         self.login_pushButton.raise_()
         self.label_5.raise_()
         self.entry_pushButton.raise_()
+        self.label_2.raise_()
 
         self.retranslateUi(LoginWindow)
         QtCore.QMetaObject.connectSlotsByName(LoginWindow)
@@ -290,11 +292,10 @@ class Ui_LoginWindow(object):
         LoginWindow.setWindowTitle(_translate("LoginWindow", "登录界面"))
         self.label_5.setText(_translate("LoginWindow", "登录界面"))
         self.login_pushButton.setText(_translate("LoginWindow", "登录"))
-
         self.password_lineEdit.setPlaceholderText(_translate("LoginWindow", "密码"))
         self.entry_pushButton.setText(_translate("LoginWindow", "直接进入"))
         self.label_2.setText(_translate("LoginWindow", "designed by MeZhou group"))
-        self.forget_password_pushButton.setText(_translate("LoginWindow", "忘记密码？"))
+        self.forget_password_pushButton.setText(_translate("LoginWindow", "忘记密码"))
         self.user_name_lineEdit.setPlaceholderText(_translate("LoginWindow", "用户名"))
         self.register_pushButton.setText(_translate("LoginWindow", "用户注册"))
         self.mysql_pushButton.setText(_translate("LoginWindow", "数据库"))
