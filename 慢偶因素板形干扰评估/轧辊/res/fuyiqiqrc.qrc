@@ -1,0 +1,7 @@
+<RCC>
+  <qresource/>
+  <qresource prefix="pic">
+    <file>guipictures/ustb校徽文字.png</file>
+    <file>guipictures/ustb校徽.png</file>
+  </qresource>
+</RCC>

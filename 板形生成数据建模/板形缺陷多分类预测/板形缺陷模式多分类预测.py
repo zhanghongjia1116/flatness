@@ -12,10 +12,10 @@ from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QMainWindow, QMessageBox, QFileDialog
 from matplotlib import pyplot as plt
 from sklearn.metrics import confusion_matrix
-from .myplot import MyFigure
+from 板形生成数据建模.板形缺陷多分类预测.myplot import MyFigure
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
 
-from .Ui_板形缺陷模式多分类预测 import Ui_MainWindowC
+from 板形生成数据建模.板形缺陷多分类预测.Ui_板形缺陷模式多分类预测 import Ui_MainWindowC
 import sys
 
 
@@ -281,7 +281,8 @@ class MainWindowC(QMainWindow, Ui_MainWindowC):
                 base_path = os.path.abspath(".")
             return os.path.join(base_path, relative_path)
 
-        print(resource_path('板形生成数据建模/板形缺陷多分类预测\\多分类模型\duofenlei_%s.m' % self.comboBox.currentText()))
+        print(resource_path(
+            '板形生成数据建模/板形缺陷多分类预测\\多分类模型\duofenlei_%s.m' % self.comboBox.currentText()))
         try:
             try:
                 self.comboBox_2.setVisible(True)
@@ -291,7 +292,8 @@ class MainWindowC(QMainWindow, Ui_MainWindowC):
             self.comboBox_2.addItem('请选择想要评估的钢卷号')
             self.comboBox_2.addItems(self.juan_hao)
             model = joblib.load(
-                resource_path('板形生成数据建模/板形缺陷多分类预测\\多分类模型\duofenlei_%s.m' % self.comboBox.currentText()))
+                resource_path(
+                    '板形生成数据建模/板形缺陷多分类预测\\多分类模型\duofenlei_%s.m' % self.comboBox.currentText()))
             self.C_pre = [model.predict(one) for one in self.xtest]
             self.textEdit.setText('已完成预测！')
         except:

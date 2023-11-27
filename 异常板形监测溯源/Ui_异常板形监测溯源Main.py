@@ -12,6 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from .PCA监测.PCA_GUI import MainWindow as PCA_MainWindow
 from .统计溯源.statistical_GUI import MainWindow as statistical_MainWindow
 
+
 class Ui_Monitor(object):
     def setupUi(self, Monitor):
         Monitor.setObjectName("Monitor")
@@ -28,18 +29,13 @@ class Ui_Monitor(object):
         self.stackedWidget.setObjectName("stackedWidget")
         self.PCAPage = PCA_MainWindow()
         self.PCAPage.setObjectName("PCAPage")
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.PCAPage)
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.stackedWidget.addWidget(self.PCAPage)
         self.statisticsPage = statistical_MainWindow()
         self.statisticsPage.setObjectName("statisticsPage")
-        self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.statisticsPage)
-        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
         self.stackedWidget.addWidget(self.statisticsPage)
         self.horizontalLayout.addWidget(self.stackedWidget)
         self.horizontalLayout.setStretch(0, 1)
         self.horizontalLayout.setStretch(1, 20)
-
         self.retranslateUi(Monitor)
         self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(Monitor)
@@ -47,5 +43,7 @@ class Ui_Monitor(object):
     def retranslateUi(self, Monitor):
         _translate = QtCore.QCoreApplication.translate
         Monitor.setWindowTitle(_translate("Monitor", "异常板形监测溯源"))
+
+
 from qfluentwidgets import NavigationBar
 from qtResource import resource_rc

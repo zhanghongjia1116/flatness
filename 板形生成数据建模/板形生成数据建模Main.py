@@ -9,7 +9,7 @@ from qfluentwidgets import NavigationItemPosition, FluentIconBase, Theme, getIco
 from qfluentwidgets import FluentIcon as FIF
 from qtResource.MyIcon import MyIcon
 
-from .Ui_板形生成数据建模Main import Ui_板形生成数据建模
+from 板形生成数据建模.Ui_板形生成数据建模Main import Ui_板形生成数据建模
 
 
 class 板形生成数据建模(Ui_板形生成数据建模, QWidget):

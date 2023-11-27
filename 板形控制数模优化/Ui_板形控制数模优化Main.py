@@ -34,8 +34,6 @@ class Ui_banxingkongzhishumo(object):
         self.stackedWidget.addWidget(self.mechanismPage)
         self.feedbackControlPage = 反馈控制策略()
         self.feedbackControlPage.setObjectName("feedbackControlPage")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.feedbackControlPage)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.stackedWidget.addWidget(self.feedbackControlPage)
         self.designPage = QtWidgets.QWidget()
         self.designPage.setObjectName("designPage")

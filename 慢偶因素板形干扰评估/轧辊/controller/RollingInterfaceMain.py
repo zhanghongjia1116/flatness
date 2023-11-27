@@ -11,10 +11,13 @@ from PyQt5.QtGui import QStandardItemModel, QStandardItem, QTextCursor
 from PyQt5.QtWidgets import QWidget, QDialog, QMessageBox, QTableWidgetItem, QFileDialog, QApplication
 from my_utils.prompt import showMessageBox
 from my_utils.zhhj_data import 轧辊数据
-from ..view.Ui_RollingInterfaceMain import Ui_RollingInterfaceMain
-from ..controller.辊类选择界面 import RollingChoose
-from ..controller.选择轧辊类型警告界面 import WarningDialog
-from ..controller.轧辊带钢索引查询界面 import RollingSearch
+from 慢偶因素板形干扰评估.轧辊.view.Ui_RollingInterfaceMain import Ui_RollingInterfaceMain
+from 慢偶因素板形干扰评估.轧辊.controller.辊类选择界面 import RollingChoose
+from 慢偶因素板形干扰评估.轧辊.controller.选择轧辊类型警告界面 import WarningDialog
+from 慢偶因素板形干扰评估.轧辊.controller.轧辊带钢索引查询界面 import RollingSearch
+from 慢偶因素板形干扰评估.轧辊.controller.轧制时间重量总览 import RollingInfo
+from 慢偶因素板形干扰评估.轧辊.controller.轧辊参数总览 import RollerInfo
+from 慢偶因素板形干扰评估.轧辊.controller.IU信息统计 import IUStatistics
 
 
 class RollingInterfaceMain(QWidget, Ui_RollingInterfaceMain):
@@ -184,3 +187,18 @@ class RollingInterfaceMain(QWidget, Ui_RollingInterfaceMain):
     def on_searchPushButton_clicked(self):
         self.searchWindow = RollingSearch()
         self.searchWindow.show()
+
+    @pyqtSlot()
+    def on_rollingInfoPushButton_clicked(self):
+        self.rollingInfoWindow = RollingInfo()
+        self.rollingInfoWindow.show()
+
+    @pyqtSlot()
+    def on_rollerInfoPushButton_clicked(self):
+        self.rollerInfoWindow = RollerInfo()
+        self.rollerInfoWindow.show()
+
+    @pyqtSlot()
+    def on_iuInfoPushButton_clicked(self):
+        self.iuInfoWindow = IUStatistics()
+        self.iuInfoWindow.show()

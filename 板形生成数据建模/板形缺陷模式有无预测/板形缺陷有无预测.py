@@ -12,8 +12,8 @@ from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QMainWindow, QMessageBox, QFileDialog
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
 from sklearn.metrics import confusion_matrix
-from .myplot import MyFigure
-from .Ui_板形缺陷有无预测 import Ui_MainWindowC2
+from 板形生成数据建模.板形缺陷模式有无预测.myplot import MyFigure
+from 板形生成数据建模.板形缺陷模式有无预测.Ui_板形缺陷有无预测 import Ui_MainWindowC2
 import sys
 
 
@@ -270,12 +270,7 @@ class MainWindowC2(QMainWindow, Ui_MainWindowC2):
         """
 
         # 生成资源文件目录访问路径 相对路径
-        def resource_path(relative_path):
-            if getattr(sys, 'frozen', False):  # 是否Bundle Resource 捆绑资源
-                base_path = sys._MEIPASS
-            else:
-                base_path = os.path.abspath(".")
-            return os.path.join(base_path, relative_path)
+        model_path = f"{os.path.dirname(__file__)}/二分类模型"
 
         try:
             try:
@@ -285,8 +280,7 @@ class MainWindowC2(QMainWindow, Ui_MainWindowC2):
             self.comboBox_2.clear()
             self.comboBox_2.addItem('请选择想要评估的钢卷号')
             self.comboBox_2.addItems(self.juan_hao)
-            model = joblib.load(
-                resource_path('板形生成数据建模/板形缺陷模式有无预测\\二分类模型\erfenlei_%s.m' % self.comboBox.currentText()))
+            model = joblib.load(f'{model_path}\erfenlei_{self.comboBox.currentText()}.m')
             self.C_pre = [model.predict(one) for one in self.xtest]
             self.textEdit.setText('已完成预测！')
 

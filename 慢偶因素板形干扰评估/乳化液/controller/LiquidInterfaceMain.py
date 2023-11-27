@@ -3,7 +3,6 @@ import re
 import sys
 import time
 import traceback
-
 import numpy as np
 import pandas as pd
 from PyQt5.QtCore import pyqtSlot, QThread, pyqtSignal, Qt, QMutex, QEvent, QAbstractTableModel, QEventLoop, QTimer, \

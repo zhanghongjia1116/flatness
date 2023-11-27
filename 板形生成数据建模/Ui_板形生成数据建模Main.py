@@ -11,7 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from .板形缺陷模式有无预测.板形缺陷有无预测 import MainWindowC2
 from .板形缺陷多分类预测.板形缺陷模式多分类预测 import MainWindowC
-from .板形缺陷定量回归预测.板形缺陷定量回归预测 import mainWindow
+from .板形缺陷定量回归预测.板形缺陷定量回归预测 import MainWindow
 
 
 class Ui_板形生成数据建模(object):
@@ -31,7 +31,7 @@ class Ui_板形生成数据建模(object):
         self.classificationPage = MainWindowC()
         self.classificationPage.setObjectName("classificationPage")
         self.stackedWidget.addWidget(self.classificationPage)
-        self.regressionPage = mainWindow()
+        self.regressionPage = MainWindow()
         self.regressionPage.setObjectName("regressionPage")
         self.stackedWidget.addWidget(self.regressionPage)
         self.horizontalLayout.addWidget(self.stackedWidget)

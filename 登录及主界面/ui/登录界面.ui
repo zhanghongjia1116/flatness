@@ -178,7 +178,7 @@ QPushButton#min_pushButton:hover{
      <string>登录</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="github_pushButton_2">
+   <widget class="QPushButton" name="github_pushButton">
     <property name="geometry">
      <rect>
       <x>610</x>
@@ -518,7 +518,7 @@ padding-bottom:7px;</string>
      <string>数据库</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="phone_pushButton_2">
+   <widget class="QPushButton" name="phone_pushButton">
     <property name="geometry">
      <rect>
       <x>659</x>
@@ -586,7 +586,7 @@ padding-bottom:7px;</string>
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="email_pushButton_2">
+   <widget class="QPushButton" name="email_pushButton">
     <property name="geometry">
      <rect>
       <x>708</x>
@@ -650,10 +650,10 @@ background-color: rgb(255, 255, 255);</string>
    <zorder>user_name_lineEdit</zorder>
    <zorder>register_pushButton</zorder>
    <zorder>mysql_pushButton</zorder>
-   <zorder>phone_pushButton_2</zorder>
+   <zorder>phone_pushButton</zorder>
    <zorder>min_pushButton</zorder>
-   <zorder>email_pushButton_2</zorder>
-   <zorder>github_pushButton_2</zorder>
+   <zorder>email_pushButton</zorder>
+   <zorder>github_pushButton</zorder>
    <zorder>login_pushButton</zorder>
    <zorder>label_5</zorder>
    <zorder>entry_pushButton</zorder>

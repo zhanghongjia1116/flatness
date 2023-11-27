@@ -12,6 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from .各轧机CVC辊形评价.CVC辊形评价 import CVCEvaluate
 from .各轧机支持辊辊形评价.BUR辊形评价 import BUREvaluate
 from .动态控制能力评价.动态控制能力评价 import DynamicControl
+from .预设定值评价.预设定值评价 import PresetEvaluate
 
 
 class Ui_FlatnessControlAbility(object):
@@ -28,7 +29,7 @@ class Ui_FlatnessControlAbility(object):
         self.horizontalLayout.addWidget(self.NavigationBar)
         self.stackedWidget = QtWidgets.QStackedWidget(FlatnessControlAbility)
         self.stackedWidget.setObjectName("stackedWidget")
-        self.preSetPage = QtWidgets.QWidget()
+        self.preSetPage = PresetEvaluate()
         self.preSetPage.setObjectName("preSetPage")
         self.stackedWidget.addWidget(self.preSetPage)
         self.dynamicControlPage = DynamicControl()
@@ -36,13 +37,11 @@ class Ui_FlatnessControlAbility(object):
         self.stackedWidget.addWidget(self.dynamicControlPage)
         self.CVCPage = CVCEvaluate()
         self.CVCPage.setObjectName("CVCPage")
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.CVCPage)
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+
         self.stackedWidget.addWidget(self.CVCPage)
         self.BURPage = BUREvaluate()
         self.BURPage.setObjectName("BURPage")
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.BURPage)
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+
         self.stackedWidget.addWidget(self.BURPage)
         self.horizontalLayout.addWidget(self.stackedWidget)
         self.horizontalLayout.setStretch(0, 1)
