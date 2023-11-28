@@ -9,7 +9,8 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from .反馈控制策略仿真分析和优化.反馈控制策略仿真分析和优化 import 反馈控制策略
+from 板形控制数模优化.反馈控制策略仿真分析和优化.反馈控制策略仿真分析和优化 import 反馈控制策略
+from 板形控制数模优化.表格自学习.表格自学习 import 表格自学习
 
 
 class Ui_banxingkongzhishumo(object):
@@ -26,7 +27,7 @@ class Ui_banxingkongzhishumo(object):
         self.horizontalLayout.addWidget(self.NavigationBar)
         self.stackedWidget = QtWidgets.QStackedWidget(banxingkongzhishumo)
         self.stackedWidget.setObjectName("stackedWidget")
-        self.tablePage = QtWidgets.QWidget()
+        self.tablePage = 表格自学习()
         self.tablePage.setObjectName("tablePage")
         self.stackedWidget.addWidget(self.tablePage)
         self.mechanismPage = QtWidgets.QWidget()

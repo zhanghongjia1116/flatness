@@ -95,7 +95,7 @@
            <item>
             <widget class="BodyLabel" name="BodyLabel">
              <property name="text">
-              <string>       以softmax函数将IU值与设定值到聚类中心的距离分别做映射，得到系数1.</string>
+              <string>       以sigmoid函数变形将IU值与设定值到聚类中心的距离分别做映射，得到评价系数1.</string>
              </property>
              <property name="wordWrap">
               <bool>true</bool>
@@ -135,7 +135,7 @@
            <item>
             <widget class="CaptionLabel" name="CaptionLabel">
              <property name="text">
-              <string>比例系数</string>
+              <string>权重系数</string>
              </property>
             </widget>
            </item>
@@ -228,7 +228,7 @@
            <item>
             <widget class="BodyLabel" name="BodyLabel_2">
              <property name="text">
-              <string>        根据有限元仿真给出的机组比例凸度值变化程度进行评价得到系数2.</string>
+              <string>        根据有限元仿真给出的机组比例凸度值变化程度进行评价得到评价系数2.</string>
              </property>
              <property name="wordWrap">
               <bool>true</bool>
@@ -329,7 +329,7 @@
               </size>
              </property>
              <property name="text">
-              <string>       根据两个弯与窜辊的比值进行评价得到系数3.</string>
+              <string>       根据两个弯与窜辊的比值进行评价得到评价系数3.</string>
              </property>
              <property name="wordWrap">
               <bool>true</bool>
@@ -369,7 +369,7 @@
            <item>
             <widget class="CaptionLabel" name="CaptionLabel_3">
              <property name="text">
-              <string>比例系数</string>
+              <string>权重系数</string>
              </property>
             </widget>
            </item>

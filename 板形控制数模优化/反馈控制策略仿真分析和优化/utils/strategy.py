@@ -75,17 +75,17 @@ def free_chazhi(row):
             new_row[i] = row[0] - (row[1] - row[0]) * (before_pot[0] - after_pot[0]) / (before_pot[1] - before_pot[0])
         elif i == 79:
             new_row[i] = row[-1] + (row[-1] - row[-2]) * (after_pot[-1] - before_pot[-1]) / (
-                        before_pot[-1] - before_pot[-2])
+                    before_pot[-1] - before_pot[-2])
         else:
             if after_pot[i] > before_pot[k]:
                 k += 1
                 new_row[i] = ((row[k] - row[k - 1]) * (after_pot[i] - before_pot[k - 1])) / (
-                            before_pot[k] - before_pot[k - 1]) + row[k - 1]
+                        before_pot[k] - before_pot[k - 1]) + row[k - 1]
             elif after_pot[i] == before_pot[k]:
                 new_row[i] = row[k]
             elif after_pot[i] < before_pot[k]:
                 new_row[i] = ((row[k] - row[k - 1]) * (after_pot[i] - before_pot[k - 1])) / (
-                            before_pot[k] - before_pot[k - 1]) + row[k - 1]
+                        before_pot[k] - before_pot[k - 1]) + row[k - 1]
     return new_row, before_pot, after_pot
 
 
@@ -452,7 +452,6 @@ def figure_3D2(flat_3D, ax, name, fig):
     x_major_locator = MultipleLocator(0.5)  # 设置刻度值间隔为2
     ax.xaxis.set_major_locator(x_major_locator)
     ax.view_init(15, -70)
-    plt.show()
 
 
 def plot_line(flat, flat_new, zhenshu, ax1, name, figure):

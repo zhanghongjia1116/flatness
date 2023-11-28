@@ -31,11 +31,27 @@ def softmax(vector):
     return softmax_vector
 
 
+def sigmoid_scaling(data):
+    max_val = max(data)
+    scaled_data = 1 / (1 + np.exp(-np.array(data) / max_val))
+    return scaled_data
+
+
+def min_max_scaling(data):
+    min_val = min(data)
+    max_val = max(data)
+
+    scaled_data = [(x - min_val) / (max_val - min_val) for x in data]
+
+    return scaled_data
+
+
 class PresetEvaluate(QWidget, Ui_PresetEvaluate):
     def __init__(self, parent=None):
         super(PresetEvaluate, self).__init__(parent)
         self.setupUi(self)
         self.data = pd.read_pickle(f"{os.path.dirname(__file__)}/data/预设定值初值表.pkl")
+        self.standard = pd.read_pickle(f"{os.path.dirname(__file__)}/data/standard_value_scaled.pkl")
         self.CalendarPicker.dateChanged.connect(self.display_data)
         self.columns = ['B1 WRB ref value start',
                         'B1 IRB ref value start',
@@ -63,10 +79,10 @@ class PresetEvaluate(QWidget, Ui_PresetEvaluate):
         proportion1 = float(self.proportion_1.text())
         proportion3 = float(self.proportion_3.text())
         if proportion1 > 1 or proportion1 < 0 or proportion3 > 1 or proportion3 < 0:
-            showMessageBox("权重值应在0-1之间", self)
+            showMessageBox("提示", "权重值应在0-1之间", self)
             return
         if strip_num not in self.data['入口材料号'].values:
-            showMessageBox("钢卷号不存在", self)
+            showMessageBox("提示", "钢卷号不存在", self)
             return
         s1 = self.coefficient_1(strip_num, proportion1)
         s2 = self.coefficient_2(strip_num)
@@ -75,21 +91,21 @@ class PresetEvaluate(QWidget, Ui_PresetEvaluate):
         self.coefficientLineEdit_3.setText(str(s3))
 
     def coefficient_1(self, strip: str, proportion=0.5):
-        policyNo = self.data[self.data['入口材料号'] == strip]['policyNo'].values[0]
         index = self.data[self.data['入口材料号'] == strip].index[0]
-        singlePolicyData = self.data[self.data['policyNo'] == policyNo]
-        good_strip = singlePolicyData[singlePolicyData['50米均值'] < 3]
-        preset = singlePolicyData.loc[:, self.columns]
-        good_preset = good_strip.loc[:, self.columns]
-        IU = singlePolicyData.loc[:, '50米均值']
-        normIU = softmax(IU)
-        presetValueMean = good_preset.mean()
-        distance = np.sqrt(np.square(preset - presetValueMean).sum(axis=1))
-        normPrest = softmax(distance)
-        # 计算欧氏距离
-        s1 = proportion * normPrest + (1 - proportion) * normIU
+        IU_series = self.data['50米均值']
+        scaledIU = IU_series.apply(lambda x: 1 / (1 + np.exp((x - 10))))
 
-        return np.round(s1[index], 8)
+        policyNo = self.data.loc[index, 'policyNo']
+        singlePolicyData = self.data[self.data['policyNo'] == policyNo].reset_index()
+        index_single = singlePolicyData[singlePolicyData['入口材料号'] == strip].index[0]
+        standardValue = self.standard[self.standard['ADIRNO_AI'] == policyNo].iloc[0, 1:].to_numpy()
+        preset: pd.DataFrame = singlePolicyData.loc[:, self.columns].to_numpy()
+        distance = np.sqrt(np.square(preset - standardValue).sum(axis=1))
+
+        # 计算欧氏距离
+        s1 = proportion * scaledIU[index] + (1 - proportion) * distance[index_single]
+
+        return np.round(s1, 8)
 
     def coefficient_2(self, strip: str, proportion=0.5):
         self.coefficientLineEdit_2.setText('亟待开发')

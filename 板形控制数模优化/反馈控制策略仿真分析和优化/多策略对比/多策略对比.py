@@ -7,8 +7,8 @@ Module implementing SinglePolicyCompare.
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QMainWindow
 import pandas as pd
-from .Ui_多策略对比 import Ui_MainWindow
-from ..utils import strategy
+from 板形控制数模优化.反馈控制策略仿真分析和优化.多策略对比.Ui_多策略对比 import Ui_MainWindow
+from 板形控制数模优化.反馈控制策略仿真分析和优化.utils import strategy
 from PyQt5.QtWidgets import QFileDialog, QMessageBox
 from PyQt5 import QtWidgets
 import os
@@ -174,35 +174,36 @@ class 多策略对比(QMainWindow, Ui_MainWindow):
             self.graphicsView_tuxing.setVisible(False)
             self.figure = Figure()
             self.canvas = FigureCanvas(self.figure)
-            self.gridLayout_9.addWidget(self.canvas)
-            self.gridLayout_9.addWidget(NavigationToolbar(self.canvas, self))
             self.ax = self.figure.add_subplot(111, projection='3d')
             self.nameo = '原始板形'
             strategy.figure_3D2(self.flat_data, self.ax, self.nameo, self.figure)
+            self.gridLayout_9.addWidget(self.canvas)
+            self.gridLayout_9.addWidget(NavigationToolbar(self.canvas, self))
 
             self.graphicsView_tuxing_2.setVisible(False)
             self.figure = Figure()
             self.canvas = FigureCanvas(self.figure)
-            self.gridLayout_10.addWidget(self.canvas)
-            self.gridLayout_10.addWidget(NavigationToolbar(self.canvas, self))
             self.ax = self.figure.add_subplot(111, projection='3d')
             strategy.figure_3D2(self.row_1, self.ax, self.sta1, self.figure)
+            self.gridLayout_10.addWidget(self.canvas)
+            self.gridLayout_10.addWidget(NavigationToolbar(self.canvas, self))
 
             self.graphicsView_tuxing_3.setVisible(False)
             self.figure = Figure()
             self.canvas = FigureCanvas(self.figure)
-            self.gridLayout_11.addWidget(self.canvas)
-            self.gridLayout_11.addWidget(NavigationToolbar(self.canvas, self))
             self.ax = self.figure.add_subplot(111, projection='3d')
             strategy.figure_3D2(self.row_2, self.ax, self.sta2, self.figure)
+            self.gridLayout_11.addWidget(self.canvas)
+            self.gridLayout_11.addWidget(NavigationToolbar(self.canvas, self))
 
             self.graphicsView_tuxing_4.setVisible(False)
             self.figure = Figure()
             self.canvas = FigureCanvas(self.figure)
-            self.gridLayout_12.addWidget(self.canvas)
-            self.gridLayout_12.addWidget(NavigationToolbar(self.canvas, self))
             self.ax = self.figure.add_subplot(111)
             strategy.plot_line2(self.iu, self.iu1, self.iu2, self.ax, self.sta1, self.sta2, self.figure)
+            self.gridLayout_12.addWidget(self.canvas)
+            self.gridLayout_12.addWidget(NavigationToolbar(self.canvas, self))
+
         except:
             QMessageBox.information(self, '提示信息', '请先选择数据集')
             return None

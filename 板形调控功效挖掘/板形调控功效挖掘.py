@@ -102,6 +102,7 @@ class 板形调控功效挖掘(QMainWindow, Ui_RegulatoryEfficacy):
 
     # path: str
 
+
     def __init__(self, parent=None):
         """
         Constructor
@@ -170,19 +171,19 @@ class 板形调控功效挖掘(QMainWindow, Ui_RegulatoryEfficacy):
     # 回传进度条参数
     def callback(self, i):
         if i != 100:
-            self.statusLabel.setText('文件正在加载中')
+            self.statusLabel.setText('模型正在计算')
             self.pb.setValue(i)
         else:
             self.pb.setValue(i)
-            self.statusLabel.setText('文件加载成功！')
+            self.statusLabel.setText('模型计算完成！')
 
     # 回传结束信号
     def callback_done(self, i):
         self.is_done = i
         if self.is_done == 1:
-            self.statusLabel.setText('文件加载成功！')
+            self.statusLabel.setText('模型正在计算！')
         elif self.is_done == 2:
-            self.statusLabel.setText('文件加载失败！')
+            self.statusLabel.setText('模型计算完成！')
 
     def drawp(self, flag):
         self.work.disconnect()  # 断开连接，避免重复运行
@@ -243,10 +244,14 @@ class 板形调控功效挖掘(QMainWindow, Ui_RegulatoryEfficacy):
         保存结果区内容
         """
         res_path = QFileDialog.getSaveFileName(self, "ADD", os.getcwd(), "CSV Files(*.csv)")[0]
-        deg = pd.DataFrame(xishu_jdt, columns=['1次项系数', '2次项系数', '3次项系数', '4次项系数'],
+        try:
+            deg = pd.DataFrame(xishu_jdt, columns=['1次项系数', '2次项系数', '3次项系数', '4次项系数'],
                            index=['Tilt_eff', 'WRB_eff', 'IRB_eff', 'IRS_eff'])
-        deg.to_csv(res_path, index=True, encoding='gbk')
-        QMessageBox.information(self, '提示', '已导出！')
+            deg.to_csv(res_path, index=True, encoding='gbk')
+            QMessageBox.information(self, '提示', '已导出！')
+        except Exception as e:
+            print(e)
+            QMessageBox.information(self, '提示', '导出失败！')
 
     @pyqtSlot()
     def on_pushButton_jisuanjieguo_clicked(self):

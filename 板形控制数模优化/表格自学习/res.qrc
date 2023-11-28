@@ -1,0 +1,12 @@
+<RCC>
+  <qresource prefix="images">
+    <file>doc/assets/5d57a76459232f7bd600c153dc9e7d3.png</file>
+    <file>doc/assets/image-20230711095831875.png</file>
+    <file>doc/assets/image-20230711095835442.png</file>
+    <file>doc/assets/image-20230711100555310.png</file>
+    <file>doc/assets/image-20230711100659251.png</file>
+    <file>doc/assets/image-20230711100841178.png</file>
+    <file>doc/assets/image-20230711100958555.png</file>
+    <file>doc/assets/image-20230731192829016.png</file>
+  </qresource>
+</RCC>

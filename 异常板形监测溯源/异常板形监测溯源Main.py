@@ -1,18 +1,11 @@
-import os
 import sys
-from enum import Enum
-
-import numpy as np
-import pandas as pd
-from scipy.stats import spearmanr
-from PyQt5.QtCore import pyqtSignal, QUrl, QSize, pyqtSlot
-from PyQt5.QtGui import QDesktopServices, QFont, QIcon, QPixmap, QDoubleValidator
-from PyQt5.QtWidgets import QApplication, QWidget, QFileDialog, QMessageBox
-# from matplotlib.backends.backend_qt import NavigationToolbar2QT
-from qfluentwidgets import NavigationItemPosition, FluentIconBase, Theme, getIconColor, MessageBox, Icon
+from PyQt5.QtCore import pyqtSignal
+from PyQt5.QtWidgets import QApplication, QWidget
 from qfluentwidgets import FluentIcon as FIF
+# from matplotlib.backends.backend_qt import NavigationToolbar2QT
+from qfluentwidgets import NavigationItemPosition, MessageBox
 from qtResource.MyIcon import MyIcon
-from .Ui_异常板形监测溯源Main import Ui_Monitor
+from 异常板形监测溯源.Ui_异常板形监测溯源Main import Ui_Monitor
 
 
 class 异常板形监测溯源(Ui_Monitor, QWidget):

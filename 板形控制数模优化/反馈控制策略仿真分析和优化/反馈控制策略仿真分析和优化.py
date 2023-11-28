@@ -2,7 +2,7 @@ from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout, QLabel
 from qfluentwidgets import PrimaryPushButton
 
-from .Ui_反馈控制策略仿真分析和优化 import Ui_Form
+from 板形控制数模优化.反馈控制策略仿真分析和优化.Ui_反馈控制策略仿真分析和优化 import Ui_Form
 
 
 class 反馈控制策略(QWidget, Ui_Form):
