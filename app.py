@@ -2,11 +2,11 @@ import sys
 import os
 from PyQt5.QtWidgets import QApplication
 from loguru import logger
-from 登录及主界面.controller.登录界面 import LoginWindow
-from 登录及主界面.controller.splash import SplashScreen
+from login_flatness_main.controller.login_window import LoginWindow
+from login_flatness_main.controller.splash import SplashScreen
 
 
-# from 登录及主界面.controller.flatnessMainNormal import MainWindow
+# from login_flatness_main.controller.flatnessMainNormal import MainWindow
 
 
 class App(QApplication):
