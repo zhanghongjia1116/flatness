@@ -30,7 +30,7 @@
    <item>
     <widget class="LargeTitleLabel" name="LargeTitleLabel">
      <property name="text">
-      <string>        此模块实现预设定表格的预设定值在线优化功能，为后台自动执行，禁止随意修改，若使用或修改此功能，请联系技术支持人员！</string>
+      <string>        此模块实现预设定表格的预设定机理参数在线优化功能，为后台自动执行，禁止随意修改，若使用或修改此功能，请联系技术支持人员！</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
@@ -59,8 +59,6 @@
    <header>qfluentwidgets</header>
   </customwidget>
  </customwidgets>
- <resources>
-  <include location="res.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

@@ -66,11 +66,11 @@ class MplCanvas(FigureCanvas):
         xLabels = [str(i) for i in highUniqueLevels]
         y1 = [data[data['aDirNoAi'] == i]['aDirNoAi'].count() for i in highUniqueLevels]
         y2 = [high_value_data[high_value_data['aDirNoAi'] == i]['aDirNoAi'].count() for i in highUniqueLevels]
-        self.ax.bar(xLabels, y1, label='Count')
-        self.ax.bar(xLabels, y2, label='Count (>=130)')
+        self.ax.bar(xLabels, y1, label='导入钢卷的卷数')
+        self.ax.bar(xLabels, y2, label='打满值的卷数')
         self.ax.set_xticklabels(xLabels, rotation=45)  # 设置横轴标签
-        self.ax.set_xlabel('aDirNoAi')
-        self.ax.set_ylabel('Count')
+        self.ax.set_xlabel('策略号')
+        self.ax.set_ylabel('卷数')
         # 显示数量
         for x, y in enumerate(y1):
             self.ax.text(x, y + 0.3, '%s' % y, ha='center', va='bottom')
@@ -94,7 +94,7 @@ class MplCanvas(FigureCanvas):
         # 将扇形图内部的百分比文本颜色设置为白色
         for autotext in autoTexts:
             autotext.set_color('white')
-        self.ax.set_title('打满卷的分布')
+        self.ax.set_title('打满钢卷不同策略号的分布')
         self.ax.axis('equal')
 
 

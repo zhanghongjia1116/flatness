@@ -1,14 +1,16 @@
 import os.path
+import sys
 
 import numpy as np
 import pandas as pd
 from PyQt5.QtCore import pyqtSlot
-from PyQt5.QtWidgets import QWidget
-from flatness_control_capability_evaluation.preset_evaluate.Ui_preset_evaluate import Ui_PresetEvaluate
-from my_utils.prompt import showMessageBox
-import sys
 from PyQt5.QtWidgets import QApplication
+from PyQt5.QtWidgets import QWidget
 from my_utils.display import PandasModel
+from my_utils.prompt import showMessageBox
+
+from flatness_control_capability_evaluation.preset_evaluate.Ui_preset_evaluate import Ui_PresetEvaluate
+from flatness_control_capability_evaluation.preset_evaluate.coefficient_2.coefficient import get_K
 
 
 def softmax(vector):
@@ -51,6 +53,9 @@ class PresetEvaluate(QWidget, Ui_PresetEvaluate):
         super(PresetEvaluate, self).__init__(parent)
         self.setupUi(self)
         self.data = pd.read_pickle(f"{os.path.dirname(__file__)}/data/预设定值初值表.pkl")
+        self.系数2_data = pd.read_excel(f"{os.path.dirname(__file__)}/data/待评价工况.xlsx")
+        self.data_CPL = pd.read_excel(f"{os.path.dirname(__file__)}/data/CPL.xlsx", header=None)
+        self.data_CPB = pd.read_excel(f"{os.path.dirname(__file__)}/data/CPB.xlsx", header=None)
         self.standard = pd.read_pickle(f"{os.path.dirname(__file__)}/data/standard_value_scaled.pkl")
         self.CalendarPicker.dateChanged.connect(self.display_data)
         self.columns = ['B1 WRB ref value start',
@@ -88,6 +93,7 @@ class PresetEvaluate(QWidget, Ui_PresetEvaluate):
         s2 = self.coefficient_2(strip_num)
         s3 = self.coefficient_3(strip_num, proportion3)
         self.coefficientLineEdit_1.setText(str(s1))
+        self.coefficientLineEdit_2.setText(str(s2))
         self.coefficientLineEdit_3.setText(str(s3))
 
     def coefficient_1(self, strip: str, proportion=0.5):
@@ -107,9 +113,17 @@ class PresetEvaluate(QWidget, Ui_PresetEvaluate):
 
         return np.round(s1, 8)
 
-    def coefficient_2(self, strip: str, proportion=0.5):
-        self.coefficientLineEdit_2.setText('亟待开发')
-        return 0
+    def coefficient_2(self, strip: str):
+        index = self.data[self.data['入口材料号'] == strip].index[0]
+        policyNo = self.data.loc[index, 'policyNo']
+
+        try:
+            K = get_K(policyNo, self.系数2_data, self.data_CPB, self.data_CPL)
+            return np.round(K, 8)
+        except Exception as e:
+            print(e)
+            showMessageBox("提示", f"计算系数2时发生错误：表中不包含该钢卷的策略号", self)
+            return
 
     def coefficient_3(self, strip: str, proportion=0.5):
         L = []

@@ -6,30 +6,9 @@ from PyQt5.QtWidgets import QWidget
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT
 from my_utils.display import PandasModel
 from qfluentwidgets import MessageBox
-
+from my_utils.prompt import showMessageBox
 from flatness_control_capability_evaluation.CVC_roller_shape_evaluate.Ui_CVC_evaluate import Ui_CVCEvaluate
 from flatness_control_capability_evaluation.CVC_roller_shape_evaluate.more_info import MatplotlibWidget, MplCanvas
-
-
-# class PlotCVCThread(QThread):
-#     """绘图线程"""
-#     canvasSignal = pyqtSignal(object, object)
-#
-#     def __init__(self, filter_data, high_value_data):
-#         super().__init__()
-#         self.filter_data = filter_data
-#         self.high_value_data = high_value_data
-#
-#     def run(self):
-#         leftCanvas = MplCanvas()
-#         leftCanvas.plotBarCVC(self.filter_data, self.high_value_data)
-#         leftCanvas.toolbar = NavigationToolbar2QT(leftCanvas)  # 添加toolbar
-#
-#         rightCanvas = MplCanvas()
-#         rightCanvas.plotPieCVC(self.high_value_data)
-#         rightCanvas.toolbar = NavigationToolbar2QT(rightCanvas)  # 添加toolbar
-#
-#         self.canvasSignal.emit(leftCanvas, rightCanvas)
 
 
 class CVCEvaluate(Ui_CVCEvaluate, QWidget):
@@ -46,6 +25,7 @@ class CVCEvaluate(Ui_CVCEvaluate, QWidget):
         tmp = os.path.dirname(local_path)
         if self.pageCVC_data is None:
             self.pageCVC_data = pd.read_pickle(f'{tmp}/data/CVCdata.pkl')
+        self.moreInfoPushButtonCVC.setEnabled(False)
         self.LineEditCVC.installEventFilter(self)
         self.SliderCVC.valueChanged.connect(lambda value: self.LineEditCVC.setText(str(value)))
         self.LineEditCVC.textChanged.connect(self.updateSliderCVC)
@@ -102,7 +82,10 @@ class CVCEvaluate(Ui_CVCEvaluate, QWidget):
                     (data['生产结束时刻(S11_0)'] >= start_time) & (data['生产结束时刻(S11_0)'] <= end_time)]
             else:
                 self.pageCVC_filtered_df = self.pageCVC_data
-
+            if self.pageCVC_filtered_df.empty:
+                showMessageBox("警告", "所选时间段内无数据", self)
+                self.importPushButtonCVC.setEnabled(True)
+                return
             display_data = self.pageCVC_filtered_df.copy()
             display_data.columns = ['策略号', '入口卷号', '生产结束时刻', 'CVC窜辊']
             # 为数据帧添加行号

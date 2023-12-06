@@ -9,8 +9,12 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from flatness_control_data_model_optimization.feedback_control_strategy_simulation_analysis.feedback_control_strategy_simulation_analysis import 反馈控制策略
+from flatness_control_data_model_optimization.feedback_control_strategy_simulation_analysis.feedback_control_strategy_simulation_analysis import \
+    反馈控制策略
 from flatness_control_data_model_optimization.table_learn_self.table_learn_self import 表格自学习
+from flatness_control_data_model_optimization.mechanism_online_optimization.mechanism_online_optimization import 机理在线优化
+from flatness_control_data_model_optimization.roller_shape_design.roller_shape_design import 辊形设计
+
 
 
 class Ui_banxingkongzhishumo(object):
@@ -30,13 +34,13 @@ class Ui_banxingkongzhishumo(object):
         self.tablePage = 表格自学习()
         self.tablePage.setObjectName("tablePage")
         self.stackedWidget.addWidget(self.tablePage)
-        self.mechanismPage = QtWidgets.QWidget()
+        self.mechanismPage = 机理在线优化()
         self.mechanismPage.setObjectName("mechanismPage")
         self.stackedWidget.addWidget(self.mechanismPage)
         self.feedbackControlPage = 反馈控制策略()
         self.feedbackControlPage.setObjectName("feedbackControlPage")
         self.stackedWidget.addWidget(self.feedbackControlPage)
-        self.designPage = QtWidgets.QWidget()
+        self.designPage = 辊形设计()
         self.designPage.setObjectName("designPage")
         self.stackedWidget.addWidget(self.designPage)
         self.horizontalLayout.addWidget(self.stackedWidget)
@@ -48,7 +52,7 @@ class Ui_banxingkongzhishumo(object):
 
     def retranslateUi(self, banxingkongzhishumo):
         _translate = QtCore.QCoreApplication.translate
-        banxingkongzhishumo.setWindowTitle(_translate("banxingkongzhishumo", "flatness_control_data_model_optimization"))
+        banxingkongzhishumo.setWindowTitle(_translate("banxingkongzhishumo", "板形反馈控制数模优化"))
 
 
 from qfluentwidgets import NavigationBar

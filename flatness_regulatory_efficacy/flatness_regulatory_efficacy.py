@@ -154,7 +154,7 @@ class 板形调控功效挖掘(QMainWindow, Ui_RegulatoryEfficacy):
         a1 = os.path.abspath(__file__)
         a = os.path.dirname(a1)
         b = self.comboBox.currentText()
-        self.path = a + '\第三版结果\\' + b + '.pkl'
+        self.path = a + '\\third_res\\' + b + '.pkl'
         path_jdt = self.path
         self.textEdit.setText(self.path)
 

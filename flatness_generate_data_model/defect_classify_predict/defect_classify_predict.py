@@ -174,7 +174,8 @@ class MainWindowC(QMainWindow, Ui_MainWindowC):
                 self.xtest = [one[feature] for one in self.data]
 
             self.textEdit.setText('选择的钢卷号为\n“%s”\n数据已成功导入！' % self.juan_hao)
-        except:
+        except Exception as e:
+            print(e)
             QMessageBox.information(self, '提示信息', '数据选择出错，请重新选择数据', QMessageBox.Ok)
 
     @pyqtSlot()
@@ -197,7 +198,8 @@ class MainWindowC(QMainWindow, Ui_MainWindowC):
             model = joblib.load(f"{model_path}\duofenlei_{self.comboBox.currentText()}.m")
             self.C_pre = [model.predict(one) for one in self.xtest]
             self.textEdit.setText('已完成预测！')
-        except:
+        except Exception as e:
+            print(e)
             QMessageBox.information(self, '提示框', '预测出错', QMessageBox.Ok)
         # try:
         #     if self.comboBox.currentText() == 'CatBoost':

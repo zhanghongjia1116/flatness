@@ -63,7 +63,7 @@ class 板形质量评价(Ui_banxingzhiliang, QWidget):
     def showMessageBox(self):
         w = MessageBox(
             '帮助',
-            '地址: 北京市海淀区学院路30号北京科技大学机械工程学院周晓敏组, 联系电话: 010-62334963',
+            '冷轧板形控制智能化智能支撑系统软件所有权-北京科技大学&北京首钢自动化信息技术有限公司&首钢顺义冷轧薄板厂',
             self
         )
         w.yesButton.setText('ok')

@@ -5,19 +5,17 @@
 """
 Module implementing MainWindow.
 """
-from PyQt5 import QtWidgets
-from PyQt5.QtCore import QThread, pyqtSignal, pyqtSlot
-from PyQt5.QtWidgets import QMainWindow, QMessageBox
-from .classSearch import inquiryClass, connect
-from ..view.Ui_ClassInterface import Ui_MainWindow
-from .dialog import Dialog
-from .Figure_Canvas import MyFigure
-
 import matplotlib
+from PyQt5 import QtWidgets, QtGui
+from PyQt5.QtCore import QThread, pyqtSignal, pyqtSlot
+from PyQt5.QtWidgets import QMainWindow, QMessageBox, QProgressBar, QLabel
+
+from .Figure_Canvas import MyFigure
+from .classSearch import inquiryClass, connect
+from .dialog import Dialog
+from ..view.Ui_ClassInterface import Ui_MainWindow
 
 matplotlib.use("Qt5Agg")
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-from matplotlib.figure import Figure
 
 global reg
 reg = ('', '', '', '', '', '')  # 防止reg未定义，connect()报错
@@ -37,10 +35,29 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         super(MainWindow, self).__init__(parent)
         self.setupUi(self)
-        # 初始化不可见
-        # self.matplotlibwidget_zong.setVisible(False)
-        # self.matplotlibwidget_fen.setVisible(False)
-        # self.matplotlibwidget_zhagun.setVisible(False)
+        # 定义文本标签
+        self.statusLabel = QLabel()
+
+        font = QtGui.QFont()
+        font.setFamily("3ds")
+        font.setPointSize(14)
+        self.statusLabel.setFont(font)
+
+        # 设置文本标签显示内容
+        self.statusLabel.setText("请先选择文件")
+        self.statusLabel.setContentsMargins(25, 0, 0, 0)
+        self.statusLabel.setObjectName('statusLabel')
+        # 定义水平进度条
+        self.pb = QProgressBar()
+        # 设置进度条的范围，参数1为最小值，参数2为最大值（可以调得更大，比如1000
+        self.pb.setRange(0, 100)
+        # 设置进度条的初始值,最大值，最小值
+        self.pb.setValue(0)
+        self.pb.setMinimum(0)
+        self.pb.setMaximum(100)
+        self.pb.setStyleSheet(
+            "QProgressBar {   border: 2px solid grey;   border-radius: 5px;   background-color: #FFFFFF;font-size:20px;}QProgressBar::chunk {   background-color: #007FFF;   width: 10px;}QProgressBar {   border: 2px solid grey;   border-radius: 5px;   text-align: center;}"
+            "QProgressBar::chunk { background-color: #007FFF; width: 10px;margin:0.5px }")
         # 实例化子线程
         self.work = WorkThread()
         self.work_2 = WorkThread_2()

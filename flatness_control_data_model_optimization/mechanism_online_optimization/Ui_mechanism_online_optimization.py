@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'table_learn_self.ui'
+# Form implementation generated from reading ui file 'mechanism_online_optimization.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -32,5 +32,5 @@ class Ui_Instruction(object):
     def retranslateUi(self, Instruction):
         _translate = QtCore.QCoreApplication.translate
         Instruction.setWindowTitle(_translate("Instruction", "Form"))
-        self.LargeTitleLabel.setText(_translate("Instruction", "        此模块实现预设定表格的预设定值在线优化功能，为后台自动执行，禁止随意修改，若使用或修改此功能，请联系技术支持人员！"))
+        self.LargeTitleLabel.setText(_translate("Instruction", "        此模块实现预设定表格的预设定机理参数在线优化功能，为后台自动执行，禁止随意修改，若使用或修改此功能，请联系技术支持人员！"))
 from qfluentwidgets import LargeTitleLabel

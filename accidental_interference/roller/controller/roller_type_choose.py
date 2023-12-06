@@ -1,7 +1,7 @@
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QDialog
 
-from ..view.Ui_roller_type_choose import Ui_rollingChooseDialog
+from accidental_interference.roller.view.Ui_roller_type_choose import Ui_rollingChooseDialog
 
 
 class RollingChoose(QDialog, Ui_rollingChooseDialog):

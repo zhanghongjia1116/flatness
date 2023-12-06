@@ -1,18 +1,17 @@
-import sys
+from PyQt5 import QtCore, QtGui
+from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtGui import QMouseEvent
+from PyQt5.QtWidgets import QApplication, QMessageBox
+from PyQt5.QtWidgets import QWidget
+from loguru import logger
+from playhouse.shortcuts import model_to_dict
+from qfluentwidgets import FluentIcon as FIF
+from qfluentwidgets import Icon
 
-from PyQt5.QtWidgets import QWidget, QApplication, QMainWindow
-from login_flatness_main.view.Ui_login_window import Ui_LoginWindow
 from login_flatness_main.controller.flatnessMainNormal import MainWindow
 from login_flatness_main.controller.mysql_form import mysql_form
 from login_flatness_main.model.user import User
-from PyQt5 import QtCore, QtGui
-from PyQt5.QtCore import Qt, QPoint, pyqtSlot
-from PyQt5.QtGui import QMouseEvent
-from PyQt5.QtWidgets import QFrame, QMainWindow, QApplication, QMessageBox
-from loguru import logger
-from qfluentwidgets import FluentIcon as FIF
-from qfluentwidgets import Icon
-from playhouse.shortcuts import model_to_dict
+from login_flatness_main.view.Ui_login_window import Ui_LoginWindow
 
 
 class LoginWindow(QWidget, Ui_LoginWindow):
@@ -24,6 +23,8 @@ class LoginWindow(QWidget, Ui_LoginWindow):
         self.phone_pushButton.setIcon(Icon(FIF.PHONE))
         self.email_pushButton.setIcon(Icon(FIF.MAIL))
         self.root = parent
+        self.click_count = 0
+
         # self.root.tray_icon.hide()  # 先隐藏托盘图标
 
         # 隐藏原始的框
@@ -60,9 +61,12 @@ class LoginWindow(QWidget, Ui_LoginWindow):
             QMessageBox.information(self, "错误提示", "用户名密码错误，请重试")
 
     def mysql_pushButton_event(self):
-        logger.info("数据库窗口")
-        self.mysql_form = mysql_form()
-        self.mysql_form.show()
+        self.click_count += 1
+        if self.click_count == 4:
+            logger.info("数据库窗口")
+            self.mysql_form = mysql_form()
+            self.mysql_form.show()
+            self.click_count = 0
 
     def register_pushButton_event(self):
         logger.info("用户注册")
@@ -78,12 +82,12 @@ class LoginWindow(QWidget, Ui_LoginWindow):
         QtGui.QDesktopServices.openUrl(QtCore.QUrl("https://github.com/zhanghongjia1116/flatness"))
 
     def phone_pushButton_event(self):
-        logger.info("手机号")
-        QMessageBox.information(self, "手机号", "手机号\n15652390625")
+        logger.info("电话")
+        QMessageBox.information(self, "电话", "手机号\n010-62334963")
 
     def email_pushButton_event(self):
         logger.info("邮箱")
-        QMessageBox.information(self, "邮箱", "邮箱\nzhhj1116@@outlook.com")
+        QMessageBox.information(self, "邮箱", "邮箱\nzhhj1116@outlook.com")
 
     @pyqtSlot()
     def on_close_pushButton_clicked(self):

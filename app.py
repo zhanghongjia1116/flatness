@@ -1,5 +1,4 @@
 import sys
-import os
 from PyQt5.QtWidgets import QApplication
 from loguru import logger
 from login_flatness_main.controller.login_window import LoginWindow

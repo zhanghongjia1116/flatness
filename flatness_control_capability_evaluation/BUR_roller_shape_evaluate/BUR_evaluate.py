@@ -1,15 +1,16 @@
 import os
 
 import pandas as pd
-from PyQt5.QtCore import pyqtSlot, QThread, pyqtSignal, QEvent, Qt, QAbstractTableModel
-from PyQt5.QtGui import QStandardItemModel, QStandardItem
+from PyQt5.QtCore import pyqtSlot, QEvent, Qt
+from PyQt5.QtGui import QStandardItemModel
 from PyQt5.QtWidgets import QWidget
-from matplotlib import pyplot as plt
-from matplotlib.cm import get_cmap
-from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT
-from .Ui_BUR_evaluate import Ui_BUREvaluate
-from qfluentwidgets import MessageBox
 from my_utils.display import PandasModel
+from my_utils.prompt import showMessageBox
+from qfluentwidgets import MessageBox
+
+from flatness_control_capability_evaluation.BUR_roller_shape_evaluate.Ui_BUR_evaluate import Ui_BUREvaluate
+from flatness_control_capability_evaluation.data_process import BURdata
+
 
 # from 详细信息 import MatplotlibWidget, MplCanvas
 
@@ -35,7 +36,6 @@ class BUREvaluate(Ui_BUREvaluate, QWidget):
         self.ComboBoxBUR.addItem('4号机架')
         self.ComboBoxBUR.addItem('5号机架')
         if self.pageBUR_data is None:
-            from ..data_process import BURdata
             local_path = os.path.abspath(__file__)
             tmp = os.path.dirname(local_path)
             self.pageBUR_data = pd.read_pickle(f'{tmp}/data/BURdata.pkl')
@@ -83,18 +83,13 @@ class BUREvaluate(Ui_BUREvaluate, QWidget):
         # BUR辊形评价界面导入按钮
         self.importPushButtonBUR.setEnabled(False)  # 点击后禁用按钮
         self.displayPushButtonBUR.setEnabled(False)
-        self.moreInfoPushButtonBUR.setEnabled(False)
         data = self.pageBUR_data
         try:
             start_date = self.CalendarPicker_3.getDate()
             end_date = self.CalendarPicker_4.getDate()
             if start_date > end_date:
-                w = MessageBox('错误',
-                               '开始时间不能大于结束时间',
-                               self)
-                w.yesButton.setText('ok')
-                w.cancelButton.setText('close')
-                w.exec()
+                showMessageBox("错误", "开始时间大于结束时间", self)
+                return
 
             startTimeBUR = pd.to_datetime(start_date.toPyDate())
             endTimeBUR = pd.to_datetime(end_date.toPyDate())
@@ -102,7 +97,6 @@ class BUREvaluate(Ui_BUREvaluate, QWidget):
             # 使用布尔索引来筛选在指定时间段内的数据
             self.pageBUR_filtered_df: pd.DataFrame = data[
                 (data['生产结束时刻(S11_0)'] >= startTimeBUR) & (data['生产结束时刻(S11_0)'] <= endTimeBUR)]
-
             display_data = self.pageBUR_filtered_df.copy()
             display_data.columns = ['策略号', '入口材料号', '生产结束时刻',
                                     '1#中间辊弯辊', '1#中间辊窜辊', '1#工作辊弯辊',
@@ -125,12 +119,7 @@ class BUREvaluate(Ui_BUREvaluate, QWidget):
 
         except Exception as e:
             print(f"An error occurred: {e}")
-            w = MessageBox('错误',
-                           '未选择时间',
-                           self)
-            w.yesButton.setText('ok')
-            w.cancelButton.setText('close')
-            w.exec()
+            showMessageBox("错误", "未选择时间", self)
             self.importPushButtonBUR.setEnabled(True)
             self.displayPushButtonBUR.setEnabled(True)
 
@@ -164,7 +153,6 @@ class BUREvaluate(Ui_BUREvaluate, QWidget):
                 ((singleFrameData[f'{frame}工作辊弯辊实际值(S11_0)'] >= 1000 * rate) |
                  (singleFrameData[f'{frame}工作辊弯辊实际值(S11_0)'] <= -700 * rate))
         )
-        self.moreInfoPushButtonBUR.setEnabled(True)
         presetValue = singleFrameData[condition]
         return presetValue
 
@@ -190,7 +178,9 @@ class BUREvaluate(Ui_BUREvaluate, QWidget):
             presetValue = self.getPresetValue(frameText, rate=percent)
 
             if presetValue.shape[0] == 0:
-                pass
+                showMessageBox("提示", "未找到符合条件的数据", self)
+                self.SpecificLabelBUR.setText('')
+                return
             else:
                 # 为数据帧添加行号
                 presetValue.insert(0, '序号', range(1, presetValue.shape[0] + 1))
@@ -210,24 +200,21 @@ class BUREvaluate(Ui_BUREvaluate, QWidget):
                 percentage = "{:.2%}".format(decimal_number)
                 self.PercentLabelBUR.setText(percentage)
             else:
-                w = MessageBox('提示',
+                showMessageBox('提示',
                                '未选择时间段, 显示3年数据中打满情况',
                                self)
-                w.yesButton.setText('ok')
-                w.cancelButton.setText('close')
-                w.exec()
                 info = f"当前机架设定值打满共{presetValue.shape[0]}卷"
                 self.SpecificLabelBUR.setText(info)
                 self.PercentLabelBUR.setText('')
 
         except Exception as e:
             print(e)
-            w = MessageBox('错误',
+            showMessageBox('错误',
                            '未选择时间段, 显示3年数据中打满情况',
                            self)
-            w.yesButton.setText('ok')
-            w.cancelButton.setText('close')
-            w.exec()
+
+    def on_moreInfoPushButtonBUR_clicked(self):
+        showMessageBox("提示", "正在开发", self)
 
     def update_highValueTable_view(self, model):
         self.highValueTableBUR.setModel(model)

@@ -4,17 +4,46 @@
 Module implementing mainWindow.
 """
 import os
-import numpy as np
+
 import joblib
+import numpy as np
 import pandas as pd
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QMainWindow, QFileDialog, QMessageBox
-from keras.models import load_model
+from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
 from sklearn.metrics import r2_score, mean_squared_error
-
+from torch import relu, tensor, float32, load
+from torch.nn import Module, Linear, RNN
 from flatness_generate_data_model.defect_regress_predict.Ui_defect_regress_predict import Ui_mainWindow
 from flatness_generate_data_model.defect_regress_predict.myplot import MyFigure
-from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
+
+
+class MLP(Module):
+    def __init__(self, input_size, output_size):
+        super(MLP, self).__init__()
+        self.fc1 = Linear(input_size, 64)  # 64个神经元
+        self.fc2 = Linear(64, 32)  # 32个神经元
+        self.fc3 = Linear(32, output_size)  # 输出层
+
+    def forward(self, x):
+        x = relu(self.fc1(x))
+        x = relu(self.fc2(x))
+        x = self.fc3(x)
+        return x
+
+
+class RNN_model(Module):
+    def __init__(self, input_size, hidden_size, output_size):
+        super(RNN_model, self).__init__()
+        self.rnn = RNN(input_size, hidden_size, batch_first=True)
+        self.fc = Linear(hidden_size, output_size)
+
+    def forward(self, x):
+        # 确保RNN层返回整个序列
+        out, _ = self.rnn(x)
+        # 使用最后一个时间步的输出
+        out = self.fc(out[:, -1, :])
+        return out
 
 
 class MainWindow(QMainWindow, Ui_mainWindow):
@@ -60,17 +89,18 @@ class MainWindow(QMainWindow, Ui_mainWindow):
         try:
             self.textEdit.setText('您选择的模型为“%s”' % p0)
             if p0 == 'BP':
-                self.scalarX = joblib.load(rf'{model_path}\标准化X.m')
-                self.scalarY = joblib.load(rf'{model_path}\标准化Y.m')
-                self.x = [self.scalarX.transform(one) for one in self.xtest]
+                self.scalarX = joblib.load(rf'{model_path}\standardScalerX.m')
+                self.scalarY = joblib.load(rf'{model_path}\standardScalerY.m')
+                self.x = [self.scalarX.transform(one) for one in self.xtest]  # 标准化后的输入特征
             if p0 == 'RNN':
-                self.scalarX = joblib.load(rf'{model_path}\标准化X.m')
-                self.scalarY = joblib.load(rf'{model_path}\标准化Y.m')
+                self.scalarX = joblib.load(rf'{model_path}\standardScalerX.m')
+                self.scalarY = joblib.load(rf'{model_path}\standardScalerY.m')
                 x = [self.scalarX.transform(one) for one in self.xtest]
                 self.x = [one.reshape(one.shape[0], 1, one.shape[1]).astype('float32') for one in x]
 
-        except:
-            QMessageBox.information(self, '提示信息', '模型选择出错', QMessageBox.Ok)
+        except Exception as e:
+            print(e)
+            QMessageBox.information(self, '提示信息', '请先导入数据', QMessageBox.Ok)
 
     @pyqtSlot()
     def on_pushButton_clicked(self):
@@ -200,49 +230,97 @@ class MainWindow(QMainWindow, Ui_mainWindow):
 
         model_path = f"{os.path.dirname(__file__)}/定量回归模型"
 
-        # try:
         try:
-            self.comboBox_3.setVisible(True)
-        except:
-            pass
-        self.comboBox_3.clear()
-        self.comboBox_3.addItem('请选择想要评估的钢卷号')
-        self.comboBox_3.addItems(self.juan_hao)
-        if self.comboBox.currentText() == 'CatBoost':
-            sum_pre = []
-            sum_true = []
-            for j in range(len(self.data)):
-                test_pre = []
-                test_true = []
-                for i in range(5):
-                    model = joblib.load(fr'{model_path}\{self.comboBox.currentText()}Deg{i}.m')
+            try:
+                self.comboBox_3.setVisible(True)
+                self.comboBox_3.clear()
+                self.comboBox_3.addItem('请选择想要评估的钢卷号')
+                self.comboBox_3.addItems(self.juan_hao)
+            except AttributeError:
+                QMessageBox.information(self, '提示框', '请先导入数据', QMessageBox.Ok)
+                return
 
-                    ytest_true = self.data[j].loc[:, 'ydeg%s' % i]
-                    test_true.append(ytest_true)
-                    ytest_pre = model.predict(self.xtest[j])
-                    test_pre.append(ytest_pre)
-                sum_pre.append(test_pre)
-                sum_true.append(test_true)
-            self.test_pre = [pd.DataFrame(sum_pre_i).T for sum_pre_i in sum_pre]
-            print(self.test_pre)
-            self.test_true = [pd.DataFrame(sum_true_i).T for sum_true_i in sum_true]
+            if self.comboBox.currentText() == 'CatBoost':
+                sum_pre = []
+                sum_true = []
+                for j in range(len(self.data)):
+                    test_pre = []
+                    test_true = []
+                    for i in range(5):
+                        model = joblib.load(fr'{model_path}\{self.comboBox.currentText()}Deg{i}.m')
 
-        elif self.comboBox.currentText() == 'BP' or 'RNN':
-            import tensorflow as tf
-            os.environ["CUDA_VISIBLE_DEVICES"] = "0"
-            config = tf.compat.v1.ConfigProto()
-            config.gpu_options.allow_growth = True
-            session = tf.compat.v1.Session(config=config)
-            model = load_model(fr'{model_path}\{self.comboBox.currentText()}.h5')
-            y = [model.predict(one) for one in self.x]
-            self.test_pre = [pd.DataFrame(self.scalarY.inverse_transform(one)) for one in y]
-            self.test_true = [one[['ydeg0', 'ydeg1', 'ydeg2', 'ydeg3', 'ydeg4']] for one in self.data]
+                        ytest_true = self.data[j].loc[:, 'ydeg%s' % i]
+                        test_true.append(ytest_true)
+                        ytest_pre = model.predict(self.xtest[j])
+                        test_pre.append(ytest_pre)
+                    sum_pre.append(test_pre)
+                    sum_true.append(test_true)
+                self.test_pre = [pd.DataFrame(sum_pre_i).T for sum_pre_i in sum_pre]
+                print(self.test_pre)
+                self.test_true = [pd.DataFrame(sum_true_i).T for sum_true_i in sum_true]
 
-        else:
-            QMessageBox.information(self, '提示框', 'BP、LSTM、RNN不如CatBoost，建议选择CatBoost', QMessageBox.Ok)
-        self.textEdit.setText('已完成预测！')
-        # except:
-        #     QMessageBox.information(self, '提示框', 'BP、RNN所需环境不稳定，建议选择CatBoost', QMessageBox.Ok)
+            elif self.comboBox.currentText() == 'BP':
+                # 加载PyTorch模型
+                input_size = 196
+                output_size = 5
+                model = MLP(input_size, output_size)
+                checkpoint = load(rf'{model_path}/BPmodel.pth')
+                model.load_state_dict(checkpoint['model_state_dict'])
+                model.eval()
+
+                # 获取预测数据
+                self.test_pre = []
+                self.test_true = []
+                y = []
+                for one in self.xtest:
+                    predict_x = self.scalarX.transform(one.values)
+                    predict_x = tensor(predict_x, dtype=float32)
+                    predict_y = model(predict_x)
+                    predict_y = predict_y.detach().numpy()
+                    test_pre = pd.DataFrame(predict_y, columns=['deg 0', 'deg 1',
+                                                                'deg 2', 'deg 3',
+                                                                'deg 4'])
+                    self.test_pre.append(test_pre)
+                    test_true = one.iloc[:, -5:]
+                    self.test_true.append(test_true)
+                    y.append(predict_y)
+                self.test_pre = [pd.DataFrame(self.scalarY.inverse_transform(one)) for one in y]
+
+            elif self.comboBox.currentText() == 'RNN':
+                # 加载PyTorch模型
+                input_size = 196
+                hidden_size = 64
+                output_size = 5
+                model = RNN_model(input_size, hidden_size, output_size)
+                checkpoint = load(rf'{model_path}/RNNmodel.pth')
+                model.load_state_dict(checkpoint['model_state_dict'])
+                model.eval()
+
+                # 获取预测数据
+                self.test_pre = []
+                self.test_true = []
+                y = []
+                for one in self.xtest:
+                    predict_x = self.scalarX.transform(one.values)
+                    predict_x = predict_x.reshape(-1, 1, 196)
+                    predict_x = tensor(predict_x, dtype=float32)
+                    predict_y = model(predict_x)
+                    predict_y = predict_y.detach().numpy()
+                    test_pre = pd.DataFrame(predict_y, columns=['deg 0', 'deg 1',
+                                                                'deg 2', 'deg 3',
+                                                                'deg 4'])
+                    self.test_pre.append(test_pre)
+                    test_true = one.iloc[:, -5:]
+                    self.test_true.append(test_true)
+                    y.append(predict_y)
+                self.test_pre = [pd.DataFrame(self.scalarY.inverse_transform(one)) for one in y]
+
+            else:
+                QMessageBox.information(self, '提示框', 'BP、LSTM、RNN不如CatBoost，建议选择CatBoost', QMessageBox.Ok)
+            self.textEdit.setText('已完成预测！')
+        except Exception as e:
+            print(e)
+            QMessageBox.information(self, '提示框', 'BP、RNN所需环境不稳定，建议选择CatBoost', QMessageBox.Ok)
 
     @pyqtSlot(str)
     def on_comboBox_3_activated(self, p0):

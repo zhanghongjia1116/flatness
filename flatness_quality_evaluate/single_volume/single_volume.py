@@ -38,7 +38,7 @@ class FullLengthQuality(QMainWindow, Ui_MainWindow):
         super().__init__(parent)
         self.setupUi(self)
         self.pushButton_2.setEnabled(False)
-        # self.pushButton_3.setEnabled(False)
+        self.pushButton_3.setEnabled(False)
         self.pushButton_4.setEnabled(False)
 
     @pyqtSlot()
@@ -46,12 +46,13 @@ class FullLengthQuality(QMainWindow, Ui_MainWindow):
         """
         Slot documentation goes here.
         """
-        self.pushButton_2.setEnabled(True)
-        self.pushButton_3.setEnabled(True)
-        self.pushButton_4.setEnabled(True)
         tmp = os.path.abspath(__file__)
         path = QFileDialog.getOpenFileName(self, u"打开文件", tmp, "CSV Files(*.csv);;XLSX Files(*.xlsx)")
         self.lineEdit.setText(path[0])
+        if path[0] != '':
+            self.pushButton_2.setEnabled(True)
+            self.pushButton_3.setEnabled(True)
+            self.pushButton_4.setEnabled(True)
 
     @pyqtSlot()
     def on_pushButton_3_clicked(self):
@@ -150,13 +151,18 @@ class FullLengthQuality(QMainWindow, Ui_MainWindow):
             index = ['全长', '带头100米', '带中', '带尾100米']
             res = [iu, iu1, iu2, iu3]
             df = pd.DataFrame(res, columns=columns, index=index)
-            self.cwd = os.getcwd()  # 获取当前程序文件位置
-            file_path = self.cwd.replace('\\', '/') + '/{}csv'.format(name)
-            df.to_csv(file_path, index=True, encoding='gbk')
-            my_button = QMessageBox.information(self, '提示信息', '生成报表成功！')
 
-        except:
-            my_button = QMessageBox.information(self, '警告信息', '文件选择出错')
+            # 打开文件对话框，获取保存文件路径
+            file_path, _ = QFileDialog.getSaveFileName(self, 'Save CSV File', '', 'CSV Files (*.csv)')
+
+            if file_path:
+                # 将 DataFrame 保存为 CSV 文件
+                df.to_csv(file_path, index=False)
+                print(f"DataFrame saved to {file_path}")
+
+        except Exception as e:
+            print(e)
+            QMessageBox.information(self, '警告信息', '文件选择出错')
 
     @pyqtSlot()
     def on_pushButton_4_clicked(self):
