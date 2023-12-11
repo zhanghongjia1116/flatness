@@ -9,7 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from flatness_generate_data_model.defect_exist_predict.板形缺陷有无预测 import MainWindowC2
+from flatness_generate_data_model.defect_exist_predict.defect_exist_predict import MainWindowC2
 from flatness_generate_data_model.defect_classify_predict.defect_classify_predict import MainWindowC
 from flatness_generate_data_model.defect_regress_predict.defect_regress_predict import MainWindow
 

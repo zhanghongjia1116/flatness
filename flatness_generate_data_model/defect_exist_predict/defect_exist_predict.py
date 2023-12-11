@@ -12,7 +12,7 @@ from PyQt5.QtWidgets import QMainWindow, QMessageBox, QFileDialog
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
 from sklearn.metrics import confusion_matrix
 
-from flatness_generate_data_model.defect_exist_predict.Ui_板形缺陷有无预测 import Ui_MainWindowC2
+from flatness_generate_data_model.defect_exist_predict.Ui_defect_exist_predict import Ui_MainWindowC2
 from flatness_generate_data_model.defect_exist_predict.myplot import MyFigure
 
 
@@ -38,7 +38,7 @@ class MainWindowC2(QMainWindow, Ui_MainWindowC2):
 
     @pyqtSlot()
     def on_help_triggered(self):
-        from .帮助文档 import MainWindow
+        from .help import MainWindow
         self.help_ui = MainWindow()
         self.help_ui.show()
 
@@ -141,6 +141,7 @@ class MainWindowC2(QMainWindow, Ui_MainWindowC2):
             pass
         try:
             tmp = os.path.abspath(__file__)
+            tmp = os.path.dirname(tmp) + r'/binary_classification_data'
             self.data_path = \
                 QFileDialog.getOpenFileNames(self, "ADD", tmp, "CSV Files(*.csv);;XLSX Files(*.xlsx)")[0]
             if len(self.data_path) == 0:
@@ -262,7 +263,7 @@ class MainWindowC2(QMainWindow, Ui_MainWindowC2):
         """
 
         # 生成资源文件目录访问路径 相对路径
-        model_path = f"{os.path.dirname(__file__)}/二分类模型"
+        model_path = f"{os.path.dirname(__file__)}/binary_classification_model"
 
         try:
             self.comboBox_2.setVisible(True)

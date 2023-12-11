@@ -69,7 +69,7 @@ class MainWindowC(QMainWindow, Ui_MainWindowC):
             pass
         try:
             local_path = os.path.abspath(__file__)
-            tmp = os.path.dirname(local_path) + '/多分类数据/'
+            tmp = os.path.dirname(local_path) + '/multi_classification_data/'
             self.data_path = \
                 QFileDialog.getOpenFileNames(self, "ADD", tmp, "CSV Files(*.csv);;XLSX Files(*.xlsx)")[0]
             if len(self.data_path) == 0:
@@ -186,7 +186,7 @@ class MainWindowC(QMainWindow, Ui_MainWindowC):
 
         # 生成资源的相对路径
         # 生成资源文件目录访问路径 相对路径
-        model_path = f"{os.path.dirname(__file__)}/多分类模型"
+        model_path = f"{os.path.dirname(__file__)}/multi_classification_model"
         try:
             try:
                 self.comboBox_2.setVisible(True)

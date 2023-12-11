@@ -84,7 +84,7 @@ class MainWindow(QMainWindow, Ui_mainWindow):
         """
 
         # 生成资源文件目录访问路径 相对路径
-        model_path = f"{os.path.dirname(__file__)}/定量回归模型"
+        model_path = f"{os.path.dirname(__file__)}/regression_model"
 
         try:
             self.textEdit.setText('您选择的模型为“%s”' % p0)
@@ -113,7 +113,7 @@ class MainWindow(QMainWindow, Ui_mainWindow):
             pass
         try:
             local_path = os.path.abspath(__file__)
-            tmp = os.path.dirname(local_path) + '/定量回归数据/'
+            tmp = os.path.dirname(local_path) + '/regression_data/'
             self.data_path = QFileDialog.getOpenFileNames(self, "ADD", tmp, "CSV Files(*.csv);;XLSX Files(*.xlsx)")[0]
             if len(self.data_path) == 0:
                 QMessageBox.information(self, '提示框', '您未选择任何文件，请重新导入数据', QMessageBox.Ok)
@@ -228,7 +228,7 @@ class MainWindow(QMainWindow, Ui_mainWindow):
         模型预测
         """
 
-        model_path = f"{os.path.dirname(__file__)}/定量回归模型"
+        model_path = f"{os.path.dirname(__file__)}/regression_model"
 
         try:
             try:

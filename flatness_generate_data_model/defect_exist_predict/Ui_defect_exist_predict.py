@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'D:\programdata\pycharm\首钢报告\GUI\wsk_work\板形回归与分类\板形缺陷有无预测模型\板形缺陷有无预测.ui'
+# Form implementation generated from reading ui file 'D:\programdata\pycharm\首钢报告\GUI\wsk_work\板形回归与分类\板形缺陷有无预测模型\defect_exist_predict.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
