@@ -7,16 +7,16 @@ Module implementing ReductionInterface.
 """
 import os
 
-from PyQt5 import QtWidgets
-from PyQt5.QtCore import pyqtSlot, QThread, pyqtSignal
-from PyQt5.QtWidgets import QMainWindow, QFileDialog, QMessageBox
-import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from PyQt5 import QtWidgets, QtGui
+from PyQt5.QtCore import pyqtSlot, QThread, pyqtSignal
+from PyQt5.QtWidgets import QMainWindow, QFileDialog, QMessageBox, QLabel, QProgressBar
 from matplotlib.ticker import FormatStrFormatter
 
-from ..view.Ui_ReductionInterface import Ui_MainWindow
 from .Figure_Canvas import MyFigure
+from ..view.Ui_ReductionInterface import Ui_MainWindow
 
 
 class ReductionInterface(QMainWindow, Ui_MainWindow):
@@ -38,6 +38,31 @@ class ReductionInterface(QMainWindow, Ui_MainWindow):
         thick_sp = ['0.2-0.6', '0.6-1.2', '1.2-5.0']
         self.comboBox_2.addItems(width_sp)
         self.comboBox_3.addItems(thick_sp)
+        # 定义文本标签
+        self.statusLabel = QLabel()
+
+        font = QtGui.QFont()
+        font.setFamily("3ds")
+        font.setPointSize(14)
+        self.statusLabel.setFont(font)
+
+        # 设置文本标签显示内容
+        self.statusLabel.setText("请先选择文件")
+        self.statusLabel.setContentsMargins(25, 0, 0, 0)
+        self.statusLabel.setObjectName('statusLabel')
+        # 定义水平进度条
+        self.pb = QProgressBar()
+        # 设置进度条的范围，参数1为最小值，参数2为最大值（可以调得更大，比如1000
+        self.pb.setRange(0, 100)
+        # 设置进度条的初始值,最大值，最小值
+        self.pb.setValue(0)
+        self.pb.setMinimum(0)
+        self.pb.setMaximum(100)
+        self.pb.setStyleSheet(
+            "QProgressBar {   border: 2px solid grey;   border-radius: 5px;   background-color: "
+            "#FFFFFF;font-size:20px;}QProgressBar::chunk {   background-color: #007FFF;   width: 10px;}QProgressBar { "
+            "  border: 2px solid grey;   border-radius: 5px;   text-align: center;}"
+            "QProgressBar::chunk { background-color: #007FFF; width: 10px;margin:0.5px }")
         # 子线程
         self.work = WorkThread()
         self.pushButton.clicked.connect(self.excute)
@@ -48,7 +73,7 @@ class ReductionInterface(QMainWindow, Ui_MainWindow):
     def excute(self):
         global path
         tmp = os.path.abspath(__file__)
-        for i in range(2):
+        for _ in range(2):
             tmp = os.path.dirname(tmp)
         path = f"{tmp}/data"
         path = QFileDialog.getOpenFileName(self, '选择文件', path, 'CSV Files(*.csv);;XLSX Files(*.xlsx)')[0]

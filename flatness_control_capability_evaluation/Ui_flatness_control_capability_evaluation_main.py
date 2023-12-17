@@ -18,7 +18,7 @@ from flatness_control_capability_evaluation.preset_evaluate.preset_evaluate impo
 class Ui_FlatnessControlAbility(object):
     def setupUi(self, FlatnessControlAbility):
         FlatnessControlAbility.setObjectName("FlatnessControlAbility")
-        FlatnessControlAbility.resize(1029, 754)
+        FlatnessControlAbility.resize(1100, 754)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/icons/icons/板形分析.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         FlatnessControlAbility.setWindowIcon(icon)

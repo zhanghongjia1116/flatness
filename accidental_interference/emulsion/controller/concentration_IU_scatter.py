@@ -57,4 +57,3 @@ class AvgIUAndLiquid(QWidget, Ui_AvgIUAndLiquid):
             self.gridLayoutLeft.addWidget(leftCanvas.toolbar)
         except Exception as e:
             print(e)
-    #

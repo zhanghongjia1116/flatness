@@ -22,8 +22,8 @@ class SpecialNumIU(QWidget, Ui_SpecialNumIU):
 
             start_date = self.CalendarPicker.getDate()
             end_date = self.CalendarPicker_2.getDate()
-            start_time = str(start_date.toPyDate()) + ' ' + str(self.TimeEdit.time().toPyTime())
-            end_time = str(end_date.toPyDate()) + ' ' + str(self.TimeEdit_2.time().toPyTime())
+            start_time = f'{str(start_date.toPyDate())} {str(self.TimeEdit.time().toPyTime())}'
+            end_time = f'{str(end_date.toPyDate())} {str(self.TimeEdit_2.time().toPyTime())}'
 
             if start_date > end_date:
                 showMessageBox('错误', '开始时间不能大于结束时间', self)

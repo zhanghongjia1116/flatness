@@ -1221,23 +1221,23 @@ def XYP():
     for I in range(NSWRT, NP+1):
         DATA_MESH.Y[I] = DATA_MESH.Y[I] - SFTW
 
-    for I in range(1, INB+1):
+    for I in range(1, INB):
         DATA_MESH.X[NSBRD - 1 + I] = DATA_MESH.X[NSBRD - 1 + I] + PROBR[I] * 0.001e0
         if DATA_MESH.X[NSBRD - 1 + I] < (DW + DI): DATA_MESH.X[NSBRD - 1 + I] = DW + DI
 
-    for I in range(1, INI+1):
+    for I in range(1, INI):
         DATA_MESH.X[NSIRT - 1 + I] = DATA_MESH.X[NSIRT - 1 + I] - PROIR[I] * 0.001e0
         DATA_MESH.X[NSIRD - 1 + I] = DATA_MESH.X[NSIRD - 1 + I] + PROIR[I] * 0.001e0
 
-    for I in range(1, INI+1):
+    for I in range(1, INI):
         if DATA_MESH.X[NSIRT - 1 + I] > (DW + DI): DATA_MESH.X[NSIRT - 1 + I] = DW + DI
         if DATA_MESH.X[NSIRD - 1 + I] < DW: DATA_MESH.X[NSIRD - 1 + I] = DW
 
-    for I in range(1, INW+1):
+    for I in range(1, INW):
         DATA_MESH.X[NSWRT - 1 + I] = DATA_MESH.X[NSWRT - 1 + I] - PROWR[I] * 0.001e0
         DATA_MESH.X[NSWRD - 1 + I] = DATA_MESH.X[NSWRD - 1 + I] + PROWR[I] * 0.001e0
 
-    for I in range(1, INW+1):
+    for I in range(1, INW):
         if DATA_MESH.X[NSWRT - 1 + I] > DW: DATA_MESH.X[NSWRT - 1 + I] = DW
         if DATA_MESH.X[NSWRD - 1 + I] < 0.0e0: DATA_MESH.X[NSWRD - 1 + I] = 0.0e0
 

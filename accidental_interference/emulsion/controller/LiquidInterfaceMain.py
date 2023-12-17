@@ -80,10 +80,7 @@ class LiquidInterfaceMain(QWidget, Ui_Form):
             df = pd.DataFrame()
         self.displayData = df
         # 设置展示数据的条数
-        if df.shape[0] > 100:
-            df = df.iloc[:100, :]
-        else:
-            df = df
+        df = df.iloc[:100, :] if df.shape[0] > 100 else df
         pdModel = PandasModel(df)
         self.TableView.setModel(pdModel)
         self.TableView.resizeColumnsToContents()
@@ -113,9 +110,9 @@ class LiquidInterfaceMain(QWidget, Ui_Form):
                 showMessageBox("警告", "请选择乳化液箱号", self)
                 return
             tmp = os.path.abspath(__file__)
-            for i in range(3):
+            for _ in range(3):
                 tmp = os.path.dirname(tmp)
-            online_data_path = f'{tmp}/initial_value_table/initial_value_table.pkl'
+            online_data_path = f'{tmp}/initial_value_table/初值表.pkl'
             online_data = pd.read_pickle(online_data_path)
             self.displayData = 乳化液数据.merge_liquid_rollTable(liquid, online_data)
             self.updateTableViewMerge(self.displayData.iloc[:100, :])

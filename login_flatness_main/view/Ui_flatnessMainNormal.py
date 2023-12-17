@@ -14,19 +14,19 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_FlatnessMain(object):
     def setupUi(self, FlatnessMain):
         FlatnessMain.setObjectName("FlatnessMain")
-        FlatnessMain.resize(933, 606)
+        FlatnessMain.resize(1000, 618)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/icons/images/首钢.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         FlatnessMain.setWindowIcon(icon)
         FlatnessMain.setAutoFillBackground(False)
         FlatnessMain.setStyleSheet("PrimaryPushButton#PrimaryPushButton{font: 25pt \"隶书\";}\n"
-"PrimaryPushButton#PrimaryPushButton_2{font: 25pt \"隶书\";}\n"
-"PrimaryPushButton#PrimaryPushButton_3{font: 25pt \"隶书\";}\n"
-"PrimaryPushButton#PrimaryPushButton_4{font: 25pt \"隶书\";}\n"
-"PrimaryPushButton#PrimaryPushButton_5{font: 25pt \"隶书\";}\n"
-"PrimaryPushButton#PrimaryPushButton_6{font: 25pt \"隶书\";}\n"
-"PrimaryPushButton#PrimaryPushButton_7{font: 25pt \"隶书\";}\n"
-"PrimaryPushButton#PrimaryPushButton_8{font: 25pt \"隶书\";}")
+                                   "PrimaryPushButton#PrimaryPushButton_2{font: 25pt \"隶书\";}\n"
+                                   "PrimaryPushButton#PrimaryPushButton_3{font: 25pt \"隶书\";}\n"
+                                   "PrimaryPushButton#PrimaryPushButton_4{font: 25pt \"隶书\";}\n"
+                                   "PrimaryPushButton#PrimaryPushButton_5{font: 25pt \"隶书\";}\n"
+                                   "PrimaryPushButton#PrimaryPushButton_6{font: 25pt \"隶书\";}\n"
+                                   "PrimaryPushButton#PrimaryPushButton_7{font: 25pt \"隶书\";}\n"
+                                   "PrimaryPushButton#PrimaryPushButton_8{font: 25pt \"隶书\";}")
         self.centralwidget = QtWidgets.QWidget(FlatnessMain)
         self.centralwidget.setObjectName("centralwidget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.centralwidget)
@@ -215,4 +215,6 @@ class Ui_FlatnessMain(object):
         self.PrimaryPushButton_6.setText(_translate("FlatnessMain", "板形控制能力评价"))
         self.PrimaryPushButton_7.setText(_translate("FlatnessMain", "板形控制数模优化"))
         self.PrimaryPushButton_8.setText(_translate("FlatnessMain", "工序间数据服务"))
+
+
 from qfluentwidgets import CardWidget, PrimaryPushButton

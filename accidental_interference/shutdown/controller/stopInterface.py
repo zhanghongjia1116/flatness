@@ -48,7 +48,7 @@ class StopInterface(Ui_StopInterface, QWidget):
         # 打开文件对话框，选择文件
         file_dialog = QFileDialog()
         tmp = os.path.abspath(__file__)
-        for i in range(2):
+        for _ in range(2):
             tmp = os.path.dirname(tmp)
         path = f"{tmp}/data/raw"
         file_path, _ = file_dialog.getOpenFileNames(self, "选择文件", path, "Excel Files (*.xlsx *.xls)")
@@ -255,14 +255,18 @@ class StopInterface(Ui_StopInterface, QWidget):
     def on_importProcessDataPushButton_clicked(self):
         # 弹出文件对话框以选择多个CSV或PKL文件
         tmp = os.path.abspath(__file__)
-        for i in range(2):
+        for _ in range(2):
             tmp = os.path.dirname(tmp)
         path = f"{tmp}/data/process"
         options = QFileDialog.Options()
-        filter_str = "CSV Files (*.csv);;PKL Files (*.pkl);;All Files (*)"
-        file_name: str = QFileDialog.getOpenFileName(self, "Select CSV or PKL Files", path,
-                                                     filter=filter_str, options=options)[0]
-        if file_name:
+        filter_str = "PKL Files (*.pkl);;CSV Files (*.csv);;All Files (*)"
+        if file_name := QFileDialog.getOpenFileName(
+            self,
+            "Select CSV or PKL Files",
+            path,
+            filter=filter_str,
+            options=options,
+        )[0]:
             # 读取并连接CSV或PKL文件
             if file_name.endswith(".csv"):
                 df = pd.read_csv(file_name)

@@ -11,20 +11,14 @@ def wrb_fuc(row):
     minValue = -700
     maxValue = 1000
     # 放缩到0-1之间
-    if row < 0:
-        return row / minValue
-    else:
-        return row / maxValue
+    return row / minValue if row < 0 else row / maxValue
 
 
 def irb_fuc(row):
     minValue = -1800
     maxValue = 2600
     # 放缩到0-1之间
-    if row < 0:
-        return row / minValue
-    else:
-        return row / maxValue
+    return row / minValue if row < 0 else row / maxValue
 
 
 def irs_fuc(row):

@@ -16,46 +16,401 @@
   <layout class="QHBoxLayout" name="horizontalLayout_9">
    <item>
     <widget class="CardWidget" name="CardWidget">
-     <layout class="QVBoxLayout" name="verticalLayout_5" stretch="1,9">
+     <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0,0,0,0">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_8">
-        <item>
-         <widget class="SubtitleLabel" name="SubtitleLabel">
+       <widget class="SubtitleLabel" name="SubtitleLabel">
+        <property name="text">
+         <string>输入各机架参数(单侧)、设定值</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="TableWidget" name="TableWidget">
+        <property name="sizeAdjustPolicy">
+         <enum>QAbstractScrollArea::AdjustToContents</enum>
+        </property>
+        <attribute name="horizontalHeaderDefaultSectionSize">
+         <number>70</number>
+        </attribute>
+        <row>
+         <property name="text">
+          <string>工作辊弯辊(t)</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>中间辊弯辊(t)</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>中间辊窜辊(mm)</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>出口厚度(mm)</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>轧制力(t)</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>支持辊直径(mm)</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>中间辊直径(mm)</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>工作辊直径(mm)</string>
+         </property>
+        </row>
+        <column>
+         <property name="text">
+          <string>1机架</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>2机架</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>3机架</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>4机架</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>5机架</string>
+         </property>
+        </column>
+        <item row="0" column="0">
+         <property name="text">
+          <string>44.4  </string>
+         </property>
+        </item>
+        <item row="0" column="1">
+         <property name="text">
+          <string>39.2</string>
+         </property>
+        </item>
+        <item row="0" column="2">
+         <property name="text">
+          <string>38.4 </string>
+         </property>
+        </item>
+        <item row="0" column="3">
+         <property name="text">
+          <string>37.5</string>
+         </property>
+        </item>
+        <item row="0" column="4">
+         <property name="text">
+          <string>25.7</string>
+         </property>
+        </item>
+        <item row="1" column="0">
+         <property name="text">
+          <string>87.4 </string>
+         </property>
+        </item>
+        <item row="1" column="1">
+         <property name="text">
+          <string>75.9 </string>
+         </property>
+        </item>
+        <item row="1" column="2">
+         <property name="text">
+          <string>74.2 </string>
+         </property>
+        </item>
+        <item row="1" column="3">
+         <property name="text">
+          <string>67.4 </string>
+         </property>
+        </item>
+        <item row="1" column="4">
+         <property name="text">
+          <string>72.4</string>
+         </property>
+        </item>
+        <item row="2" column="0">
+         <property name="text">
+          <string>128 </string>
+         </property>
+        </item>
+        <item row="2" column="1">
+         <property name="text">
+          <string>128 </string>
+         </property>
+        </item>
+        <item row="2" column="2">
+         <property name="text">
+          <string>121 </string>
+         </property>
+        </item>
+        <item row="2" column="3">
+         <property name="text">
+          <string>111 </string>
+         </property>
+        </item>
+        <item row="2" column="4">
+         <property name="text">
+          <string>-72</string>
+         </property>
+        </item>
+        <item row="3" column="0">
+         <property name="text">
+          <string>5.0</string>
+         </property>
+        </item>
+        <item row="3" column="1">
+         <property name="text">
+          <string>3.5</string>
+         </property>
+        </item>
+        <item row="3" column="2">
+         <property name="text">
+          <string>2.5</string>
+         </property>
+        </item>
+        <item row="3" column="3">
+         <property name="text">
+          <string>2.0</string>
+         </property>
+        </item>
+        <item row="3" column="4">
+         <property name="text">
+          <string>1.8</string>
+         </property>
+        </item>
+        <item row="4" column="0">
+         <property name="text">
+          <string>900</string>
+         </property>
+        </item>
+        <item row="4" column="1">
+         <property name="text">
+          <string>800</string>
+         </property>
+        </item>
+        <item row="4" column="2">
+         <property name="text">
+          <string>600</string>
+         </property>
+        </item>
+        <item row="4" column="3">
+         <property name="text">
+          <string>600</string>
+         </property>
+        </item>
+        <item row="4" column="4">
+         <property name="text">
+          <string>300</string>
+         </property>
+        </item>
+        <item row="5" column="0">
+         <property name="text">
+          <string>1300</string>
+         </property>
+        </item>
+        <item row="5" column="1">
+         <property name="text">
+          <string>1300</string>
+         </property>
+        </item>
+        <item row="5" column="2">
+         <property name="text">
+          <string>1300</string>
+         </property>
+        </item>
+        <item row="5" column="3">
+         <property name="text">
+          <string>1300</string>
+         </property>
+        </item>
+        <item row="5" column="4">
+         <property name="text">
+          <string>1300</string>
+         </property>
+        </item>
+        <item row="6" column="0">
+         <property name="text">
+          <string>560</string>
+         </property>
+        </item>
+        <item row="6" column="1">
+         <property name="text">
+          <string>560</string>
+         </property>
+        </item>
+        <item row="6" column="2">
+         <property name="text">
+          <string>560</string>
+         </property>
+        </item>
+        <item row="6" column="3">
+         <property name="text">
+          <string>560</string>
+         </property>
+        </item>
+        <item row="6" column="4">
+         <property name="text">
+          <string>560</string>
+         </property>
+        </item>
+        <item row="7" column="0">
+         <property name="text">
+          <string>480</string>
+         </property>
+        </item>
+        <item row="7" column="1">
+         <property name="text">
+          <string>480</string>
+         </property>
+        </item>
+        <item row="7" column="2">
+         <property name="text">
+          <string>480</string>
+         </property>
+        </item>
+        <item row="7" column="3">
+         <property name="text">
+          <string>480</string>
+         </property>
+        </item>
+        <item row="7" column="4">
+         <property name="text">
+          <string>480</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item>
+       <widget class="SubtitleLabel" name="SubtitleLabel_2">
+        <property name="text">
+         <string>输入带钢相关参数</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="2" column="2">
+         <widget class="CaptionLabel" name="CaptionLabel_6">
           <property name="text">
-           <string>设定值预览</string>
+           <string>来料凸度(um)</string>
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="CalendarPicker" name="CalendarPicker"/>
+        <item row="3" column="1">
+         <widget class="LineEdit" name="exitThicknessLineEdit">
+          <property name="text">
+           <string>1.8</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="CaptionLabel" name="CaptionLabel_5">
+          <property name="text">
+           <string>出口厚度(mm)</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="3">
+         <widget class="LineEdit" name="materialConvexityLineEdit">
+          <property name="text">
+           <string>54.1</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="LineEdit" name="IULineEdit">
+          <property name="text">
+           <string>0.5</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="2">
+         <widget class="CaptionLabel" name="CaptionLabel_7">
+          <property name="text">
+           <string>目标凸度(um)</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="CaptionLabel" name="CaptionLabel_3">
+          <property name="text">
+           <string>带钢50米IU</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="CaptionLabel" name="CaptionLabel_2">
+          <property name="text">
+           <string>带钢宽度(mm)</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="LineEdit" name="stripWidthLineEdit">
+          <property name="text">
+           <string>1000</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="3">
+         <widget class="LineEdit" name="targetConvexityLineEdit">
+          <property name="text">
+           <string>18</string>
+          </property>
+         </widget>
         </item>
        </layout>
-      </item>
-      <item>
-       <widget class="TableView" name="TableView"/>
       </item>
      </layout>
     </widget>
    </item>
    <item>
     <widget class="CardWidget" name="CardWidget_2">
-     <layout class="QVBoxLayout" name="verticalLayout_4" stretch="1,3,3,3">
+     <layout class="QVBoxLayout" name="verticalLayout_4" stretch="0,3,3,3,0">
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <item>
-         <widget class="SubtitleLabel" name="SubtitleLabel_2">
-          <property name="text">
-           <string>钢卷号</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="LineEdit" name="stripLineEdit"/>
-        </item>
+       <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="1,0,3">
         <item>
          <widget class="PrimaryPushButton" name="calculatePushButton">
           <property name="text">
            <string>计算</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="PrimaryPushButton" name="stopCalculatePushButton">
+          <property name="text">
+           <string>停止计算</string>
           </property>
          </widget>
         </item>
@@ -118,66 +473,20 @@
           </layout>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_10">
+          <layout class="QHBoxLayout" name="horizontalLayout">
            <item>
-            <spacer name="horizontalSpacer_15">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="CaptionLabel" name="CaptionLabel">
+            <widget class="SubtitleLabel" name="SubtitleLabel_6">
              <property name="text">
-              <string>权重系数</string>
+              <string>权重</string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="LineEdit" name="proportion_1">
              <property name="text">
-              <string>0.5</string>
+              <string>0.4</string>
              </property>
             </widget>
-           </item>
-           <item>
-            <spacer name="horizontalSpacer_14">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,0,0,0">
-           <property name="bottomMargin">
-            <number>30</number>
-           </property>
-           <item>
-            <spacer name="horizontalSpacer_11">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
            </item>
            <item>
             <widget class="SubtitleLabel" name="SubtitleLabel_3">
@@ -188,19 +497,6 @@
            </item>
            <item>
             <widget class="LineEdit" name="coefficientLineEdit_1"/>
-           </item>
-           <item>
-            <spacer name="horizontalSpacer_8">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
            </item>
           </layout>
          </item>
@@ -251,22 +547,20 @@
           </layout>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_5">
-           <property name="bottomMargin">
-            <number>30</number>
-           </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
            <item>
-            <spacer name="horizontalSpacer_12">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
+            <widget class="SubtitleLabel" name="SubtitleLabel_7">
+             <property name="text">
+              <string>权重</string>
              </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
+            </widget>
+           </item>
+           <item>
+            <widget class="LineEdit" name="proportion_2">
+             <property name="text">
+              <string>0.3</string>
              </property>
-            </spacer>
+            </widget>
            </item>
            <item>
             <widget class="SubtitleLabel" name="SubtitleLabel_4">
@@ -277,19 +571,6 @@
            </item>
            <item>
             <widget class="LineEdit" name="coefficientLineEdit_2"/>
-           </item>
-           <item>
-            <spacer name="horizontalSpacer_9">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
            </item>
           </layout>
          </item>
@@ -352,66 +633,20 @@
           </layout>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_12">
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
            <item>
-            <spacer name="horizontalSpacer_18">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="CaptionLabel" name="CaptionLabel_3">
+            <widget class="SubtitleLabel" name="SubtitleLabel_8">
              <property name="text">
-              <string>权重系数</string>
+              <string>权重</string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="LineEdit" name="proportion_3">
              <property name="text">
-              <string>0.5</string>
+              <string>0.3</string>
              </property>
             </widget>
-           </item>
-           <item>
-            <spacer name="horizontalSpacer_19">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_7">
-           <property name="bottomMargin">
-            <number>30</number>
-           </property>
-           <item>
-            <spacer name="horizontalSpacer_13">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
            </item>
            <item>
             <widget class="SubtitleLabel" name="SubtitleLabel_5">
@@ -423,23 +658,50 @@
            <item>
             <widget class="LineEdit" name="coefficientLineEdit_3"/>
            </item>
-           <item>
-            <spacer name="horizontalSpacer_10">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
           </layout>
          </item>
         </layout>
        </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_11" stretch="0,0,0,0">
+        <item>
+         <spacer name="horizontalSpacer_9">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="SubtitleLabel" name="SubtitleLabel_9">
+          <property name="text">
+           <string>综合系数</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="LineEdit" name="coefficientLineEdit_final"/>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_8">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
       </item>
      </layout>
     </widget>
@@ -464,11 +726,6 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>CalendarPicker</class>
-   <extends>QPushButton</extends>
-   <header>qfluentwidgets</header>
-  </customwidget>
-  <customwidget>
    <class>CaptionLabel</class>
    <extends>QLabel</extends>
    <header>qfluentwidgets</header>
@@ -489,8 +746,8 @@
    <header>qfluentwidgets</header>
   </customwidget>
   <customwidget>
-   <class>TableView</class>
-   <extends>QTableView</extends>
+   <class>TableWidget</class>
+   <extends>QTableWidget</extends>
    <header>qfluentwidgets</header>
   </customwidget>
  </customwidgets>
