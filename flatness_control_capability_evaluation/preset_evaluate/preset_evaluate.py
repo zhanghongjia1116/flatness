@@ -54,9 +54,9 @@ def min_max_scaling(data):
 
 class CoefficientThread(QThread):
     result_signal = pyqtSignal(float)
-    runTime_signal = pyqtSignal(QTime)
+    runTime_signal = pyqtSignal(int)
 
-    def __init__(self, BW, hout, C40base, CPtarget, IRB, WRB, IRS, QSbase, DB, DI, DW):
+    def __init__(self, BW: float, hout, C40base: float, CPtarget: float, IRB, WRB, IRS, QSbase, DB, DI, DW):
         super(CoefficientThread, self).__init__()
         self.is_running = True
         self.BW = BW
