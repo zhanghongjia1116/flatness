@@ -20,7 +20,7 @@ from accidental_interference.hot_rolling_incoming.controller.HotRollingInterface
 class Ui_AccidentalFactor(object):
     def setupUi(self, AccidentalFactor):
         AccidentalFactor.setObjectName("AccidentalFactor")
-        AccidentalFactor.resize(1600, 800)
+        AccidentalFactor.resize(1300, 800)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/icons/icons/慢偶因素.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         AccidentalFactor.setWindowIcon(icon)
@@ -33,46 +33,33 @@ class Ui_AccidentalFactor(object):
         self.stackedWidget.setObjectName("stackedWidget")
         self.LiquidPage = LiquidInterfaceMain()
         self.LiquidPage.setObjectName("LiquidPage")
-        self.horizontalLayout_12 = QtWidgets.QHBoxLayout(self.LiquidPage)
-        self.horizontalLayout_12.setObjectName("horizontalLayout_12")
         self.stackedWidget.addWidget(self.LiquidPage)
         self.ClassPage = ClassInterface()
         self.ClassPage.setObjectName("ClassPage")
-        self.horizontalLayout_15 = QtWidgets.QHBoxLayout(self.ClassPage)
-        self.horizontalLayout_15.setObjectName("horizontalLayout_15")
         self.stackedWidget.addWidget(self.ClassPage)
         self.ReductionPage = ReductionInterface()
         self.ReductionPage.setObjectName("ReductionPage")
-        self.horizontalLayout_18 = QtWidgets.QHBoxLayout(self.ReductionPage)
-        self.horizontalLayout_18.setObjectName("horizontalLayout_18")
         self.stackedWidget.addWidget(self.ReductionPage)
         self.StopPage = StopInterface()
         self.StopPage.setObjectName("StopPage")
-        self.horizontalLayout_8 = QtWidgets.QHBoxLayout(self.StopPage)
-        self.horizontalLayout_8.setObjectName("horizontalLayout_8")
         self.stackedWidget.addWidget(self.StopPage)
         self.MaterialPage = HotRollingInterface()
         self.MaterialPage.setObjectName("MaterialPage")
-        self.horizontalLayout_21 = QtWidgets.QHBoxLayout(self.MaterialPage)
-        self.horizontalLayout_21.setObjectName("horizontalLayout_21")
         self.stackedWidget.addWidget(self.MaterialPage)
         self.RollingPage = RollingInterfaceMain()
         self.RollingPage.setObjectName("RollingPage")
-        self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.RollingPage)
-        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
         self.stackedWidget.addWidget(self.RollingPage)
         self.horizontalLayout.addWidget(self.stackedWidget)
         self.horizontalLayout.setStretch(0, 1)
         self.horizontalLayout.setStretch(1, 20)
 
         self.retranslateUi(AccidentalFactor)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(3)
         QtCore.QMetaObject.connectSlotsByName(AccidentalFactor)
 
     def retranslateUi(self, AccidentalFactor):
         _translate = QtCore.QCoreApplication.translate
-        AccidentalFactor.setWindowTitle(_translate("AccidentalFactor", "慢偶因素干扰评估"))
+        AccidentalFactor.setWindowTitle(_translate("AccidentalFactor", "慢偶因素板形干扰评估"))
 
 
 from qfluentwidgets import NavigationBar
-from qtResource import resource_rc

@@ -14,7 +14,7 @@
    <string>慢偶因素板形干扰评估</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../qtResource/resource.qrc">
+   <iconset>
     <normaloff>:/icons/icons/慢偶因素.png</normaloff>:/icons/icons/慢偶因素.png</iconset>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,20">
@@ -24,26 +24,14 @@
    <item>
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
-     <widget class="QWidget" name="LiquidPage">
-      <layout class="QHBoxLayout" name="horizontalLayout_12"/>
-     </widget>
-     <widget class="QWidget" name="ClassPage">
-      <layout class="QHBoxLayout" name="horizontalLayout_15"/>
-     </widget>
-     <widget class="QWidget" name="ReductionPage">
-      <layout class="QHBoxLayout" name="horizontalLayout_18"/>
-     </widget>
-     <widget class="QWidget" name="StopPage">
-      <layout class="QHBoxLayout" name="horizontalLayout_8"/>
-     </widget>
-     <widget class="QWidget" name="MaterialPage">
-      <layout class="QHBoxLayout" name="horizontalLayout_21"/>
-     </widget>
-     <widget class="QWidget" name="RollingPage">
-      <layout class="QHBoxLayout" name="horizontalLayout_5"/>
-     </widget>
+     <widget class="QWidget" name="LiquidPage"/>
+     <widget class="QWidget" name="ClassPage"/>
+     <widget class="QWidget" name="ReductionPage"/>
+     <widget class="QWidget" name="StopPage"/>
+     <widget class="QWidget" name="MaterialPage"/>
+     <widget class="QWidget" name="RollingPage"/>
     </widget>
    </item>
   </layout>

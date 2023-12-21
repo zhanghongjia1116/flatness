@@ -1,13 +1,14 @@
 import sys
+from typing import *
 
 import numpy as np
 from PyQt5.QtCore import pyqtSlot, QThread, pyqtSignal, QTime
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtWidgets import QWidget
 from my_utils.prompt import showMessageBox
-
+import multiprocessing
 from flatness_control_capability_evaluation.preset_evaluate.Ui_preset_evaluate import Ui_PresetEvaluate
-from flatness_control_capability_evaluation.preset_evaluate.coefficient_2.coefficient import get_K
+from flatness_control_capability_evaluation.preset_evaluate.coef_2.coefficient import get_K
 
 
 def softmax(vector):
@@ -56,7 +57,18 @@ class CoefficientThread(QThread):
     result_signal = pyqtSignal(float)
     runTime_signal = pyqtSignal(int)
 
-    def __init__(self, BW: float, hout, C40base: float, CPtarget: float, IRB, WRB, IRS, QSbase, DB, DI, DW):
+    def __init__(self,
+                 BW: float,
+                 hout,
+                 C40base: float,
+                 CPtarget: float,
+                 IRB: List[float],
+                 WRB: List[float],
+                 IRS: List[float],
+                 QSbase,
+                 DB,
+                 DI,
+                 DW):
         super(CoefficientThread, self).__init__()
         self.is_running = True
         self.BW = BW
@@ -97,6 +109,7 @@ class CoefficientThread(QThread):
             DB=self.DB,
             DI=self.DI,
             DW=self.DW,
+            pool_num=10
         )
 
 
@@ -227,12 +240,19 @@ class PresetEvaluate(QWidget, Ui_PresetEvaluate):
         targetConvexity = self.get_lineEdit_data(self.targetConvexityLineEdit)
 
         # 计算系数2
-        self.thread = CoefficientThread(BW=stripWidth,
-                                        hout=exitThickness,
-                                        C40base=materialConvexity, CPtarget=targetConvexity,
-                                        IRB=IRB, WRB=WRB, IRS=IRS,
-                                        QSbase=[i / stripWidth for i in rollForce],
-                                        DB=BURDiameter, DI=IRBDiameter, DW=WRBDiameter)
+        self.thread = CoefficientThread(
+            BW=stripWidth,  # 带钢宽度(mm) 默认值为1000
+            hout=exitThickness,  # 出口厚度数组(mm), 默认值为[5.0, 3.5, 2.5, 2.0, 1.8]
+            C40base=materialConvexity,  # 入口来料凸度(um), 默认值为54.1
+            CPtarget=targetConvexity,  # 目标凸度(um), 默认值为18
+            IRB=IRB,  # 中间辊弯辊数组(t), 默认值为[87.4 , 75.9 , 74.2 , 67.4 , 72.4]
+            WRB=WRB,  # 工作辊弯辊数组(t), 默认值为[128  , 128  , 121  , 111  , -72]
+            IRS=IRS,  # 中间辊窜辊数组(mm)
+            QSbase=[i / stripWidth for i in rollForce],  # 目前get_K()程序是单位轧制力, 请直接改为轧制力
+            DB=BURDiameter,  # 直径数组(mm)  默认值为[1300] * 5
+            DI=IRBDiameter,  # 直径数组(mm)  默认值为[560] * 5
+            DW=WRBDiameter  # 直径数组(mm)  默认值为[480] * 5
+        )
         self.thread.runTime_signal.connect(self.stop_calculate_coefficient_2_worker)
         self.thread.result_signal.connect(self.update_coefficient_2)
         self.thread.start()

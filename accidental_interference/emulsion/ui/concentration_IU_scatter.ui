@@ -14,7 +14,7 @@
    <string>全年浓度与IU均值散点</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../../../qtResource/resource.qrc">
+   <iconset>
     <normaloff>:/icons/icons/预览.png</normaloff>:/icons/icons/预览.png</iconset>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="1">
@@ -55,7 +55,7 @@
       <item>
        <layout class="QGridLayout" name="gridLayoutLeft">
         <item row="0" column="0">
-         <widget class="QGraphicsView" name="graphicsView"/>
+         <widget class="QWidget" name="widget" native="true"/>
         </item>
        </layout>
       </item>

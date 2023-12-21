@@ -1,12 +1,10 @@
 import math
 
 import numpy as np
-
-from flatness_control_capability_evaluation.preset_evaluate.coefficient_2 import DATA_FORC
-from flatness_control_capability_evaluation.preset_evaluate.coefficient_2 import DATA_MESH
-from flatness_control_capability_evaluation.preset_evaluate.coefficient_2 import DATA_SHAP
-from flatness_control_capability_evaluation.preset_evaluate.coefficient_2 import DATA_ROLL
-
+from flatness_control_capability_evaluation.preset_evaluate.coef_2 import DATA_FORC
+from flatness_control_capability_evaluation.preset_evaluate.coef_2 import DATA_MESH
+from flatness_control_capability_evaluation.preset_evaluate.coef_2 import DATA_SHAP
+from flatness_control_capability_evaluation.preset_evaluate.coef_2 import DATA_ROLL
 
 def REGR(IK):
     NL = DATA_MESH.NL

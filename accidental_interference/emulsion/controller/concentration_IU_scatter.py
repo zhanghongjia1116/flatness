@@ -1,3 +1,5 @@
+import os.path
+
 import numpy as np
 import pandas as pd
 from PyQt5.QtWidgets import QWidget
@@ -16,14 +18,22 @@ class AvgIUAndLiquid(QWidget, Ui_AvgIUAndLiquid):
         self.data = self.data[(self.data['浓度'] != 'shutdown') & (self.data['浓度'] != '停机检修')]
         self.data['浓度'] = self.data['浓度'].astype(float)  # 转为浮点类型
         self.data['policyNo'] = self.data['policyNo'].astype(int)
+
+        # 保留一个 MplCanvas 对象的引用
+        self.leftCanvas = None
+
         # 连接槽函数
         self.RadioButton2021.toggled.connect(self.init_left_canvas)
         self.RadioButton2022.toggled.connect(self.init_left_canvas)
         self.RadioButton2023.toggled.connect(self.init_left_canvas)
 
     def init_left_canvas(self):
-        for i in range(1, self.gridLayoutLeft.count()):
-            self.gridLayoutLeft.itemAt(i).widget().deleteLater()
+        # 在初始化新的 MplCanvas 之前，删除旧的 MplCanvas
+        if self.leftCanvas is not None:
+            self.leftCanvas.setVisible(False)
+            self.leftCanvas.deleteLater()
+            self.leftCanvas.toolbar.deleteLater()
+
         # 获取选中的单选按钮的文本
         data = None
         if self.RadioButton2021.isChecked():
@@ -49,11 +59,11 @@ class AvgIUAndLiquid(QWidget, Ui_AvgIUAndLiquid):
             length_list = np.append(length_list, length)
 
         try:
-            self.graphicsView.setVisible(False)
-            leftCanvas = MplCanvas()
-            leftCanvas.avgIUAndLiquid(count, avg_list, length_list)
-            leftCanvas.toolbar = NavigationToolbar2QT(leftCanvas)
-            self.gridLayoutLeft.addWidget(leftCanvas)
-            self.gridLayoutLeft.addWidget(leftCanvas.toolbar)
+            # 创建新的 MplCanvas 对象
+            self.leftCanvas = MplCanvas()
+            self.leftCanvas.avgIUAndLiquid(count, avg_list, length_list)
+            self.leftCanvas.toolbar = NavigationToolbar2QT(self.leftCanvas)
+            self.gridLayoutLeft.addWidget(self.leftCanvas)
+            self.gridLayoutLeft.addWidget(self.leftCanvas.toolbar)
         except Exception as e:
             print(e)
