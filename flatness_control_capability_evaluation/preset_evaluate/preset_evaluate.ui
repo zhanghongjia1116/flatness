@@ -433,6 +433,27 @@
        <widget class="CardWidget" name="CardWidget_3">
         <layout class="QVBoxLayout" name="verticalLayout">
          <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_7">
+           <item>
+            <widget class="SubtitleLabel" name="SubtitleLabel_10">
+             <property name="text">
+              <string>运算使用CPU核心数</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="LineEdit" name="CPUNumInputLineEdit">
+             <property name="text">
+              <string>10</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <item>
             <spacer name="horizontalSpacer_3">

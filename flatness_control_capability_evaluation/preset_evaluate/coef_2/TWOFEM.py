@@ -1,10 +1,10 @@
-from flatness_control_capability_evaluation.preset_evaluate.coef_2 import DATA_FORC
-from flatness_control_capability_evaluation.preset_evaluate.coef_2 import DATA_MESH
-from flatness_control_capability_evaluation.preset_evaluate.coef_2 import DATA_ROLL
-from flatness_control_capability_evaluation.preset_evaluate.coef_2 import DATA_SHAP
-from flatness_control_capability_evaluation.preset_evaluate.coef_2.POSTPROC import POSTPROC
-from flatness_control_capability_evaluation.preset_evaluate.coef_2.ROLLFEM import ROLLFEM
-from flatness_control_capability_evaluation.preset_evaluate.coef_2.ROLLMESH import ROLLMESH
+from . import DATA_FORC
+from . import DATA_MESH
+from . import DATA_ROLL
+from . import DATA_SHAP
+from .ROLLMESH import ROLLMESH
+from .ROLLFEM import ROLLFEM
+from .POSTPROC import POSTPROC
 
 
 def TWOFEM(DB0, DI0, DW0, BW0, QS0, SFTI0, BFI0, BFW0, PROBR0, PROIR0, PROWR0):

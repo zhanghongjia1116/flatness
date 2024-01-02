@@ -33,6 +33,7 @@ def get_K(BW, hout, C40base, CPtarget, IRB, WRB, IRS, QSbase, DB, DI, DW, pool_n
         DB: 支撑辊直径.
         DI: 中间辊直径.
         DW: 工作辊直径.
+        pool_num: CPU核心数.
 
     Returns:
         float: The calculated value of K.
@@ -82,12 +83,8 @@ def get_K(BW, hout, C40base, CPtarget, IRB, WRB, IRS, QSbase, DB, DI, DW, pool_n
         args = DB[S], DI[S], DW[S], BW, QSbase[S], SFTI, BFI, BFW
         data.append(args)
 
-    # results = pool.map(myparfun, data)
     pool = multiprocessing.Pool(processes=pool_num)
     results = pool.starmap(myparfun, data)
-    # pool.close()
-    # pool.join()
-    # pool.starmap_async(myparfun, data)
 
     K1 = 0
     temp_CPL = [C40base]

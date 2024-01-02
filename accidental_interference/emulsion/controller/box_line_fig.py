@@ -51,7 +51,7 @@ class BoxDiagram(QWidget, Ui_AvgIUAndLiquid):
             x_labels.append(i)
 
         try:
-            self.graphicsView.setVisible(False)
+            # self.graphicsView.setVisible(False)
             leftCanvas = MplCanvas()
             leftCanvas.liquidBoxDiagram(concentration, ph, conductivity, x_labels)
             leftCanvas.toolbar = NavigationToolbar2QT(leftCanvas)

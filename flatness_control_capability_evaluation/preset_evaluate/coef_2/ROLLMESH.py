@@ -1,6 +1,6 @@
-from flatness_control_capability_evaluation.preset_evaluate.coef_2 import DATA_ROLL
-from flatness_control_capability_evaluation.preset_evaluate.coef_2 import DATA_MESH
-from flatness_control_capability_evaluation.preset_evaluate.coef_2 import DATA_FORC
+from . import DATA_ROLL
+from . import DATA_MESH
+from . import DATA_FORC
 import numpy as np
 import math
 

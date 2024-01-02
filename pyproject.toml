@@ -1,0 +1,14 @@
+[tool.lndl.nuitka]
+main = 'app.py'
+
+standalone = true
+mingw64 = true
+output-dir = 'build'
+
+show-memory = true
+show-progress = true
+
+enable-plugin = ['pyqt5']
+nofollow-import-to = ['my_utils','qtResource']
+
+windows-icon-from-ico = './shougang.ico'

@@ -33,7 +33,7 @@ class RollingSearch(QWidget, Ui_RollingSearch):
         """获取数据"""
         local_path = os.path.abspath(__file__)
         tmp = local_path
-        for i in range(3):
+        for _ in range(3):
             tmp = os.path.dirname(tmp)
         real_path = f'{tmp}/acid_rolling_online/酸轧在线判定.pkl'
 
@@ -98,18 +98,18 @@ class RollingSearch(QWidget, Ui_RollingSearch):
                 Returns:
                     _type_: _description_
                 """
-                if not row_df.empty:
-                    tmp = row_df.reset_index(drop=True)
-                    index = tmp.iloc[0, 2]
-                    up_roll = tmp.iloc[0, 3]
-                    down_roll = tmp.iloc[0, 10]
-
-                    filter_df = df[df.iloc[:, 3] == up_roll]
-                    length = len(filter_df)
-                    menu = str(index) + '/' + str(length)
-                    return up_roll, down_roll, menu
-                else:
+                if row_df.empty:
                     return None, None, str(None)
+
+                tmp = row_df.reset_index(drop=True)
+                index = tmp.iloc[0, 2]
+                up_roll = tmp.iloc[0, 3]
+                down_roll = tmp.iloc[0, 10]
+
+                filter_df = df[df.iloc[:, 3] == up_roll]
+                length = len(filter_df)
+                menu = f'{str(index)}/{length}'
+                return up_roll, down_roll, menu
 
             支撑辊_up, 支撑辊_down, 支撑辊_index = get_index(singleFrameBUR, rowOfSingleFrameBUR)
             self.LineEdit_2.setText(str(支撑辊_up))

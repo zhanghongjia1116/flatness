@@ -68,7 +68,8 @@ class CoefficientThread(QThread):
                  QSbase,
                  DB,
                  DI,
-                 DW):
+                 DW,
+                 pool_num):
         super(CoefficientThread, self).__init__()
         self.is_running = True
         self.BW = BW
@@ -82,6 +83,7 @@ class CoefficientThread(QThread):
         self.DB = DB
         self.DI = DI
         self.DW = DW
+        self.pool_num = pool_num
 
     def run(self):
         start_time = QTime.currentTime()  # 记录开始时间
@@ -109,7 +111,7 @@ class CoefficientThread(QThread):
             DB=self.DB,
             DI=self.DI,
             DW=self.DW,
-            pool_num=10
+            pool_num=self.pool_num
         )
 
 
@@ -238,6 +240,12 @@ class PresetEvaluate(QWidget, Ui_PresetEvaluate):
         materialConvexity = self.get_lineEdit_data(self.materialConvexityLineEdit)
         exitThickness_5 = self.get_lineEdit_data(self.exitThicknessLineEdit)
         targetConvexity = self.get_lineEdit_data(self.targetConvexityLineEdit)
+        try:
+            cpuCount = int(self.CPUNumInputLineEdit.text())
+        except Exception as e:
+            print(e)
+            showMessageBox("提示", "CPU数量输入有误", self)
+            return
 
         # 计算系数2
         self.thread = CoefficientThread(
@@ -251,7 +259,8 @@ class PresetEvaluate(QWidget, Ui_PresetEvaluate):
             QSbase=[i / stripWidth for i in rollForce],  # 目前get_K()程序是单位轧制力, 请直接改为轧制力
             DB=BURDiameter,  # 直径数组(mm)  默认值为[1300] * 5
             DI=IRBDiameter,  # 直径数组(mm)  默认值为[560] * 5
-            DW=WRBDiameter  # 直径数组(mm)  默认值为[480] * 5
+            DW=WRBDiameter,  # 直径数组(mm)  默认值为[480] * 5
+            pool_num=cpuCount
         )
         self.thread.runTime_signal.connect(self.stop_calculate_coefficient_2_worker)
         self.thread.result_signal.connect(self.update_coefficient_2)

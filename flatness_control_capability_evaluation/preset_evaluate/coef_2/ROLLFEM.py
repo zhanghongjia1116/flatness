@@ -2,8 +2,8 @@ import math
 
 import numpy as np
 
-from flatness_control_capability_evaluation.preset_evaluate.coef_2 import DATA_FORC
-from flatness_control_capability_evaluation.preset_evaluate.coef_2 import DATA_MESH
+from . import DATA_FORC
+from . import DATA_MESH
 
 ME = np.zeros(3+1, dtype=np.int32)
 B = np.zeros(3+1, dtype=np.float64)
