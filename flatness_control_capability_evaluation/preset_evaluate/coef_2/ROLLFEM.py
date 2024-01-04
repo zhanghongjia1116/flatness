@@ -5,11 +5,11 @@ import numpy as np
 from . import DATA_FORC
 from . import DATA_MESH
 
-ME = np.zeros(3+1, dtype=np.int32)
-B = np.zeros(3+1, dtype=np.float64)
-C = np.zeros(3+1, dtype=np.float64)
-F = np.zeros(6000+1, dtype=np.float64)
-QK = np.zeros(650000+1, dtype=np.float64)
+ME = np.zeros(3 + 1, dtype=np.int32)
+B = np.zeros(3 + 1, dtype=np.float64)
+C = np.zeros(3 + 1, dtype=np.float64)
+F = np.zeros(6000 + 1, dtype=np.float64)
+QK = np.zeros(650000 + 1, dtype=np.float64)
 S0: float = 0
 IDX: int = 0
 
@@ -29,8 +29,8 @@ def BCS():
     global S0
     X = DATA_MESH.X
     Y = DATA_MESH.Y
-    B = np.zeros(3+1)
-    C = np.zeros(3+1)
+    B = np.zeros(3 + 1)
+    C = np.zeros(3 + 1)
     I = ME[1]
     J = ME[2]
     M = ME[3]
@@ -49,9 +49,9 @@ def RFS(N):
     global B
     global C
     global S0
-    HH = np.zeros((6+1, 6+1))
-    Q = np.zeros(6+1)
-    QH = np.zeros(6+1)
+    HH = np.zeros((6 + 1, 6 + 1))
+    Q = np.zeros(6 + 1)
+    QH = np.zeros(6 + 1)
 
     DIV(N)
     BCS()
@@ -62,10 +62,10 @@ def RFS(N):
     V1 = (1.0e0 - V0) / 2.0e0
 
     IR1 = 0
-    for NIR in range(1, 3+1):
+    for NIR in range(1, 3 + 1):
         IR1 = IR1 + 1
         IS1 = 0
-        for NIS in range(1, 3+1):
+        for NIS in range(1, 3 + 1):
             IS = ME[NIS]
             IS1 = IS1 + 1
             BRBS = B[IR1] * B[IS1]
@@ -80,7 +80,7 @@ def RFS(N):
     IP = ME[1]
     JP = ME[2]
     MP = ME[3]
-    for KK in range(1, 6+1):
+    for KK in range(1, 6 + 1):
         QH[1] = HH[KK, 1] * DATA_MESH.DP[IP, 1]
         QH[2] = HH[KK, 2] * DATA_MESH.DP[IP, 2]
         QH[3] = HH[KK, 3] * DATA_MESH.DP[JP, 1]
@@ -108,7 +108,7 @@ def QKS(N, NGB):
     global ICP
     global IDGL
 
-    H = np.zeros((2+1, 2+1))
+    H = np.zeros((2 + 1, 2 + 1))
     NP = DATA_MESH.NP
     DIV(N)
     BCS()
@@ -118,11 +118,11 @@ def QKS(N, NGB):
     ET1 = TH[N] * E0 / S0 / (1.0e0 - V0 * V0) / 4.0e0
     V1 = (1.0e0 - V0) / 2.0e0
     IR1 = 0
-    for NIR in range(1, 3+1):
+    for NIR in range(1, 3 + 1):
         IR = ME[NIR]
         IR1 = IR1 + 1
         IS1 = 0
-        for NIS in range(1, 3+1):
+        for NIS in range(1, 3 + 1):
             IS = ME[NIS]
             IS1 = IS1 + 1
             BRBS = B[IR1] * B[IS1]
@@ -135,19 +135,19 @@ def QKS(N, NGB):
             H[2, 2] = ET1 * (CRCS + V1 * BRBS)
             ICPS = ICP[IS, 1]
             if ICPS < 0:
-                for IG in range(1, NGB+1):
+                for IG in range(1, NGB + 1):
                     if abs(IS - IGPN[IG]) > 0: continue
                     NGP = IG
                     break
 
-                for KK in range(1, 2+1):
+                for KK in range(1, 2 + 1):
                     IBB = abs(ICP[IR, KK])
                     if IBB > 0: F[IBB] = F[IBB] + H[KK, 1] * GP[NGP]
 
-            for KK in range(1, 2+1):
+            for KK in range(1, 2 + 1):
                 ICPR = abs(ICP[IR, KK])
                 if ICPR == 0: continue
-                for JJ in range(1, 2+1):
+                for JJ in range(1, 2 + 1):
                     NN = abs(ICP[IS, JJ])
                     if NN == 0: continue
                     if ICPR < NN: continue
@@ -159,37 +159,37 @@ def EQS(NEQ, LMAX):
     global F
     global QK
     global IDGL
-    for I in range(2, NEQ+1):
+    for I in range(2, NEQ + 1):
         IS = IDGL[I] - I
         IR = IDGL[I - 1] - IS + 1
-        for J in range(IR + 1, I+1):
+        for J in range(IR + 1, I + 1):
             IT = IDGL[J] - J
             IE = IDGL[J - 1] - IT + 1
             if IR > IE: IE = IR
             IG = IS + J
             if J - 1 < IE: continue
-            for IP in range(IE, J - 1+1):
+            for IP in range(IE, J - 1 + 1):
                 IQ = IDGL[IP]
                 QK[IG] = QK[IG] - QK[IS + IP] / QK[IQ] * QK[IT + IP]
 
     F[1] = F[1] / QK[1]
-    for I in range(2, NEQ+1):
+    for I in range(2, NEQ + 1):
         Q = F[I]
         IZ = IDGL[I]
         IS = IZ - I
         IE = IDGL[I - 1] - IS + 1
         if I - 1 >= IE:
-            for IP in range(IE, I - 1+1):
+            for IP in range(IE, I - 1 + 1):
                 Q = Q - QK[IS + IP] * F[IP]
         F[I] = Q / QK[IZ]
 
-    for KK in range(1, NEQ - 1+1):
+    for KK in range(1, NEQ - 1 + 1):
         I = NEQ - KK
         IZ = IDGL[I]
         JT = I + LMAX - 1
         if JT > NEQ: JT = NEQ
         Q = 0.0e0
-        for IP in range(I + 1, JT+1):
+        for IP in range(I + 1, JT + 1):
             IG = IDGL[IP] - IP + I
             if IDGL[IP - 1] - IG < 0: Q = Q + QK[IG] * F[IP]
         F[I] = F[I] - Q / QK[IZ]
@@ -198,28 +198,28 @@ def EQS(NEQ, LMAX):
 def XTM(AA, M, ID):
     if ID < 0:
         XMM = 1.0e10
-        for I in range(1, M+1):
+        for I in range(1, M + 1):
             if AA[I] < XMM:
                 XMM = AA[I]
     else:
         XMM = -1.0e10
-        for I in range(1, M+1):
+        for I in range(1, M + 1):
             if AA[I] > XMM:
                 XMM = AA[I]
     return XMM
 
 
-ND = np.zeros(6+1, dtype=np.int32)
+ND = np.zeros(6 + 1, dtype=np.int32)
 
-IDGL = np.zeros(5800+1, dtype=np.int32)
-IGPN = np.zeros(200+1, dtype=np.int32)
-KGPN = np.zeros(200+1, dtype=np.int32)
-IHY = np.zeros(200+1, dtype=np.int32)
-GP = np.zeros(200+1)
-GGP = np.zeros(100+1)
-FF = np.zeros(200+1)
-IFJI = np.zeros(2+1, dtype=np.int32)
-IFJW = np.zeros(2+1, dtype=np.int32)
+IDGL = np.zeros(5800 + 1, dtype=np.int32)
+IGPN = np.zeros(200 + 1, dtype=np.int32)
+KGPN = np.zeros(200 + 1, dtype=np.int32)
+IHY = np.zeros(200 + 1, dtype=np.int32)
+GP = np.zeros(200 + 1)
+GGP = np.zeros(100 + 1)
+FF = np.zeros(200 + 1)
+IFJI = np.zeros(2 + 1, dtype=np.int32)
+IFJW = np.zeros(2 + 1, dtype=np.int32)
 
 
 def ROLLFEM():
@@ -301,91 +301,91 @@ def ROLLFEM():
     CNBI = DATA_MESH.CNBI
     NSIRT = DATA_MESH.NSIRT
     if (NPBI + KSFTI) <= 0:
-        for N in range(1, CNBI+1):
+        for N in range(1, CNBI + 1):
             IGPN[N] = NSBRD - (NPBI + KSFTI) + N - 1
             KGPN[N] = NSIRT + N - 1
     else:
-        for N in range(1, CNBI+1):
+        for N in range(1, CNBI + 1):
             IGPN[N] = NSBRD + N - 1
             KGPN[N] = NSIRT + (NPBI + KSFTI) + N - 1
 
-    for N in range(1, CNBI+1):
+    for N in range(1, CNBI + 1):
         GP[N] = DATA_MESH.X[IGPN[N]] - DATA_MESH.X[KGPN[N]]
 
     CNIW = DATA_MESH.CNIW
     NSIRD = DATA_MESH.NSIRD
     NSWRT = DATA_MESH.NSWRT
     if (NPIW - KSFTI + KSFTW) <= 0:
-        for N in range(1, CNIW+1):
+        for N in range(1, CNIW + 1):
             IGPN[CNBI + N] = NSIRD - (NPIW - KSFTI + KSFTW) + N - 1
             KGPN[CNBI + N] = NSWRT + N - 1
     else:
-        for N in range(1, CNIW+1):
+        for N in range(1, CNIW + 1):
             IGPN[CNBI + N] = NSIRD + N - 1
             KGPN[CNBI + N] = NSWRT + (NPIW - KSFTI + KSFTW) + N - 1
 
-    for N in range(1, CNIW+1):
+    for N in range(1, CNIW + 1):
         GP[CNBI + N] = DATA_MESH.X[IGPN[CNBI + N]] - DATA_MESH.X[KGPN[CNBI + N]]
         GGP[N] = GP[CNBI + N]
 
     VGP = XTM(GP, CNBI, -1)
 
-    for N in range(1, INI+1):
+    for N in range(1, INI + 1):
         DATA_MESH.X[NSIRT - 1 + N] = DATA_MESH.X[NSIRT - 1 + N] + VGP
 
     VGP = XTM(GGP, CNIW, -1)
 
-    for N in range(1, INW+1):
+    for N in range(1, INW + 1):
         DATA_MESH.X[NSWRT - 1 + N] = DATA_MESH.X[NSWRT - 1 + N] + VGP
 
     NG = CNIW + CNBI
-    for I in range(1, NG+1):
+    for I in range(1, NG + 1):
         GP[I] = DATA_MESH.X[IGPN[I]] - DATA_MESH.X[KGPN[I]]
 
     INC = DATA_MESH.INC
-    for I in range(1, NB+1):
+    for I in range(1, NB + 1):
         GP[NG + I] = 0.0e0
         IGPN[NG + I] = INC[I]
 
     NP1 = NP + 1
-    for I in range(1, NG+1):
+    for I in range(1, NG + 1):
         IHY[I] = NP1
     IH = 1
 
     while True:
-        for I in range(1, NP1+1):
-            for J in range(1, 2+1):
+        for I in range(1, NP1 + 1):
+            for J in range(1, 2 + 1):
                 ICP[I, J] = 1
 
-        for I in range(1, NB+1):
+        for I in range(1, NB + 1):
             ICP[INC[I], 1] = 0
 
         ICP[INC[NB + 1], 2] = 0
         ICP[INC[NB + 2], 2] = 0
         ICP[INC[NB + 3], 2] = 0
-        for N in range(1, NG+1):
+        for N in range(1, NG + 1):
             ICP[IGPN[N], 1] = 0
 
-        for I in range(1, NG+1):
-            for J in range(1, 2+1):
+        for I in range(1, NG + 1):
+            for J in range(1, 2 + 1):
                 ICP[IHY[I], J] = 1
 
         NEQ = 0
-        for I in range(1, NP+1):
-            for J in range(1, 2+1):
+        for I in range(1, NP + 1):
+            for J in range(1, 2 + 1):
                 if ICP[I, J] >= 0.5:
                     NEQ = NEQ + 1
                     ICP[I, J] = NEQ
 
-        for I in range(1, NG+1):
-            for J in range(1, 2+1):
-                if ICP[IGPN[I], J] < 1: ICP[IGPN[I], J]=-ICP[KGPN[I], J]
+        for I in range(1, NG + 1):
+            for J in range(1, 2 + 1):
+                if ICP[IGPN[I], J] < 1: ICP[IGPN[I], J] = -ICP[KGPN[I], J]
 
-        for I in range(1, NEQ+1):
-            IDGL[I] = I+1
+        for I in range(1, NEQ + 1):
+            IDGL[I] = I + 1
         NE = DATA_MESH.NE
         MS = DATA_MESH.MS
-        for N in range(1, NE+1):
+        for N in range(1, NE + 1):
             IA = MS[N, 1]
             JA = MS[N, 2]
             MA = MS[N, 3]
@@ -396,22 +396,22 @@ def ROLLFEM():
             ND[5] = abs(ICP[MA, 1])
             ND[6] = abs(ICP[MA, 2])
             KS = NEQ
-            for KK in range(1, 6+1):
+            for KK in range(1, 6 + 1):
                 if (ND[KK] > 0) and (ND[KK] < KS): KS = ND[KK]
-            for KK in range(1, 6+1):
+            for KK in range(1, 6 + 1):
                 ICPR = ND[KK]
                 if ICPR == 0: continue
                 if IDGL[ICPR] > KS: IDGL[ICPR] = KS
 
         LMAX = 0
         IDGL[1] = 1
-        for I in range(2, NEQ+1):
+        for I in range(2, NEQ + 1):
             LBD = I - IDGL[I] + 1
             IDGL[I] = IDGL[I - 1] + LBD
-            if LBD > LMAX: LMAX=LBD
+            if LBD > LMAX: LMAX = LBD
         NKK = IDGL[NEQ]
 
-        for I in range(1, NEQ+1):
+        for I in range(1, NEQ + 1):
             F[I] = 0.0e0
 
         NSK = int((DATA_MESH.NL + 1) / 2)
@@ -430,12 +430,12 @@ def ROLLFEM():
         FDLT = PS * QS * SP * (kforce - 1.0e0) * 3.0e0 * (NM * 1.0e0) / (NSK * 1.0e0)
 
         SSQ = NM * NM * 1.0e0
-        for K in range(1, NM+1):
+        for K in range(1, NM + 1):
             FF[NSK - K] = FF[NSK] - FDLT * K * K * 1.0e0 / SSQ
             FF[NSK + K] = FF[NSK - K]
 
         KOFF = DATA_MESH.KOFF
-        for K in range(1, DATA_MESH.NL+1):
+        for K in range(1, DATA_MESH.NL + 1):
             F[ICP[NPM + KSFTW - NSK - KOFF + K, 1]] = FF[K]
 
         BFI = DATA_FORC.BFI
@@ -445,42 +445,42 @@ def ROLLFEM():
         F[ICP[IFJW[1], 1]] = BFW
         F[ICP[IFJW[2], 1]] = BFW
 
-        for I in range(1, NKK+1):
+        for I in range(1, NKK + 1):
             QK[I] = 0.0e0
 
         NGB = NG + NB
         S0 = 0
         IDX = 0
-        for N in range(1, NE+1):
+        for N in range(1, NE + 1):
             QKS(N, NGB)
         if IDX < 0: return
 
         EQS(NEQ, LMAX)
-        for I in range(1, NP+1):
-            for J in range(1, 2+1):
+        for I in range(1, NP + 1):
+            for J in range(1, 2 + 1):
                 DATA_MESH.DP[I, J] = 0.0e0
 
-        for K in range(1, NP+1):
+        for K in range(1, NP + 1):
             ICPX = ICP[K, 1]
             ICPY = ICP[K, 2]
-            if ICPX > 0: DATA_MESH.DP[K, 1]=F[ICPX]
-            if ICPY > 0: DATA_MESH.DP[K, 2]=F[ICPY]
+            if ICPX > 0: DATA_MESH.DP[K, 1] = F[ICPX]
+            if ICPY > 0: DATA_MESH.DP[K, 2] = F[ICPY]
 
-        for K in range(1, NG+1):
-            if ICP[IGPN[K], 1] < 0: DATA_MESH.DP[IGPN[K], 1]=DATA_MESH.DP[KGPN[K], 1]-GP[K]
-            if ICP[IGPN[K], 2] < 0: DATA_MESH.DP[IGPN[K], 2]=DATA_MESH.DP[KGPN[K], 2]
+        for K in range(1, NG + 1):
+            if ICP[IGPN[K], 1] < 0: DATA_MESH.DP[IGPN[K], 1] = DATA_MESH.DP[KGPN[K], 1] - GP[K]
+            if ICP[IGPN[K], 2] < 0: DATA_MESH.DP[IGPN[K], 2] = DATA_MESH.DP[KGPN[K], 2]
 
-        for I in range(1, NP+1):
-            for J in range(1, 2+1):
+        for I in range(1, NP + 1):
+            for J in range(1, 2 + 1):
                 DATA_MESH.RDS[I, J] = 0.0e0
 
-        for N in range(1, NE+1):
+        for N in range(1, NE + 1):
             RFS(N)
 
         IHX = 10
         IY = 0
         DV1 = -0.1e0
-        for K in range(1, NG+1):
+        for K in range(1, NG + 1):
             if IHY[K] < NP1: continue
             if DATA_MESH.RDS[IGPN[K], 1] > DV1: continue
             IY = 2
@@ -488,7 +488,7 @@ def ROLLFEM():
 
         IZ = 0
         DV2 = 0.001e0
-        for K in range(1, NG+1):
+        for K in range(1, NG + 1):
             if IHY[K] > NP: continue
             if DATA_MESH.DP[KGPN[K], 1] < DATA_MESH.DP[IHY[K], 1] + GP[K] + DV2: continue
             IZ = 2

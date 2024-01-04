@@ -312,7 +312,8 @@ class WorkThread(QThread):
         global nihe_jdt, xishu_jdt
         try:
             data = pd.read_pickle(path_jdt)
-        except:
+        except Exception as e:
+            print(e)
             return
         d_flats_nihe = data.values[:, -80:]
         x = np.linspace(-1, 1, 80)
