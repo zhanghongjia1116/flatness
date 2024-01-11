@@ -30,9 +30,12 @@ class AvgIUAndLiquid(QWidget, Ui_AvgIUAndLiquid):
     def init_left_canvas(self):
         # 在初始化新的 MplCanvas 之前，删除旧的 MplCanvas
         if self.leftCanvas is not None:
-            self.leftCanvas.setVisible(False)
-            self.leftCanvas.deleteLater()
-            self.leftCanvas.toolbar.deleteLater()
+            try:
+                self.leftCanvas.setVisible(False)
+                self.leftCanvas.deleteLater()
+                self.leftCanvas.toolbar.deleteLater()
+            except Exception:
+                ...
 
         # 获取选中的单选按钮的文本
         data = None

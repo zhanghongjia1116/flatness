@@ -1,14 +1,13 @@
 import os
 
-import pandas as pd
 import matplotlib
-import numpy as np
 import matplotlib.pyplot as plt
-from .draw_pic import set_plot, bili_to_jiaodu
+import numpy as np
 import seaborn as sns
-from mpl_toolkits.mplot3d import Axes3D
 from matplotlib.ticker import FormatStrFormatter
-import sys
+from mpl_toolkits.mplot3d import Axes3D
+
+from .draw_pic import set_plot, bili_to_jiaodu
 
 
 def threedbanxing(fig, flat_3D):
@@ -87,18 +86,10 @@ def langxingmotai(fig, jiaodu1, iu1, jiaodu2, iu2, colors, mode):
     ax0 = fig.add_axes([0, 0, 1, 1], label='ax0', **axprops)
     print('浪x模态图')
 
-    # 生成资源文件目录访问路径 相对路径
-    def resource_path(relative_path):
-        if getattr(sys, 'frozen', False):  # 是否Bundle Resource 捆绑资源
-            base_path = sys._MEIPASS
-        else:
-            base_path = os.path.abspath(".")
-        return os.path.join(base_path, relative_path)
-
     cwd = os.path.abspath(__file__)  # 获取当前程序文件位置
     tmp = os.path.dirname(cwd)  # 获取当前程序文件位置的目录
-    path = resource_path(tmp + '\\背景2.jpg')
     # path = cwd.replace('\\', '/') + '/背景2.jpg'
+    path = f'{tmp}/背景2.jpg'
 
     print(path)
     imgP = plt.imread(path)

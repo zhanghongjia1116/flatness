@@ -17,10 +17,10 @@ from matplotlib.figure import Figure
 from flatness_quality_evaluate.single_volume.Ui_single_volume import Ui_MainWindow
 from flatness_quality_evaluate.utils import Wlearn, fig
 from flatness_quality_evaluate.utils.Wlearn import base_file_name
+from flatness_quality_evaluate.utils.draw_pic import iu_error, get_rms, get_cha
 from flatness_quality_evaluate.utils.flatpingjia import iu_percent_fendaitou, IU_zhibiao_fendaitou, shuju, shuju_redutu, \
     shuju_langxin, \
     langhxing_fenbu, langhxing_fenbufuza, iu_percent, IU_mean, IU_zhibiao
-from flatness_quality_evaluate.utils.draw_pic import iu_error, get_rms, get_cha
 
 
 class FullLengthQuality(QMainWindow, Ui_MainWindow):
@@ -175,20 +175,7 @@ class FullLengthQuality(QMainWindow, Ui_MainWindow):
         if self.lineEdit.text() != '':
             path = self.lineEdit.text()
         else:
-            # 生成资源文件目录访问路径 相对路径
-            import sys
-            def resource_path(relative_path):
-                if getattr(sys, 'frozen', False):  # 是否Bundle Resource 捆绑资源
-                    base_path = sys._MEIPASS
-                else:
-                    base_path = os.path.abspath(".")
-                return os.path.join(base_path, relative_path)
-
-            self.cwd = os.getcwd()  # 获取当前程序文件位置
-            print(self.cwd.replace('\\', '/'))
-            path = resource_path(self.cwd.replace('\\', '/') + '板形综合评价报表/single_volume/HB19B14703700_1flat.csv')
-            self.lineEdit.setText(path)
-        # print(path)
+            return
         name = self.comboBox_3.currentText()
         print(name)
 

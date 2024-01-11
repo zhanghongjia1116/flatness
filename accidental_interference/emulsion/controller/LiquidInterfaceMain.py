@@ -124,25 +124,35 @@ class LiquidInterfaceMain(QWidget, Ui_Form):
     def on_importProcessDataPushButton_clicked(self):
         """选择目录中的处理后数据文件"""
         self.importProcessDataPushButton.setEnabled(False)
-        file_dialog = QFileDialog()
-        file_dialog.setFileMode(QFileDialog.ExistingFiles)
-        file_dialog.setWindowTitle("选择处理后数据文件")
-        file_dialog.setNameFilter("Excel files (*.xlsx *.xls)")
+        # file_dialog = QFileDialog()
+        # file_dialog.setFileMode(QFileDialog.ExistingFiles)
+        # file_dialog.setWindowTitle("选择处理后数据文件")
+        # file_dialog.setNameFilter("Excel files (*.xlsx *.xls)")  # 设置文件扩展名过滤,注意用双分号间隔
 
         data_path = os.path.dirname(os.path.dirname(__file__)) + '/data/process/'
         fileNames = QFileDialog.getOpenFileNames(self, 'Open file',
                                                  data_path,
-                                                 "processedLiquidData files (*.xlsx *.xls *.csv *.pkl)")[0]
+                                                 "经过处理的乳化液数据文件 (*.xlsx *.xls *.csv *.pkl)")[0]
         self.processDataPath = fileNames
+        if len(self.processDataPath) == 0:
+            showMessageBox("警告", "请选择经过处理的乳化液数据文件", self)
+            self.importProcessDataPushButton.setEnabled(True)
+            return
+        else:
+            if self.processDataPath[0].endswith(".csv"):
+                self.processData = pd.read_csv(self.processDataPath[0])
+            elif self.processDataPath[0].endswith(".pkl"):
+                self.processData = pd.read_pickle(self.processDataPath[0])
+            elif self.processDataPath[0].endswith(".xlsx") or self.processDataPath[0].endswith(".xls"):
+                self.processData = pd.read_excel(self.processDataPath[0], sheet_name=0)
         try:
-            self.processData = pd.read_pickle(self.processDataPath[0])
             self.displayData = self.processData
-
             pdModel = PandasModel(self.displayData.iloc[:100, :])
             self.TableView.setModel(pdModel)
             self.TableView.resizeColumnsToContents()
             self.importRawDataPushButton.setEnabled(True)
             self.exportPushButton.setEnabled(True)
+            self.importProcessDataPushButton.setEnabled(True)
         except Exception as e:
             print(e)
             self.importProcessDataPushButton.setEnabled(True)
