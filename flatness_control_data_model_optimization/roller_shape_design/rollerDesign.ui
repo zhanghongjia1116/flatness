@@ -42,23 +42,49 @@
     </widget>
    </item>
    <item>
+    <widget class="StrongBodyLabel" name="StrongBodyLabel">
+     <property name="text">
+      <string>        闭环辊型设计程序运行速度与计算机硬件关系较大，执行时可能导致CPU占满，运行此程序会导致其他模块无法进行，另外此程序运行时间较长，使用128核心goldCPU运算时间为178小时。</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
      <item>
       <widget class="PrimaryPushButton" name="openButton">
        <property name="text">
-        <string>打开</string>
+        <string>打开闭环辊型设计程序</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="PrimaryPushButton" name="terminateButton">
-       <property name="text">
-        <string>终止</string>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
        </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="LineEdit" name="pathLineEdit"/>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
      </item>
     </layout>
    </item>
@@ -89,13 +115,13 @@
    <header>qfluentwidgets</header>
   </customwidget>
   <customwidget>
-   <class>SubtitleLabel</class>
+   <class>StrongBodyLabel</class>
    <extends>QLabel</extends>
    <header>qfluentwidgets</header>
   </customwidget>
   <customwidget>
-   <class>LineEdit</class>
-   <extends>QLineEdit</extends>
+   <class>SubtitleLabel</class>
+   <extends>QLabel</extends>
    <header>qfluentwidgets</header>
   </customwidget>
  </customwidgets>

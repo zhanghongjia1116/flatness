@@ -50,7 +50,11 @@ class RollerInfo(QDialog, Ui_RollerInfo):
         """
         try:
             self.comboBox_gunhao.clear()
-            辊号: list = np.load(os.path.dirname(os.path.dirname(__file__)) + '\\data\\npy\\'+'%s_gunhao.npy' % p0).tolist()
+            辊号: list = np.load(
+                os.path.dirname(os.path.dirname(__file__))
+                + '\\data\\npy\\'
+                + f'{p0}_gunhao.npy'
+            ).tolist()
             # 将列表内的元素转换为字符串
             for i in range(len(辊号)):
                 辊号[i] = str(辊号[i])

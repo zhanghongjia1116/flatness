@@ -163,7 +163,7 @@ class StopInterface(Ui_StopInterface, QWidget):
     def on_mergeOnlineTablePushButton_clicked(self):
         # 加载初值表
         tmp = os.path.abspath(__file__)
-        for i in range(3):
+        for _ in range(3):
             tmp = os.path.dirname(tmp)
         path = f"{tmp}/initial_value_table/初值表.pkl"
         data = pd.read_pickle(path)
@@ -196,12 +196,10 @@ class StopInterface(Ui_StopInterface, QWidget):
 
             if self.onlineData is None:
                 self.mergeOnlineSignal.emit()
-                # time.sleep(0.5)
-                online_data: pd.DataFrame = self.onlineData
-                # 选择data中结束生产时刻在value前的10条数据
 
-            else:
-                online_data: pd.DataFrame = self.onlineData
+            # time.sleep(0.5)
+            online_data: pd.DataFrame = self.onlineData
+            # 选择data中结束生产时刻在value前的10条数据
             data = online_data[online_data['结束生产时刻'] < value].tail(5)
             pd_model = PandasModel(data)
             # 设置显示颜色为红色
@@ -261,11 +259,11 @@ class StopInterface(Ui_StopInterface, QWidget):
         options = QFileDialog.Options()
         filter_str = "PKL Files (*.pkl);;CSV Files (*.csv);;All Files (*)"
         if file_name := QFileDialog.getOpenFileName(
-            self,
-            "Select CSV or PKL Files",
-            path,
-            filter=filter_str,
-            options=options,
+                self,
+                "Select CSV or PKL Files",
+                path,
+                filter=filter_str,
+                options=options,
         )[0]:
             # 读取并连接CSV或PKL文件
             if file_name.endswith(".csv"):
@@ -287,7 +285,7 @@ class StopInterface(Ui_StopInterface, QWidget):
             max_year = self.displayData.iloc[-1, 1].year
             self.ComboBox.clear()
             self.ComboBox.addItem('选择年份')
-            year_list = [i for i in range(min_year, max_year + 1)]
+            year_list = list(range(min_year, max_year + 1))
             self.ComboBox.addItems(map(str, year_list))
         except:
             showMessageBox("提示", "未导入数据", self)
