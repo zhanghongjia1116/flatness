@@ -2,8 +2,7 @@ import os
 import subprocess
 import sys
 
-from PyQt5.QtWidgets import QApplication, QWidget, QFileDialog
-
+from PyQt5.QtWidgets import QApplication, QWidget, QFileDialog, QMessageBox
 from flatness_control_data_model_optimization.roller_shape_design.Ui_rollerDesign import Ui_RollerDesign
 
 
@@ -30,6 +29,7 @@ class 辊形设计(QWidget, Ui_RollerDesign):
 
         # 使用 subprocess 执行命令
         try:
+            QMessageBox.information(self, "提示", "正在启动")
             subprocess.run(command, shell=True, check=True)
         except subprocess.CalledProcessError as e:
             print(f'execute the exe failed: {e}')

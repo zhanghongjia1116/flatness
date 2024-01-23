@@ -8,7 +8,7 @@ output-dir = 'build'
 show-memory = true
 show-progress = true
 
-enable-plugin = ['pyqt5']
+enable-plugin = ['pyqt5', 'matplotlib', 'multiprocessing']
 nofollow-import-to = ['my_utils','qtResource']
 
 windows-icon-from-ico = './shougang.ico'

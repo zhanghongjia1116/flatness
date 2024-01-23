@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QApplication
 from loguru import logger
 from login_flatness_main.controller.login_window import LoginWindow
 from login_flatness_main.controller.splash import SplashScreen
+import multiprocessing
 
 
 # from login_flatness_main.controller.flatnessMainNormal import MainWindow
@@ -30,4 +31,5 @@ class App(QApplication):
 
 
 if __name__ == '__main__':
+    multiprocessing.freeze_support()
     App().run()

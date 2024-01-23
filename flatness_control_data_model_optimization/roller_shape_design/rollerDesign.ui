@@ -32,7 +32,7 @@
      <property name="font">
       <font>
        <family>Segoe UI</family>
-       <pointsize>21</pointsize>
+       <pointsize>35</pointsize>
        <bold>true</bold>
       </font>
      </property>
@@ -43,6 +43,13 @@
    </item>
    <item>
     <widget class="StrongBodyLabel" name="StrongBodyLabel">
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>22</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
      <property name="text">
       <string>        闭环辊型设计程序运行速度与计算机硬件关系较大，执行时可能导致CPU占满，运行此程序会导致其他模块无法进行，另外此程序运行时间较长，使用128核心goldCPU运算时间为178小时。</string>
      </property>
