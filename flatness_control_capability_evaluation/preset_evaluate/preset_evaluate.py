@@ -6,7 +6,6 @@ from PyQt5.QtCore import pyqtSlot, QThread, pyqtSignal, QTime
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtWidgets import QWidget
 from my_utils.prompt import showMessageBox
-import multiprocessing
 from flatness_control_capability_evaluation.preset_evaluate.Ui_preset_evaluate import Ui_PresetEvaluate
 from flatness_control_capability_evaluation.preset_evaluate.coef_2.coefficient import get_K
 
@@ -126,10 +125,10 @@ class PresetEvaluate(QWidget, Ui_PresetEvaluate):
         从TableWidget的特定行检索并返回数据。
 
         Args:
-            row_index（int）：从中检索数据的行的索引。
+            row_index(int): 从中检索数据的行的索引。
 
         Returns:
-            list[float]：指定行中的数据作为浮点列表。
+            list[float]: 指定行中的数据作为浮点列表。
         Explanation:
            此函数从TableWidget的特定行中检索数据。它遍历指定行的列，并从每个项中检索文本。
            然后将文本转换为浮点值并添加到row_data列表中。如果在转换过程中发生任何错误，
@@ -154,10 +153,10 @@ class PresetEvaluate(QWidget, Ui_PresetEvaluate):
         从特定的行编辑小部件检索并返回数据。
 
         Args:
-           lineEdit：从中检索数据的行编辑小部件。
+           lineEdit: 从中检索数据的行编辑小部件。
 
         Returns:
-            float：行编辑小部件中的数据作为float。
+            float: 行编辑小部件中的数据作为float。
 
         Explanation:
             此函数用于从特定的行编辑小部件中检索数据。它首先检索行编辑小部件的对象名称。
