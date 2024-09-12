@@ -1,13 +1,10 @@
-import numpy as np
-from scipy.stats import norm, chi2
-from scipy import stats
-import scipy
-import matplotlib.pyplot as plt
-import pandas as pd
-from .MXL_Support import *
 import pickle
-import time
-import math
+
+import pandas as pd
+import scipy
+from scipy import stats
+
+from .MXL_Support import *
 
 
 def save_pca_model(v_I, p_k, data_mean, data_std, t_limit, spe_limit, v, P, k, filepath):
@@ -49,7 +46,7 @@ def pca(data, div=0.85):
     P, v, P_t = np.linalg.svd(X)  # 载荷矩阵计算  此函数返回三个值 u s v 此时v是u的转置
     Z = np.dot(P, P_t)
     v_sum = np.sum(v)
-    k = []  ##主元个数
+    k = []  # 主元个数
     if div < 1:
         for x in range(len(v)):
             PE_k = v[x] / v_sum
@@ -67,18 +64,18 @@ def pca(data, div=0.85):
         n_components = div
     print('all_components:', len(v))
     print('n_components:', n_components)
-    ##新主元
+    # 新主元
     p_k = P[:, :n_components]
     v_I = np.diag(1 / v[:n_components])
 
     confidence = 0.99
-    ##T统计量阈值计算
+    # T统计量阈值计算
     coe = n_components * (np.shape(data)[0] - 1) * (np.shape(data)[0] + 1) / (
             (np.shape(data)[0] - n_components) * np.shape(data)[0])
 
     t_limit = coe * stats.f.ppf(confidence, n_components, (np.shape(data)[0] - n_components))
 
-    ##SPE统计量阈值计算
+    # SPE统计量阈值计算
     theta1 = np.sum((v[n_components:]) ** 1)
     theta2 = np.sum((v[n_components:]) ** 2)
     theta3 = np.sum((v[n_components:]) ** 3)
@@ -204,7 +201,6 @@ def run_pca(pth1, pth2, model_path):
             tmp2 = np.dot(tmp1, c)
             tmp.append(float(tmp2))
         t_total_contribution.append(tmp)
-
 
     IU = np.array(IU)
 

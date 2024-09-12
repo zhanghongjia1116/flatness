@@ -4,17 +4,20 @@
 Module implementing SinglePolicyCompare.
 """
 
-from PyQt5.QtCore import pyqtSlot
-from PyQt5.QtWidgets import QMainWindow
-import pandas as pd
-from flatness_control_data_model_optimization.feedback_control_strategy_simulation_analysis.multiple_strategy.Ui_multiple_strategy import Ui_MainWindow
-from flatness_control_data_model_optimization.feedback_control_strategy_simulation_analysis.utils import strategy
-from PyQt5.QtWidgets import QFileDialog, QMessageBox
-from PyQt5 import QtWidgets
 import os
+
+import pandas as pd
+from PyQt5 import QtWidgets
+from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtWidgets import QFileDialog, QMessageBox
+from PyQt5.QtWidgets import QMainWindow
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
 from matplotlib.figure import Figure
+
+from flatness_control_data_model_optimization.feedback_control_strategy_simulation_analysis.multiple_strategy.Ui_multiple_strategy import \
+    Ui_MainWindow
+from flatness_control_data_model_optimization.feedback_control_strategy_simulation_analysis.utils import strategy
 
 
 class 多策略对比(QMainWindow, Ui_MainWindow):

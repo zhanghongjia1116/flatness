@@ -52,7 +52,7 @@ class Ui_banxingkongzhishumo(object):
 
     def retranslateUi(self, banxingkongzhishumo):
         _translate = QtCore.QCoreApplication.translate
-        banxingkongzhishumo.setWindowTitle(_translate("banxingkongzhishumo", "板形反馈控制数模优化"))
+        banxingkongzhishumo.setWindowTitle(_translate("banxingkongzhishumo", "板形控制数模优化"))
 
 
 from qfluentwidgets import NavigationBar
