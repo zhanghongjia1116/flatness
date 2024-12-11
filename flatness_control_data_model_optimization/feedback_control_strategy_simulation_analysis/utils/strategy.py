@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.ticker import FormatStrFormatter, MultipleLocator
 from mpl_toolkits.mplot3d import Axes3D
+import pandas as pd
 
 
 def lerangde_fenjie(y, x):
@@ -92,7 +93,7 @@ def free_chazhi(row):
 def jugde_row_col(data):
     for i in data[10]:
         if i != 0:
-            pot_1 = list(data[10]).index(i)
+            pot_1 = list(data[10]).index(i)   #  获取flt第一个非0索引
             break
     for i in data[25]:
         if i != 0:
@@ -135,8 +136,8 @@ def shujuchuli(data):
     '''
     对读取的数据进行预处理，未去边降，进行插值，返回插值后的80段值。
     '''
-    flat = data.values[:, -62:]
-    print('2222')
+    flat = data.values[:, -62:]  # 删除pos
+    
     start, end, row_pot = jugde_row_col(flat)
     flat_length = data.values[:, -63:]  # 带钢长度
     use_flat = flat[:, start + 1:end - 1] / -2100000  # 读取有效区间，并转换成IU
@@ -327,6 +328,22 @@ def pec_control(flat, k_wrb, k_irb, k_irs, tilt_eff, WRBP_eff, IRB_eff, IRB_shif
 
 
 def Adam(w_start, flat, tilt_eff, WRBP_eff, IRB_eff, IRB_shift_eff, rate, beta1, beta2):
+    """计算Adam优化的调控量
+
+    Args:
+        w_start (np.array): 顺序控制策略计算得到的初始调控量
+        flat (_type_): 对应调控功效
+        tilt_eff (_type_): 对应调控功效
+        WRBP_eff (_type_): 对应调控功效
+        IRB_eff (_type_): 对应调控功效
+        IRB_shift_eff (_type_): 对应调控功效
+        rate (_type_): _description_
+        beta1 (_type_): _description_
+        beta2 (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
     # rate = 0.05
     echo = 300
     # beta1 = 0.9
@@ -342,6 +359,9 @@ def Adam(w_start, flat, tilt_eff, WRBP_eff, IRB_eff, IRB_shift_eff, rate, beta1,
     eff = np.array([tilt_eff, WRBP_eff, IRB_eff, IRB_shift_eff])
     WRBP_step = 8
     IRB_step = 6
+    
+    # need_w_df = pd.DataFrame(columns=['w1', 'w2', 'w3'])
+    
     for i in range(1, echo):
         g = -2 * np.dot(eff, (flat - np.dot(w, eff)).T) / 80
         s = beta1 * s + (1 - beta1) * g.T
@@ -379,7 +399,8 @@ def Adam(w_start, flat, tilt_eff, WRBP_eff, IRB_eff, IRB_shift_eff, rate, beta1,
             best_row = new_row
         line_history.append(w)
     line_history = np.array(line_history)
-
+    # print("-----------------------************-----------------------")
+    # print(f"line_history: \n{line_history}")
     return w, new_row
 
 
